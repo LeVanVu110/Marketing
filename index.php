@@ -481,6 +481,448 @@ include "header.html";
             transform: translate(0, 0) rotate(0deg);
         }
     }
+
+
+    /* --- The Vault Section --- */
+    .vault-section {
+        background-color: #111;
+        /* Nền đen sâu cực kỳ sang trọng */
+        padding: 120px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+    }
+
+    /* Hiệu ứng đồng hồ/vòng tròn mờ phía sau chữ */
+    .vault-section::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 500px;
+        height: 500px;
+        border: 1px dashed rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        z-index: 1;
+    }
+
+    .vault-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .vault-title {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 100px;
+        /* Chữ cực lớn */
+        font-weight: 700;
+        margin-bottom: 20px;
+        letter-spacing: -2px;
+    }
+
+    .vault-subtitle {
+        font-size: 24px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 400;
+        margin-bottom: 30px;
+    }
+
+    /* Chữ ký "With Ilja van Eck" hoặc "Sota Marketing" với mũi tên */
+    .vault-signature {
+        font-family: 'Courier New', Courier, monospace;
+        /* Font kiểu viết tay/máy tính cũ */
+        color: #a3e635;
+        /* Màu xanh lá neon làm điểm nhấn */
+        font-size: 18px;
+        font-style: italic;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .vault-signature svg {
+        width: 40px;
+        fill: none;
+        stroke: #a3e635;
+        stroke-width: 2;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .vault-title {
+            font-size: 60px;
+        }
+
+        .vault-subtitle {
+            font-size: 18px;
+        }
+    }
+
+    /* video  */
+    /* --- CSS Giao diện Video Osmo Style --- */
+    :root {
+        --color-neon-green: #a3e635;
+        /* Màu xanh đặc trưng của The Vault */
+        --color-purple: #8b5cf6;
+    }
+
+    .full-video {
+        background: #0b0b0b;
+        padding: 10vw 0;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    /* Container bọc ngoài Video */
+    .full-video__wrap {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        border-radius: 1.5rem;
+        background: #161616;
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Khu vực Video chính */
+    .custom-player__media {
+        position: relative;
+        width: 100%;
+        border-radius: 20px;
+        aspect-ratio: 16/9;
+        overflow: visible;
+        /* Giữ tỷ lệ chuẩn video */
+        /* Không để overflow: hidden ở đây nếu muốn webcam lấn ra ngoài */
+    }
+
+    .custom-player__video {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* --- Webcam của Ilja (Vòng tròn bên trái) --- */
+    .custom-player__float {
+        position: absolute;
+        /* Vị trí góc dưới bên trái */
+        bottom: 50%;
+        left: -70px;
+        /* Đẩy lấn ra ngoài lề trái giống trang mẫu */
+        z-index: 100;
+        /* Luôn nằm trên cùng */
+        width: 120px;
+        /* Kích thước vòng tròn */
+        height: 120px;
+    }
+
+    .custom-player__float {
+        z-index: 1000 !important;
+        /* Đẩy toàn bộ cụm webcam lên trên cùng */
+    }
+
+    .webcam__sound {
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        /* Cho phép nhận sự kiện click */
+        transition: transform 0.2s ease;
+    }
+
+    .webcam__sound:hover {
+        transform: scale(1.1);
+        /* Hiệu ứng phóng to khi rê chuột */
+    }
+
+    .webcam__wrap {
+        width: 120%;
+        height: 120%;
+        border-radius: 50%;
+        /* Biến thành hình tròn */
+        border: 4px solid #8b5cf6;
+        /* Viền tím Osmo */
+        /* overflow: hidden; */
+        position: relative;
+        background: #000;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        /* Hiệu ứng xoay nhẹ cho tự nhiên */
+        transform: rotate(-5deg);
+        padding: 16px;
+    }
+
+    /* Khung chứa ảnh/video bên trong */
+    .webcam__video {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        /* Bo tròn chính lớp này */
+        overflow: hidden;
+        /* Cắt ảnh ở đây */
+        position: relative;
+        z-index: 1;
+        /* Nằm dưới nút loa */
+    }
+
+    .cover-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Video bên trong webcam tròn */
+    .cover-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Nút loa nhỏ trên webcam */
+    .webcam__sound {
+        position: absolute;
+        top: -3%;
+        left: -10%;
+        width: 44px;
+        height: 44px;
+        background: var(--color-neon-green);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+        z-index: 101;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* --- Interface Điều khiển --- */
+    /* --- Giao diện Timeline chuẩn Osmo --- */
+    .custom-player__interface {
+        background: #0b0b0b;
+        padding: 3rem 4rem;
+        color: #fff;
+        position: relative;
+    }
+
+    .custom-player__ticks-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%; 
+    background-image: repeating-linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.9) 0px,
+        rgba(255, 255, 255, 0.9) 1px,
+        transparent 1px,
+        transparent 14px
+    );
+    z-index: 2;
+    transition: width 0.1s linear;
+}
+
+    .custom-player__interface-bottom {
+        display: flex;
+        flex-direction: column;
+        /* Đổi sang chiều dọc để các thành phần xếp chồng đúng lớp */
+        gap: 1.5rem;
+    }
+
+    /* Khối bao quanh thanh ticks và markers */
+    .custom-player__timeline-wrap {
+        width: 100%;
+        position: relative;
+        padding: 60px 0 20px 0;
+        /* Khoảng trống cho vạch dài nhô lên */
+    }
+
+    /* Các vạch kẻ nhỏ (Ticks) */
+    .custom-player__ticks {
+        width: 100%;
+        height: 14px;
+        position: relative;
+        /* Các vạch mặc định màu tối */
+        background-image: repeating-linear-gradient(to right,
+                rgba(255, 255, 255, 0.15) 0px,
+                rgba(255, 255, 255, 0.15) 1px,
+                transparent 1px,
+                transparent 14px);
+border: none;
+    }
+
+    
+
+    /* Thanh progress bar xanh neon nằm đè lên đường kẻ ngang */
+    .custom-player__timeline-bar {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    /* Thời gian tổng ở góc phải */
+    .custom-player__time {
+        position: absolute;
+        right: 1rem;
+        top: 3.5rem;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .custom-player__timeline-progress {
+        height: 100%;
+        background: #a3e635;
+        /* Xanh Neon chuẩn Osmo */
+        box-shadow: 0 0 15px rgba(163, 230, 53, 0.5);
+        width: 0%;
+    }
+
+    /* Định vị Marker bằng Absolute % để khớp thời gian */
+    .custom-player__markers {
+    position: absolute;
+    top:40px; /* Đẩy toàn bộ cụm chữ xuống dưới dải ticks 20px */
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+    .custom-player__marker {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+    /* Tọa độ Marker khớp theo ảnh bạn gửi */
+    .custom-player__marker:nth-child(1) {
+        left: 0%;
+        transform: none;
+    }
+
+    .custom-player__marker:nth-child(2) {
+        left: 19%;
+    }
+
+    .custom-player__marker:nth-child(3) {
+        left: 45%;
+    }
+
+    .custom-player__marker:nth-child(4) {
+        left: 78%;
+    }
+
+    /* Style cho mốc thời gian (Số 00:00) */
+    .timestamp__span {
+        font-size: 10px;
+        color: #666;
+        display: block;
+    }
+
+    .custom-player__marker-p {
+        font-size: 13px;
+        color: #fff;
+        margin-top: 4px;
+        white-space: nowrap;
+    }
+
+    /* Nút Play/Pause nhỏ bên trái */
+    .custom-player__toggle-playpause {
+        position: absolute;
+        left: 1rem;
+        top: 3.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        text-transform: uppercase;
+        z-index: 20;
+    }
+
+    #youtube-player {
+        width: 100%;
+        height: 100%;
+        /* pointer-events: none; */
+        /* Không cho click trực tiếp vào YouTube */
+    }
+
+    /* Lớp phủ trong suốt để xử lý sự kiện click của riêng bạn */
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0);
+        /* Mặc định trong suốt */
+        transition: background 0.3s ease;
+        /* Hiệu ứng chuyển màu mượt */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .video-overlay::after {
+        content: "\f04b";
+        /* Icon Play của FontAwesome */
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 50px;
+        color: white;
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    /* Khi video dừng, hiện icon Play */
+    .vault-section.is-paused .video-overlay::after {
+        opacity: 1;
+    }
+
+    .video-overlay.is-paused::after {
+        content: "\f04b";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 50px;
+        color: white;
+    }
+
+    /* Vạch kẻ dọc dài tại mỗi Marker */
+    .marker-line {
+    position: absolute;
+    bottom: 0; /* Gắn vào đáy của dải ticks */
+    left: 0px;
+    top: -40px;
+    width: 1.5px;
+    height: 35px; /* Độ cao vạch dài để nhô hẳn lên trên dải vạch nhỏ */
+    background-color: rgba(255, 255, 255, 0.15); 
+    z-index: 5;
+    transform: translateY(0);
+}
+
+    /* Đảm bảo marker đầu tiên không bị lệch */
+    .custom-player__marker:first-child .marker-line {
+        left: 0;
+        top: -43px;
+    }
+
+    .custom-player__marker:first-child {
+        transform: none;
+    }
+
+    /* Hiệu ứng khi video chạy qua Marker: Vạch kẻ sẽ sáng hơn hoặc đổi màu */
+    .custom-player__marker.is-active .marker-line {
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
     </style>
 </head>
 
@@ -581,12 +1023,270 @@ include "header.html";
             </div>
         </div>
     </section>
+    <section class="vault-section">
+        <div class="container">
+            <div class="vault-content">
+                <h2 class="vault-title">The Vault</h2>
+                <p class="vault-subtitle">Take a peek inside our Vault of resources</p>
+
+                <div class="vault-signature">
+                    With Sota Marketing
+                    <svg viewBox="0 0 50 20">
+                        <path d="M5,15 Q25,5 45,15" stroke-linecap="round" />
+                        <path d="M40,10 L45,15 L40,20" stroke-linecap="round" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="full-video">
+        <div class="container">
+            <div class="full-video__wrap">
+
+                <div class="custom-player__media">
+                    <div id="youtube-player"></div>
+
+                    <div class="video-overlay" onclick="togglePlay()"></div>
+
+                    <div class="custom-player__float">
+                        <div class="webcam__wrap">
+                            <div class="webcam__sound" id="mute-button" onclick="toggleMute()" style="cursor: pointer;">
+                                <i class="fa-solid fa-volume-xmark" id="mute-icon"></i>
+                            </div>
+
+                            <div class="webcam__video">
+                                <img src="./Dịch vụ total marketing_files/e369dc177d4658d809739f82ddd00a12.jpg"
+                                    class="cover-image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom-player__interface">
+                    <div class="custom-player__toggle-playpause" onclick="togglePlay()">
+                        <span id="play-status">PAUSE</span>
+                    </div>
+
+                    <div class="custom-player__interface-bottom">
+                        <div class="custom-player__timeline-wrap">
+                            <div class="custom-player__ticks" onclick="seekVideo(event)">
+                                <div id="ticks-progress" class="custom-player__ticks-progress"></div>
+
+                                <div class="custom-player__markers">
+                                    <div class="custom-player__marker" style="left: 0%;">
+                                        <span class="marker-line"></span>
+                                        <span class="timestamp__span">00:00</span>
+                                        <p class="custom-player__marker-p">Intro</p>
+                                    </div>
+                                    <div class="custom-player__marker" style="left: 25%;">
+                                        <span class="marker-line"></span>
+                                        <span class="timestamp__span">00:30</span>
+                                        <p class="custom-player__marker-p">QUY TRÌNH</p>
+                                    </div>
+                                    <div class="custom-player__marker" style="left: 43%;">
+                                        <span class="marker-line"></span>
+                                        <span class="timestamp__span">00:54</span>
+                                        <p class="custom-player__marker-p">THƯƠNG HIỆU</p>
+                                    </div>
+                                    <div class="custom-player__marker" style="left: 67%;">
+                                        <span class="marker-line"></span>
+                                        <span class="timestamp__span">01:27</span>
+                                        <p class="custom-player__marker-p">TRUYỀN THÔNG</p>
+                                    </div>
+                                    
+                                    <div class="custom-player__marker" style="left: 103%;">
+                                        <span class="marker-line"></span>
+                                        <span class="timestamp__span">02:20</span>
+                                        <p class="custom-player__marker-p">ĐA KẾT</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="custom-player__time">
+                        <span id="current-time-display">00:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('youtube-player', {
+            videoId: 'x-DtjQjo-X8',
+            playerVars: {
+                'autoplay': 1,
+                'mute': 1, // BẮT BUỘC có cái này thì autoplay mới chạy được
+                'controls': 0,
+                'disablekb': 1,
+                'modestbranding': 1,
+                'rel': 0,
+                'showinfo': 0,
+                'iv_load_policy': 3,
+                'autohide': 1
+            },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+
+    // Thêm sự kiện click cho các marker sau khi player đã sẵn sàng
+    function setupMarkerClicks() {
+        const markers = document.querySelectorAll('.custom-player__marker');
+
+        markers.forEach(marker => {
+            marker.style.cursor = 'pointer';
+            marker.addEventListener('click', function() {
+                const timeText = this.querySelector('.timestamp__span').innerText;
+                const timeParts = timeText.split(':');
+                const seconds = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
+
+                if (player && typeof player.seekTo === 'function') {
+                    player.seekTo(seconds, true);
+                    player.playVideo();
+                }
+            });
+        });
+    }
+
+    // Hàm format thời gian từ giây sang mm:ss
+    function formatTime(time) {
+        time = Math.round(time);
+        var minutes = Math.floor(time / 60);
+        var seconds = time - minutes * 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        return minutes + ":" + seconds;
+    }
+    function seekVideo(event) {
+    if (player && typeof player.getDuration === 'function') {
+        // 1. Lấy thẻ chứa vạch kẻ
+        var ticksContainer = document.querySelector('.custom-player__ticks');
+        
+        // 2. Tính toán vị trí click chuột so với chiều rộng của thanh ticks
+        var rect = ticksContainer.getBoundingClientRect();
+        var x = event.clientX - rect.left; // Vị trí click theo trục X
+        var width = rect.width;            // Tổng chiều rộng thanh
+        
+        // 3. Tính tỷ lệ phần trăm (từ 0 đến 1)
+        var percentage = x / width;
+        
+        // 4. Tính số giây tương ứng trong video
+        var duration = player.getDuration();
+        var seekToTime = duration * percentage;
+        
+        // 5. Điều hướng video YouTube đến thời gian đó
+        player.seekTo(seekToTime, true);
+        
+        // Tự động phát nếu đang bị pause (tùy chọn)
+        player.playVideo();
+    }
+}
+
+    function onPlayerReady(event) {
+        setupMarkerClicks();
+    setInterval(function() {
+        if (player && typeof player.getCurrentTime === 'function') {
+            var duration = player.getDuration();
+            var currentTime = player.getCurrentTime();
+            
+            if (duration > 0) {
+                var progress = (currentTime / duration) * 100;
+                
+                // 1. Làm các vạch kẻ nhỏ sáng lên
+                document.getElementById('ticks-progress').style.width = progress + "%";
+                
+                // 2. Cập nhật số thời gian
+                document.getElementById('current-time-display').innerText = formatTime(currentTime);
+
+                // 3. Kiểm tra và làm sáng vạch dọc dài của Marker
+                const markers = document.querySelectorAll('.custom-player__marker');
+                markers.forEach(m => {
+                    const timeParts = m.querySelector('.timestamp__span').innerText.split(':');
+                    const markerSecs = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
+                    
+                    if (currentTime >= markerSecs) {
+                        m.classList.add('is-active'); // CSS sẽ làm vạch này trắng sáng
+                    } else {
+                        m.classList.remove('is-active');
+                    }
+                });
+            }
+        }
+    }, 100);
+}
+
+    function updateMarkerUI(currentTime) {
+        const markers = document.querySelectorAll('.custom-player__marker');
+        markers.forEach(marker => {
+            const timeText = marker.querySelector('.timestamp__span').innerText;
+            const timeParts = timeText.split(':');
+            const markerSeconds = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
+            const line = marker.querySelector('.marker-line');
+
+            // Nếu video đã chạy qua mốc này, đổi vạch dọc sang màu neon
+            if (currentTime >= markerSeconds) {
+                line.style.backgroundColor = "#a3e635";
+                line.style.boxShadow = "0 0 10px #a3e635";
+            } else {
+                line.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+                line.style.boxShadow = "none";
+            }
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        var statusLabel = document.getElementById('play-status');
+        if (event.data == YT.PlayerState.PLAYING) {
+            statusLabel.innerText = "PAUSE";
+        } else {
+            statusLabel.innerText = "PLAY";
+        }
+    }
+
+    function toggleMute() {
+        if (player) {
+            var icon = document.getElementById('mute-icon');
+            if (player.isMuted()) {
+                player.unMute();
+                // Đổi icon sang Loa bật
+                icon.classList.remove('fa-volume-xmark');
+                icon.classList.add('fa-volume-high');
+                // Thay đổi màu nền nút nếu muốn
+                document.getElementById('mute-button').style.background = "#a3e635";
+            } else {
+                player.mute();
+                // Đổi icon sang Loa tắt
+                icon.classList.remove('fa-volume-high');
+                icon.classList.add('fa-volume-xmark');
+            }
+        }
+    }
+
+    function togglePlay() {
+        if (!player) return;
+        var state = player.getPlayerState();
+        if (state == YT.PlayerState.PLAYING) {
+            player.pauseVideo();
+        } else {
+            player.playVideo();
+        }
+    }
     $(document).ready(function() {
         $(".customer-logos").owlCarousel({
             loop: true,
