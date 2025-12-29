@@ -1,0 +1,196 @@
+.tag_ggmap {
+    margin-top: 10px;
+    border-radius: 30px;
+    padding: 4px 12px;
+    color: #fff;
+    font-size: 13px;
+    background-color: var(--color-main);
+    width: max-content;
+}
+
+.dichvu_ggmap .tm_about {
+    background-color: aliceblue;
+}
+
+.tieuchi_ggmap_item {
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 20px 0;
+}
+
+.tieuchi_ggmap_top {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.tieuchi_ggmap_name {
+    font-size: 17px;
+    font-weight: bold;
+    color: #000;
+}
+
+.tieuchi_ggmap_text {
+    font-size: 14px;
+    color: #444;
+}
+
+.wrap_tieuchi_ggmap {
+    margin: 40px auto;
+}
+
+.visaochon_ggmap {
+    background-color: var(--color-main);
+    padding: 50px 0;
+}
+
+.visaochon_ggmap .title_tm1 h2 {
+    color: #fff;
+}
+
+.visaochon_ggmap .title_tm1 p {
+    font-size: 13px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.visaochon_ggmap_body {
+    margin-top: 20px;
+}
+
+.visaochon_ggmap_item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 70px 20px 20px 20px;
+    text-align: center;
+    position: relative;
+    margin-top: 60px;
+}
+
+.visaochon_ggmap_img {
+    border-radius: 100px;
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    transform: translateX(-50%);
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.visaochon_ggmap_name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.visaochon_ggmap_text {
+    font-size: 14px;
+    color: #444;
+}
+
+.loiich_ggmap_body {
+    margin-top: 30px;
+}
+
+.loiich_ggmap_name {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.loiich_ggmap_name img {
+    width: 24px;
+}
+
+.loiich_ggmap_name {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.loiich_ggmap_item {
+    margin-bottom: 20px;
+}
+
+.dichvu_ggmap .price_tm_total {
+    background: linear-gradient(
+        90deg,
+        rgb(58 121 180) 0%,
+        rgb(29 170 253) 50%,
+        rgb(0 0 0 / 83%) 100%
+    );
+}
+
+.quytrinh_ggmap_body h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--color-main);
+}
+
+.quytrinh_ggmap_mota {
+    text-align: justify;
+}
+
+.quytrinh_ggmap_item {
+    border-radius: 8px;
+    border: 2px solid var(--color-main);
+    margin-bottom: 10px;
+    padding: 12px;
+    position: relative;
+}
+
+.quytrinh_ggmap_name{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+.quytrinh_ggmap_name span {
+    padding: 4px 12px;
+    background: linear-gradient(
+        90deg,
+        rgb(58 121 180) 0%,
+        rgb(29 170 253) 50%,
+        rgb(0 0 0 / 83%) 100%
+    );
+    font-size: 20px;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.dichvu_ggmap .seo_title{
+    color: var(--color-main);
+}
+
+.dichvu_ggmap .seo_qa_top{
+    background-color: #f2fbff;
+}
+
+@media (max-width: 600px){
+    .wrap_tieuchi_ggmap{
+        margin: 20px auto;
+    }
+    .tieuchi_ggmap_item{
+        margin: 8px 0;
+    }
+    .loiich_ggmap_img{
+        margin-bottom: 20px;
+    }
+    .wrap_bottom{
+        padding: 40px 0;
+    }
+    .quytrinh_ggmap_mota{
+        margin-bottom: 20px;
+    }
+
+    .quytrinh_ggmap_body .col-md-6{
+        margin: 0 !important;
+    }
+}
+
