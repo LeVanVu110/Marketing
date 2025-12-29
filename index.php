@@ -487,7 +487,7 @@ include "header.html";
     .vault-section {
         background-color: #111;
         /* Nền đen sâu cực kỳ sang trọng */
-        padding: 120px 0;
+        padding: 85px 0 0 1px;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -567,11 +567,32 @@ include "header.html";
         --color-neon-green: #a3e635;
         /* Màu xanh đặc trưng của The Vault */
         --color-purple: #8b5cf6;
+        --color-brand: #a6ff00;
+        /* Màu xanh neon trong ảnh */
+        --color-black: #000000;
+        --color-white: #ffffff;
+        --container-m: 1280px;
+    }
+
+    .u--rel {
+        position: relative;
+    }
+
+    .container {
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+
+    .container.is--m {
+        max-width: var(--container-m);
     }
 
     .full-video {
-        background: #0b0b0b;
-        padding: 10vw 0;
+        /* background: #0b0b0b; */
+        padding: 4vw 0;
         color: #fff;
         font-family: 'Montserrat', sans-serif;
     }
@@ -705,21 +726,19 @@ include "header.html";
     }
 
     .custom-player__ticks-progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0%; 
-    background-image: repeating-linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.9) 0px,
-        rgba(255, 255, 255, 0.9) 1px,
-        transparent 1px,
-        transparent 14px
-    );
-    z-index: 2;
-    transition: width 0.1s linear;
-}
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0%;
+        background-image: repeating-linear-gradient(to right,
+                rgba(255, 255, 255, 0.9) 0px,
+                rgba(255, 255, 255, 0.9) 1px,
+                transparent 1px,
+                transparent 14px);
+        z-index: 2;
+        transition: width 0.1s linear;
+    }
 
     .custom-player__interface-bottom {
         display: flex;
@@ -747,10 +766,10 @@ include "header.html";
                 rgba(255, 255, 255, 0.15) 1px,
                 transparent 1px,
                 transparent 14px);
-border: none;
+        border: none;
     }
 
-    
+
 
     /* Thanh progress bar xanh neon nằm đè lên đường kẻ ngang */
     .custom-player__timeline-bar {
@@ -782,22 +801,23 @@ border: none;
 
     /* Định vị Marker bằng Absolute % để khớp thời gian */
     .custom-player__markers {
-    position: absolute;
-    top:40px; /* Đẩy toàn bộ cụm chữ xuống dưới dải ticks 20px */
-    left: 0;
-    width: 100%;
-    height: auto;
-}
+        position: absolute;
+        top: 40px;
+        /* Đẩy toàn bộ cụm chữ xuống dưới dải ticks 20px */
+        left: 0;
+        width: 100%;
+        height: auto;
+    }
 
     .custom-player__marker {
-    position: absolute;
-    top: 0;
-    transform: translateX(-50%);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
+        position: absolute;
+        top: 0;
+        transform: translateX(-50%);
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     /* Tọa độ Marker khớp theo ảnh bạn gửi */
     .custom-player__marker:nth-child(1) {
@@ -897,16 +917,18 @@ border: none;
 
     /* Vạch kẻ dọc dài tại mỗi Marker */
     .marker-line {
-    position: absolute;
-    bottom: 0; /* Gắn vào đáy của dải ticks */
-    left: 0px;
-    top: -40px;
-    width: 1.5px;
-    height: 35px; /* Độ cao vạch dài để nhô hẳn lên trên dải vạch nhỏ */
-    background-color: rgba(255, 255, 255, 0.15); 
-    z-index: 5;
-    transform: translateY(0);
-}
+        position: absolute;
+        bottom: 0;
+        /* Gắn vào đáy của dải ticks */
+        left: 0px;
+        top: -40px;
+        width: 1.5px;
+        height: 35px;
+        /* Độ cao vạch dài để nhô hẳn lên trên dải vạch nhỏ */
+        background-color: rgba(255, 255, 255, 0.15);
+        z-index: 5;
+        transform: translateY(0);
+    }
 
     /* Đảm bảo marker đầu tiên không bị lệch */
     .custom-player__marker:first-child .marker-line {
@@ -922,6 +944,732 @@ border: none;
     .custom-player__marker.is-active .marker-line {
         background-color: #fff;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    /* -------------------------section------------------------------  */
+    /* --- Info Grid Section (Updated to 3 Columns) --- */
+    .info-grid {
+        background-color: #0b0b0b;
+        color: #fff;
+        padding: 120px 0;
+        /* Tăng khoảng cách trên dưới */
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .info-grid .container {
+        max-width: 1400px;
+        /* Container rộng hơn theo file mẫu */
+        margin: 0 auto;
+        padding: 0 3rem;
+    }
+
+    /* Tiêu đề giới thiệu lớn */
+    .info-grid__intro {
+        margin-bottom: 80px;
+        max-width: 900px;
+    }
+
+    .info-grid__intro h2 {
+        font-size: 2.5rem;
+        line-height: 1.3;
+        font-weight: 500;
+    }
+
+    .u--color-electric {
+        color: #a3e635;
+        filter: drop-shadow(0 0 5px rgba(163, 230, 53, 0.4));
+        /* Màu xanh Neon đặc trưng */
+    }
+
+    .info-grid__main {
+        display: grid;
+        /* THAY ĐỔI TẠI ĐÂY: Chuyển từ 2 thành 3 cột */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px 30px;
+        /* Khoảng cách giữa các cột và hàng */
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 60px;
+        text-align: justify;
+    }
+
+    .info-grid__main-item {
+        padding: 40px 30px 40px 0;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        flex-direction: column;
+        /* Icon nằm trên tiêu đề hoặc đổi thành Row nếu muốn ngang hàng */
+        gap: 15px;
+    }
+
+    /* Hiệu ứng khi hover vào ô: Icon sẽ sáng hơn */
+    .info-grid__main-item:hover .u--color-electric {
+        color: #fff;
+        transform: scale(1.1);
+        transition: 0.3s ease;
+    }
+
+    /* Số thứ tự 01, 02... */
+    .info-grid__item-nr {
+        font-size: 20px;
+        /* Kích thước icon vừa vặn */
+        margin-bottom: 5px;
+        /* Khoảng cách nhỏ với tiêu đề */
+        display: flex;
+    }
+
+    .p-l {
+        font-size: 1.25rem;
+    }
+
+    .u--opacity-40 {
+        opacity: 0.4;
+    }
+
+    .u--fw-medium {
+        font-weight: 600;
+    }
+
+    .info-grid__item-col h3 {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+
+    .info-grid__item-col p {
+        color: rgba(255, 255, 255, 0.5);
+        /* Chữ mô tả mờ để làm nổi bật tiêu đề */
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* --- Responsive linh hoạt --- */
+    @media (max-width: 1024px) {
+
+        /* Trên máy tính bảng lớn: Chuyển về 2 cột */
+        .info-grid__main {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        /* Trên điện thoại: Chuyển về 1 cột */
+        .info-grid__main {
+            grid-template-columns: 1fr;
+        }
+
+        .info-grid__intro h2 {
+            font-size: 1.8rem;
+        }
+    }
+
+    /* -----------------------------Giá---------------------------- */
+    .u--rel {
+        position: relative;
+    }
+
+    .is--m {
+        max-width: 1400px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Căn giữa các thành phần con bên trong */
+        text-align: center;
+    }
+
+    /* --- Dòng chứa nút bấm Toggle --- */
+    .pricing-home__button-row {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        /* Căn giữa ngang */
+        margin-bottom: 50px;
+    }
+
+    .button-row {
+        display: flex;
+        gap: 8px;
+        /* background: rgba(255, 255, 255, 0.05); */
+        /* Nền mờ cho dải nút */
+        padding: 6px;
+        /* border-radius: 100px; */
+        position: relative;
+    }
+
+    /* --- Style nút bấm Osmo Style --- */
+    .button {
+        position: relative;
+        padding: 12px 24px;
+        border-radius: 100px;
+        border: none;
+        cursor: pointer;
+        background: transparent;
+        overflow: hidden;
+        /* Để ẩn nhãn khi trượt */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .button-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Màu sắc nút theo trạng thái */
+    [data-wf--button-theme--variant="purple"] {
+        background-color: #8b5cf6;
+    }
+
+    [data-wf--button-theme--variant="neutral-600"] {
+        background-color: #262626;
+    }
+
+    /* Hiệu ứng trượt nhãn chữ (Label Slide) */
+    .button-label__wrap {
+        position: relative;
+        z-index: 1;
+        height: 20px;
+        overflow: hidden;
+    }
+
+    .button-label {
+        display: block;
+        line-height: 20px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        color: #fff;
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* Khi di chuột vào nút, chữ trượt lên */
+    .button:hover .button-label {
+        transform: translateY(-100%);
+    }
+
+    /* --- Mũi tên và chữ vẽ tay (Scribble) --- */
+    .pricing-home__scribble {
+        position: absolute;
+        right: -70px;
+        /* Đẩy ra ngoài dải nút */
+        top: -10px;
+        color: #a3e635;
+        /* Màu xanh neon */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .flick-group__scribble-arrow {
+        width: 36px;
+        height: 50px;
+        transform: rotate(40deg);
+    }
+
+    .scribble {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.85rem;
+        font-style: italic;
+        line-height: 1.1;
+        margin-top: 4px;
+        text-align: center;
+    }
+
+    /* --- Tiêu đề Pricing (Individuals/Teams) --- */
+    .pricing-home__title-row {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Căn giữa tiêu đề */
+        justify-content: center;
+        margin-bottom: 80px;
+    }
+
+    .pricing-home__title-el {
+        display: flex;
+        justify-content: center;
+        /* Căn giữa chữ Pricing for và Individuals/Teams */
+        align-items: baseline;
+        gap: 15px;
+    }
+
+    .h-ml {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin: 0;
+        letter-spacing: -2px;
+    }
+
+    .pricing-home__title-sub {
+        position: relative;
+        height: 4.5rem;
+        /* Khớp với line-height của h-ml */
+        overflow: hidden;
+        color: #a3e635;
+        display: flex;
+        flex-direction: column;
+        /* Xếp dọc để trượt */
+        align-items: flex-start;
+    }
+
+    .pricing-home__title-p {
+        margin-top: 15px;
+        opacity: 0.5;
+        font-size: 1.1rem;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+        .h-ml {
+            font-size: 2.2rem;
+        }
+
+        .pricing-home__scribble {
+            display: none;
+        }
+
+        /* Ẩn scribble trên mobile cho gọn */
+        .pricing-home__button-row {
+            padding-top: 60px;
+        }
+    }
+
+    /* --- Pricing Section Container --- */
+    .pricing-cards {
+        /* padding: 80px 0; */
+        /* background-color: #0b0b0b; */
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .pricing-cards__wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Giữ 3 cột */
+        gap: 30px;
+        width: 100%;
+        justify-content: center;
+        /* Căn giữa các ô trong grid */
+    }
+
+    /* --- Card Base Style --- */
+    .pricing-card {
+        background: #161616;
+        border-radius: 2.5rem;
+        /* Bo góc cực lớn */
+        padding: 40px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        overflow: hidden;
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    /* --- Variants --- */
+    .pricing-card.is--purple {
+        background: #1c142e;
+        /* Tím mờ đặc trưng */
+        border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    .pricing-card.is--gray {
+        background: #1a1a1a;
+    }
+
+    /* --- Pricing Elements --- */
+    .pricing-card__title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin: 20px 0;
+        color: #fff;
+    }
+
+    .pricing-card__price-h {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: #fff;
+        margin: 0;
+    }
+
+    .eyebrow {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 700;
+    }
+
+    /* --- Buttons & Tags inside Cards --- */
+    .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 16px;
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.05);
+        position: relative;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    /* Button variants */
+    [data-wf--button-theme--variant="neutral-800"] {
+        background-color: #262626;
+    }
+
+    [data-wf--button-theme--variant="purple"] {
+        background-color: #8b5cf6;
+    }
+
+    [data-wf--button-theme--variant="dark-10"] {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    [data-wf--button-theme--variant="electric"] {
+        background-color: #a3e635;
+        color: #000;
+    }
+
+    [data-wf--button-theme--variant="neutral-200"] {
+        background-color: #e5e5e5;
+        color: #000;
+    }
+
+    /* Call to Action Button */
+    .button.w-inline-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 18px 30px;
+        border-radius: 100px;
+        background: #fff;
+        color: #000;
+        text-decoration: none !important;
+        font-weight: 700;
+        margin-top: 30px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .button:hover .button-label {
+        transform: translateY(-100%);
+    }
+
+    .button-label__wrap {
+        position: relative;
+        z-index: 1;
+        height: 20px;
+        overflow: hidden;
+    }
+
+    .button-label {
+        display: block;
+        height: 20px;
+        line-height: 20px;
+        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* --- Benefit List --- */
+    .pricing-benefits__wrap ul {
+        list-style: none;
+        padding: 0;
+        margin: 25px 0;
+    }
+
+    .pricing-benefit {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .pricing-benefit__tag {
+        background: rgba(163, 230, 53, 0.1);
+        color: #a3e635;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-weight: 800;
+        font-size: 0.8rem;
+    }
+
+    /* --- Scribbles inside Cards --- */
+    .pricing-card__scribble {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        transform: rotate(5deg);
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 1024px) {
+        .pricing-cards__wrap {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .pricing-cards__wrap {
+            grid-template-columns: 1fr;
+        }
+
+        .pricing-card {
+            padding: 30px;
+        }
+    }
+
+    /* Mặc định ẩn các thẻ Team */
+    [data-pricing-card="team"] {
+        display: none !important;
+    }
+
+    /* Khi trạng thái là Team thì hiện thẻ Team, ẩn thẻ Solo */
+    body.show-teams [data-pricing-card="team"] {
+        display: flex !important;
+    }
+
+    body.show-teams [data-pricing-card="solo"] {
+        display: none !important;
+    }
+
+    /* Style để người dùng biết tiêu đề có thể bấm được */
+    /* Style cho các thẻ h2 bên trong */
+    .pricing-home__title-sub h2 {
+        margin: 0;
+        line-height: 4.5rem;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.4s ease;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    /* Trạng thái khi hiển thị Teams: Đẩy cả khối lên trên */
+    body.show-teams .pricing-home__title-sub h2 {
+        transform: translateY(-100%);
+    }
+
+    /* Hiệu ứng làm mờ cho chữ không được chọn */
+    .pricing-home__title-sub h2.is--inactive {
+        opacity: 0.2;
+        color: #ffffff !important;
+    }
+
+    /* Responsive cho mobile */
+    @media (max-width: 768px) {
+        .pricing-home__title-sub {
+            height: 3rem;
+        }
+
+        .pricing-home__title-sub h2 {
+            line-height: 3rem;
+        }
+    }
+
+    /* Làm mờ tiêu đề không được chọn */
+    .pricing-home__title-sub h2.is--inactive {
+        opacity: 0.2;
+        color: #ffffff !important;
+    }
+
+    /* Trường hợp chỉ có 1 hoặc 2 thẻ Team (để không bị lệch trái) */
+    body.show-teams .pricing-cards__wrap {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    body.show-teams .pricing-card {
+        width: calc(33.33% - 30px);
+        /* Đảm bảo kích thước card team bằng card solo */
+        min-width: 550px;
+    }
+
+    /* --- Responsive căn giữa cho Mobile --- */
+    @media (max-width: 768px) {
+        .pricing-home__title-el {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pricing-cards__wrap {
+            grid-template-columns: 1fr;
+        }
+
+        body.show-teams .pricing-card {
+            width: 100%;
+        }
+    }
+
+    .pricing-card__cta {
+        padding: 55px 0 40px 0;
+    }
+
+    p {
+        margin-bottom: 0 !important;
+
+    }
+
+    /* Khung chứa danh sách */
+    .benefits-collapse {
+        max-height: 250px;
+        /* Chiều cao khi thu gọn (khoảng 5-6 mục) */
+        overflow: hidden;
+        position: relative;
+        transition: max-height 0.4s ease;
+    }
+
+    /* Hiệu ứng mờ dần lớp dưới cùng khi đang thu gọn */
+    .benefits-collapse::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+        /* Đổi màu rgba cho khớp với nền thẻ */
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+
+    /* Khi đã mở rộng thì bỏ hiệu ứng mờ và giới hạn chiều cao */
+    .benefits-collapse.is-expanded {
+        max-height: 1500px;
+        /* Đủ lớn để hiện hết 19 mục */
+    }
+
+    .benefits-collapse.is-expanded::after {
+        opacity: 0;
+    }
+
+    /* Nút bấm Xem thêm */
+    .view-more-container {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .view-more-btn {
+        background: none;
+        border: 1px solid #444;
+        color: #fff;
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .view-more-btn:hover {
+        background: #fff;
+        color: #000;
+    }
+
+    /* 1. Trạng thái mặc định: Thu gọn và ẩn phần thừa */
+    .pricing-card__cta-p {
+        max-height: 250px;
+        /* Chiều cao này hiện khoảng 5-6 dòng. Bạn có thể tăng giảm tùy ý */
+        overflow: hidden;
+        position: relative;
+        transition: max-height 0.5s ease;
+        /* Tạo hiệu ứng mượt khi mở ra */
+    }
+
+    /* 2. Tạo lớp phủ mờ ở cuối để báo hiệu còn nội dung (chỉ hiện khi chưa mở rộng) */
+    .pricing-card__cta-p:not(.is--expanded)::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        /* background: linear-gradient(transparent, rgba(0,0,0,0.9)); Đổi màu cho khớp nền thẻ của bạn */
+        pointer-events: none;
+    }
+
+    /* 3. Trạng thái khi bấm nút: Xổ hết ra */
+    .pricing-card__cta-p.is--expanded {
+        max-height: 2000px;
+        /* Cho phép giãn ra hết cỡ danh sách */
+    }
+
+    /* Trạng thái mặc định của các nút */
+    .button-row .button {
+        transition: background-color 0.4s ease, opacity 0.4s ease;
+        background-color: #1a1a1a !important;
+        /* Màu đen mặc định */
+        opacity: 0.6;
+    }
+
+    /* 2. Khi nút có class is--active (được chọn): Đổi sang màu tím #8b5cf6 và rõ nét */
+    .button-row .button.is--active {
+        background-color: #8b5cf6 !important;
+        opacity: 1;
+    }
+
+    /* 3. Vô hiệu hóa các lớp màu nền inline (neutral-600, purple) để ưu tiên màu từ class is--active */
+    .button-row .button .button-bg {
+        display: none !important;
+    }
+
+    .button-row .button.is--active .button-bg {
+        display: none;
+    }
+
+    /* Màu cho nút Individuals khi Active (Màu tím) */
+    .button-row .button[data-pricing-button="solo"].active {
+        opacity: 1;
+        background-color: #8b5cf6 !important;
+    }
+
+    /* Màu cho nút Teams khi Active (Màu xám đậm/Neutral) */
+    .button-row .button[data-pricing-button="team"].active {
+        opacity: 1;
+        background-color: #262626 !important;
+    }
+
+    /* Hiệu ứng trượt tiêu đề như đã làm */
+    .pricing-home__title-sub {
+        position: relative;
+        height: 4.5rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pricing-home__title-sub h2 {
+        margin: 0;
+        line-height: 4.5rem;
+        transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    body.show-teams .pricing-home__title-sub h2 {
+        transform: translateY(-100%);
+    }
+
+    .p-m {
+        color: #ffffffff;
+
     }
     </style>
 </head>
@@ -1038,79 +1786,568 @@ border: none;
                 </div>
             </div>
         </div>
-    </section>
-    <section class="full-video">
-        <div class="container">
-            <div class="full-video__wrap">
 
-                <div class="custom-player__media">
-                    <div id="youtube-player"></div>
+        <section class="full-video">
+            <div class="container">
+                <div class="full-video__wrap">
 
-                    <div class="video-overlay" onclick="togglePlay()"></div>
+                    <div class="custom-player__media">
+                        <div id="youtube-player"></div>
 
-                    <div class="custom-player__float">
-                        <div class="webcam__wrap">
-                            <div class="webcam__sound" id="mute-button" onclick="toggleMute()" style="cursor: pointer;">
-                                <i class="fa-solid fa-volume-xmark" id="mute-icon"></i>
-                            </div>
+                        <div class="video-overlay" onclick="togglePlay()"></div>
 
-                            <div class="webcam__video">
-                                <img src="./Dịch vụ total marketing_files/e369dc177d4658d809739f82ddd00a12.jpg"
-                                    class="cover-image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <div class="custom-player__float">
+                            <div class="webcam__wrap">
+                                <div class="webcam__sound" id="mute-button" onclick="toggleMute()"
+                                    style="cursor: pointer;">
+                                    <i class="fa-solid fa-volume-xmark" id="mute-icon"></i>
+                                </div>
 
-                <div class="custom-player__interface">
-                    <div class="custom-player__toggle-playpause" onclick="togglePlay()">
-                        <span id="play-status">PAUSE</span>
-                    </div>
-
-                    <div class="custom-player__interface-bottom">
-                        <div class="custom-player__timeline-wrap">
-                            <div class="custom-player__ticks" onclick="seekVideo(event)">
-                                <div id="ticks-progress" class="custom-player__ticks-progress"></div>
-
-                                <div class="custom-player__markers">
-                                    <div class="custom-player__marker" style="left: 0%;">
-                                        <span class="marker-line"></span>
-                                        <span class="timestamp__span">00:00</span>
-                                        <p class="custom-player__marker-p">Intro</p>
-                                    </div>
-                                    <div class="custom-player__marker" style="left: 25%;">
-                                        <span class="marker-line"></span>
-                                        <span class="timestamp__span">00:30</span>
-                                        <p class="custom-player__marker-p">QUY TRÌNH</p>
-                                    </div>
-                                    <div class="custom-player__marker" style="left: 43%;">
-                                        <span class="marker-line"></span>
-                                        <span class="timestamp__span">00:54</span>
-                                        <p class="custom-player__marker-p">THƯƠNG HIỆU</p>
-                                    </div>
-                                    <div class="custom-player__marker" style="left: 67%;">
-                                        <span class="marker-line"></span>
-                                        <span class="timestamp__span">01:27</span>
-                                        <p class="custom-player__marker-p">TRUYỀN THÔNG</p>
-                                    </div>
-                                    
-                                    <div class="custom-player__marker" style="left: 103%;">
-                                        <span class="marker-line"></span>
-                                        <span class="timestamp__span">02:20</span>
-                                        <p class="custom-player__marker-p">ĐA KẾT</p>
-                                    </div>
+                                <div class="webcam__video">
+                                    <img src="./Dịch vụ total marketing_files/e369dc177d4658d809739f82ddd00a12.jpg"
+                                        class="cover-image">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="custom-player__time">
-                        <span id="current-time-display">00:00</span>
+                    <div class="custom-player__interface">
+                        <div class="custom-player__toggle-playpause" onclick="togglePlay()">
+                            <span id="play-status">PAUSE</span>
+                        </div>
+
+                        <div class="custom-player__interface-bottom">
+                            <div class="custom-player__timeline-wrap">
+                                <div class="custom-player__ticks" onclick="seekVideo(event)">
+                                    <div id="ticks-progress" class="custom-player__ticks-progress"></div>
+
+                                    <div class="custom-player__markers">
+                                        <div class="custom-player__marker" style="left: 0%;">
+                                            <span class="marker-line"></span>
+                                            <span class="timestamp__span">00:00</span>
+                                            <p class="custom-player__marker-p">Intro</p>
+                                        </div>
+                                        <div class="custom-player__marker" style="left: 25%;">
+                                            <span class="marker-line"></span>
+                                            <span class="timestamp__span">00:30</span>
+                                            <p class="custom-player__marker-p">QUY TRÌNH</p>
+                                        </div>
+                                        <div class="custom-player__marker" style="left: 43%;">
+                                            <span class="marker-line"></span>
+                                            <span class="timestamp__span">00:54</span>
+                                            <p class="custom-player__marker-p">THƯƠNG HIỆU</p>
+                                        </div>
+                                        <div class="custom-player__marker" style="left: 67%;">
+                                            <span class="marker-line"></span>
+                                            <span class="timestamp__span">01:27</span>
+                                            <p class="custom-player__marker-p">TRUYỀN THÔNG</p>
+                                        </div>
+
+                                        <div class="custom-player__marker" style="left: 103%;">
+                                            <span class="marker-line"></span>
+                                            <span class="timestamp__span">02:20</span>
+                                            <p class="custom-player__marker-p">ĐA KẾT</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="custom-player__time">
+                            <span id="current-time-display">00:00</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
+        <!-- lợi ích -->
+        <section data-theme-section="dark" class="info-grid">
+            <div class="container is--m is--md-m">
+                <div class="info-grid__main">
+                    <div class="info-grid__main-item">
+                        <div class="info-grid__item-nr">
+                            <i class="fa-solid fa-bolt-lightning u--color-electric"></i>
+                        </div>
+                        <div class="info-grid__item-col">
+                            <h3 class="p-l u--fw-medium">Tối ưu hóa</h3>
+                            <p class="p-m">Giúp doanh nghiệp tiết kiệm thời gian, nguồn lực. An tâm tập trung vào các
+                                nhiệm vụ chuyên môn, quan trọng khác.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-grid__main-item">
+                        <div class="info-grid__item-nr">
+                            <i class="fa-solid fa-sliders u--color-electric"></i>
+                        </div>
+                        <div class="info-grid__item-col">
+                            <h3 class="p-l u--fw-medium">Năng lực quản lý</h3>
+                            <p class="p-m">Khả năng vận hành giải pháp chuyên nghiệp. Đáp ứng yêu cầu đa dạng của thị
+                                trường.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-grid__main-item">
+                        <div class="info-grid__item-nr">
+                            <i class="fa-solid fa-shield-halved u--color-electric"></i>
+                        </div>
+                        <div class="info-grid__item-col">
+                            <h3 class="p-l u--fw-medium">Uy tín thương hiệu</h3>
+                            <p class="p-m">15+ năm cung cấp giải pháp giúp doanh nghiệp xây dựng và phát triển thương
+                                hiệu bền vững.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <section class="pricing-section" style="background: #0b0b0b; width: 100%; overflow: hidden;">
+        <div class="container is--m u--rel">
+            <div class="pricing-home__button-row">
+                <div class="u--rel">
+                    <div class="button-row"><button data-button-rotate="" data-shape="round" data-pricing-button="solo"
+                            data-responsive="" data-size="" data-theme="" data-button-rotate-hover="" class="button"
+                            fdprocessedid="ndowpml" style="--y: 3160%;">
+                            <div data-wf--button-theme--variant="purple" class="button-bg"></div>
+                            <div class="button-label__wrap">
+                                <div class="button-label"><span>For Individuals</span></div>
+                                <div aria-hidden="true" class="button-label"><span aria-hidden="true">For
+                                        Individuals</span></div>
+                                <div aria-hidden="true" class="button-label"><span>For Individuals</span></div>
+                            </div>
+                        </button><button data-button-rotate="" data-shape="" data-pricing-button="team"
+                            data-responsive="" data-size="" data-theme="" data-button-rotate-hover="" class="button"
+                            fdprocessedid="p8hwip" style="--y: 2080%;">
+                            <div data-wf--button-theme--variant="neutral-600" class="button-bg"></div>
+                            <div class="button-label__wrap">
+                                <div class="button-label"><span>For Teams</span></div>
+                                <div aria-hidden="true" class="button-label"><span aria-hidden="true">For
+                                        Teams</span></div>
+                                <div aria-hidden="true" class="button-label"><span>For Teams</span></div>
+                            </div>
+                        </button></div>
+                    <div class="pricing-home__scribble"><svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                            viewBox="0 0 31 32" fill="none" class="flick-group__scribble-arrow">
+                            <path
+                                d="M0 30.7837L1.24998 30.9926L1.62857 31.5964C1.45886 29.6382 4.50712 28.7243 5.21208 26.864C5.42421 26.3027 4.76822 26.208 4.56913 26.3843C4.52018 26.4267 4.33089 27.1121 3.92945 27.5331C3.58351 27.8921 2.02674 29.6284 1.63183 29.3151C2.1377 24.2498 3.34526 19.6056 5.93335 15.1964C11.2009 6.21156 20.7308 1.28669 30.9689 0.457718C15.8484 -0.181961 2.73822 12.5268 1.29894 27.3569C0.443859 27.0142 1.35769 24.2368 0 24.4228L0 30.7804L0 30.7837Z"
+                                fill="currentColor"></path>
+                        </svg>
+                        <p class="scribble">Save 20%<br>per user</p>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-home__title-row">
+                <div class="pricing-home__title-el">
+                    <h2 class="h-ml">Pricing for</h2>
+                    <div class="pricing-home__title-sub">
+                        <h2 class="h-ml" id="trigger-solo">Individuals</h2>
+                        <h2 class="h-ml is--inactive" id="trigger-team">Teams</h2>
+                    </div>
+                </div>
+                <div class="pricing-home__title-p">
+                    <p class="p-m">Choose the plan that fits you best.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container u--rel is--m">
+            <div class="pricing-cards">
+                <div class="pricing-cards__wrap">
+                    <div data-pricing-state="quarterly" data-pricing-card="solo"
+                        data-wf--pricing-card-member--variant="base" class="pricing-card">
+                        <div class="pricing-card__inner">
+                            <div data-shape="" data-theme="" class="tag">
+                                <div data-wf--button-theme--variant="neutral-800" class="button-bg"></div><span
+                                    class="eyebrow is--relative">One user</span>
+                            </div>
+                            <div class="pricing-card__title-row">
+                                <h3 class="pricing-card__title">GÓI STARTER</h3>
+                                <div class="pricing-card__price-row">
+                                    <div class="pricing-card__price">
+                                        <div class="pricing-card__price-w">
+                                            <p class="">Dành cho danh nghiệm nhỏ hoặc Startup</p>
+                                            <p class="pricing-card__price-h">30 TRIỆU</p>
+                                        </div><span class="eyebrow">per month</span>
+                                    </div>
+                                    <!-- <div class="button-row align--end"><button data-shape="round" data-button-rotate=""
+                                        data-pricing-card-toggle="" data-theme="" data-button-rotate-hover=""
+                                        class="tag" fdprocessedid="73ivi9" style="--y: 2080%;">
+                                        <div data-wf--button-theme--variant="purple" class="button-bg"></div>
+                                        <span class="eyebrow tag-label">Quarterly</span>
+                                        <div class="button-label__wrap"><span
+                                                class="button-label eyebrow">Quarterly</span><span aria-hidden="true"
+                                                class="button-label eyebrow">Quarterly</span>
+                                        </div>
+                                    </button><button data-shape="" data-button-rotate="" data-pricing-card-toggle=""
+                                        data-theme="" data-button-rotate-hover="" class="tag" fdprocessedid="bs81l"
+                                        style="--y: 1900%;">
+                                        <div data-wf--button-theme--variant="dark-10" class="button-bg"></div>
+                                        <span class="eyebrow tag-label">Annually</span>
+                                        <div class="button-label__wrap"><span
+                                                class="button-label eyebrow">Annually</span><span aria-hidden="true"
+                                                class="button-label eyebrow">Annually</span>
+                                        </div>
+                                    </button>
+                                </div> -->
+                                </div>
+                            </div>
+                            <div class="pricing-card__cta-row">
+                                <!-- <div class="pricing-card__divider">
+                                <div class="tag-row">
+                                    <div class="button-row">
+                                        <div data-shape="" data-theme="" class="tag">
+                                            <div data-wf--button-theme--variant="dark-10" class="button-bg">
+                                            </div><span class="eyebrow is--relative">our</span>
+                                        </div>
+                                        <div data-shape="round" data-theme="" class="tag">
+                                            <div data-wf--button-theme--variant="dark-10" class="button-bg">
+                                            </div><span class="eyebrow is--relative">base plan</span>
+                                        </div>
+                                    </div>
+                                    <div class="tag-row__line"></div>
+                                </div>
+                            </div> -->
+                                <div class="pricing-card__cta">
+                                    <div class="pricing-card__cta-p">
+                                        <ul>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">01</div>
+                                                <p class="p-m">Thành lập công ty</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">02</div>
+                                                <p class="p-m">Triển khai Zalo OA</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">03</div>
+                                                <p class="p-m">Thiết kế Google Maps</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">04</div>
+                                                <p class="p-m">Kiểm toán thương hiệu</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">05</div>
+                                                <p class="p-m">Nghiên cứu 4Cs</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">06</div>
+                                                <p class="p-m">Chiến lược thương hiệu</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">07</div>
+                                                <p class="p-m">Thiết kế Logo</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">08</div>
+                                                <p class="p-m">Thiết kế nhận diện</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">09</div>
+                                                <p class="p-m">Website thương hiệu</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">10</div>
+                                                <p class="p-m">Nguyên tắc thương hiệu</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">11</div>
+                                                <p class="p-m">Kế hoạch Branded SEO</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">12</div>
+                                                <p class="p-m">Kế hoạch Social & Ra mắt</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">13</div>
+                                                <p class="p-m">Quản trị Website & Social</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">14</div>
+                                                <p class="p-m">Trò chơi xã hội mini</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">15</div>
+                                                <p class="p-m">Dựng khuyến mãi doanh nghiệp</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">16</div>
+                                                <p class="p-m">Đội tiếp thị ô tô</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">17</div>
+                                                <p class="p-m">Quảng cáo ngoài trời & Báo chí</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">17</div>
+                                                <p class="p-m">Nhận diện sự kiện </p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">17</div>
+                                                <p class="p-m">Nhận diện điểm bán</p>
+                                            </li>
+                                        </ul>
+                                    </div><a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
+                                        data-theme="" href="https://www.osmo.supply/plans/subscription" data-barba-p=""
+                                        data-button-rotate="" data-responsive="" data-outseta-type="" data-shape=""
+                                        style="--y: 9480%;">
+                                        <div data-wf--button-theme--variant="purple" class="button-bg"></div>
+                                        <div class="button-label__wrap">
+                                            <div class="button-label"><span>Become a member</span></div>
+                                            <div aria-hidden="true" class="button-label"><span>Become a
+                                                    member</span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="pricing-card__list-row">
+                                <div class="pricing-benefits__wrap">
+                                    <h4 class="p-l">Benefits:</h4>
+                                    <!-- <ul>
+                                    <li class="pricing-benefit">
+                                        <div data-resources-total="" class="pricing-benefit__tag p-r">137</div>
+                                        <p class="p-m">Vault resources, and always growing</p>
+                                    </li>
+                                </ul> -->
+                                </div><a data-underline-link="alt" href="https://www.osmo.supply/plans"
+                                    class="underline-link is--alt">View all benefits</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-pricing-card="solo" class="pricing-card is--purple">
+                        <div class="pricing-card__inner">
+                            <div data-shape="" data-theme="" class="tag">
+                                <div data-wf--button-theme--variant="neutral-800" class="button-bg"></div><span
+                                    class="eyebrow is--relative">One user</span>
+                            </div>
+                            <div class="pricing-card__title-row">
+                                <h3 class="pricing-card__title">Lifetime</h3>
+                                <div class="pricing-card__price-row">
+                                    <div class="pricing-card__price">
+                                        <p class="pricing-card__price-h">€599 EUR</p><span class="eyebrow">one
+                                            time</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pricing-card__cta-row">
+                                <div data-hover="" data-modal-trigger="lifetime" class="pricing-card__divider">
+                                    <div class="tag-row">
+                                        <div class="button-row">
+                                            <div data-shape="" data-theme="" class="tag">
+                                                <div data-wf--button-theme--variant="electric" class="button-bg">
+                                                </div><span class="eyebrow is--relative">Bonus:</span>
+                                            </div>
+                                            <div data-shape="round" data-theme="" class="tag">
+                                                <div data-wf--button-theme--variant="electric" class="button-bg">
+                                                </div><span class="eyebrow is--relative">a copy of this
+                                                    website</span>
+                                            </div><button data-shape="round" data-theme="" data-button-rotate-hover=""
+                                                class="tag" fdprocessedid="w6yos1">
+                                                <div data-wf--button-theme--variant="electric" class="button-bg">
+                                                </div><span class="eyebrow tag-label">?</span>
+                                                <div class="button-label__wrap"><span
+                                                        class="button-label eyebrow">?</span><span aria-hidden="true"
+                                                        class="button-label eyebrow">?</span>
+                                                </div>
+                                            </button>
+                                        </div>
+                                        <div class="tag-row__line"></div>
+                                    </div>
+                                </div>
+                                <div class="pricing-card__cta">
+                                    <div class="pricing-card__cta-p">
+                                        <p class="p-m">Join once, stay part of the community forever. All future
+                                            resources and updates included.</p>
+                                    </div><a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
+                                        data-theme="" href="https://www.osmo.supply/plans/lifetime" data-barba-p=""
+                                        data-button-rotate="" data-responsive="" data-outseta-type="" data-shape=""
+                                        style="--y: 10000%;">
+                                        <div data-wf--button-theme--variant="neutral-800" class="button-bg"></div>
+                                        <div class="button-label__wrap">
+                                            <div class="button-label" style=""><span>Become a Lifetime member</span>
+                                            </div>
+                                            <div aria-hidden="true" class="button-label" style=""><span>Become a
+                                                    Lifetime member</span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="pricing-card__list-row">
+                                <div class="pricing-benefits__wrap">
+                                    <h4 class="p-l">Benefits:</h4>
+                                    <ul>
+                                        <li class="pricing-benefit">
+                                            <div data-resources-total="" class="pricing-benefit__tag p-r">137</div>
+                                            <p class="p-m">Vault resources, and always growing</p>
+                                        </li>
+                                    </ul>
+                                </div><a data-underline-link="alt" href="https://www.osmo.supply/plans"
+                                    class="underline-link is--alt">View all benefits</a>
+                            </div>
+                        </div>
+                        <div class="pricing-card__scribble">
+                            <p class="scribble">Pay Once,<br>Use Forever</p>
+                        </div>
+                    </div>
+                    <div data-pricing-state="quarterly" data-pricing-card="team"
+                        data-wf--pricing-card-team--variant="base" class="pricing-card is--gray">
+                        <div class="pricing-card__inner">
+                            <div data-shape="" data-theme="" class="tag">
+                                <div data-wf--button-theme--variant="light-10" class="button-bg"></div><span
+                                    class="eyebrow is--relative">Multiple users</span>
+                            </div>
+                            <div class="pricing-card__title-row">
+                                <h3 class="pricing-card__title">GÓI ENTERPRISE </h3>
+                                <div class="pricing-card__price-row">
+                                    <div class="pricing-card__price">
+                                        <div class="pricing-card__price-w">
+                                            <p class="">Dành cho danh nghiệp lớn, tập đoàn đa ngành</p>
+                                            <p class="pricing-card__price-h">200 TRIỆU</p>
+                                        </div><span class="eyebrow">per month, per user</span>
+                                    </div>
+                                    <!-- <div class="button-row align--end"><button data-shape="round" data-button-rotate=""
+                                            data-pricing-card-toggle="" data-theme="" data-button-rotate-hover=""
+                                            class="tag" fdprocessedid="tqkrjv" style="--y: 2080%;">
+                                            <div data-wf--button-theme--variant="purple" class="button-bg"></div>
+                                            <span class="eyebrow tag-label">quarterly</span>
+                                            <div class="button-label__wrap"><span
+                                                    class="button-label eyebrow">quarterly</span><span
+                                                    aria-hidden="true" class="button-label eyebrow">quarterly</span>
+                                            </div>
+                                        </button><button data-shape="" data-button-rotate="" data-pricing-card-toggle=""
+                                            data-theme="" data-button-rotate-hover="" class="tag" fdprocessedid="pgqzi9"
+                                            style="--y: 1900%;">
+                                            <div data-wf--button-theme--variant="light-10" class="button-bg"></div>
+                                            <span class="eyebrow tag-label">annually</span>
+                                            <div class="button-label__wrap"><span
+                                                    class="button-label eyebrow">annually</span><span aria-hidden="true"
+                                                    class="button-label eyebrow">annually</span>
+                                            </div>
+                                        </button></div> -->
+                                </div>
+                            </div>
+                            <div class="pricing-card__cta-row">
+                                <div class="pricing-card__divider">
+                                    <div class="tag-row">
+                                        <div class="button-row"></div>
+                                        <div class="tag-row__line"></div>
+                                    </div>
+                                </div>
+                                <div class="pricing-card__cta">
+
+                                    <div class="pricing-card__cta-p" id="sota-benefits-container">
+                                        <ul id="sota-benefits-list">
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">01</div>
+                                                <p class="p-m">Thành lập công ty</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">02</div>
+                                                <p class="p-m">Triển khai Zalo OA</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">03</div>
+                                                <p class="p-m">Thiết kế Google Maps</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">04</div>
+                                                <p class="p-m">Kiểm toán thương hiệu</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">05</div>
+                                                <p class="p-m">Nghiên cứu 4Cs</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">06</div>
+                                                <p class="p-m">Chiến lược thương hiệu</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">07</div>
+                                                <p class="p-m">Thiết kế Logo</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">08</div>
+                                                <p class="p-m">Thiết kế nhận diện</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">09</div>
+                                                <p class="p-m">Website thương hiệu</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">10</div>
+                                                <p class="p-m">Nguyên tắc thương hiệu</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">11</div>
+                                                <p class="p-m">Kế hoạch Branded SEO</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">12</div>
+                                                <p class="p-m">Kế hoạch Social & Ra mắt</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">13</div>
+                                                <p class="p-m">Quản trị Website & Social</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">14</div>
+                                                <p class="p-m">Trò chơi xã hội mini</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">15</div>
+                                                <p class="p-m">Dựng khuyến mãi doanh nghiệp</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">16</div>
+                                                <p class="p-m">Đội tiếp thị ô tô</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">17</div>
+                                                <p class="p-m">Quảng cáo ngoài trời & Báo chí</p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">17</div>
+                                                <p class="p-m">Nhận diện sự kiện </p>
+                                            </li>
+                                            <li class="pricing-benefit">
+                                                <div class="pricing-benefit__tag p-r">17</div>
+                                                <p class="p-m">Nhận diện điểm bán</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="view-more-container">
+                                        <button id="toggle-benefits-btn" class="view-more-btn"
+                                            onclick="toggleSotaBenefits()">
+                                            <span>Xem thêm</span>
+                                        </button>
+                                    </div>
+                                    <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
+                                        data-theme="" href="https://www.osmo.supply/plans/team-subscription"
+                                        data-barba-p="" data-button-rotate="" data-responsive="" data-outseta-type=""
+                                        data-shape="" style="--y: 10000%;">
+                                        <div data-wf--button-theme--variant="purple" class="button-bg"></div>
+                                        <div class="button-label__wrap">
+                                            <div class="button-label"><span>Tư vấn ngay</span></div>
+                                            <div aria-hidden="true" class="button-label"><span>Tư vấn ngay</span></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-home__button-row"><a data-button-rotate-hover="" class="button w-inline-block"
+                    data-size="" data-theme="" href="https://www.osmo.supply/plans" data-barba-p=""
+                    data-button-rotate="" data-responsive="" data-outseta-type="" data-shape="" style="--y: 3520%;">
+                    <div data-wf--button-theme--variant="neutral-200" class="button-bg"></div>
+                    <div class="button-label__wrap">
+                        <div class="button-label"><span>View full pricing</span></div>
+                        <div aria-hidden="true" class="button-label"><span>View full pricing</span></div>
+                    </div>
+                </a></div>
         </div>
     </section>
+
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -1173,63 +2410,64 @@ border: none;
         seconds = seconds < 10 ? '0' + seconds : seconds;
         return minutes + ":" + seconds;
     }
+
     function seekVideo(event) {
-    if (player && typeof player.getDuration === 'function') {
-        // 1. Lấy thẻ chứa vạch kẻ
-        var ticksContainer = document.querySelector('.custom-player__ticks');
-        
-        // 2. Tính toán vị trí click chuột so với chiều rộng của thanh ticks
-        var rect = ticksContainer.getBoundingClientRect();
-        var x = event.clientX - rect.left; // Vị trí click theo trục X
-        var width = rect.width;            // Tổng chiều rộng thanh
-        
-        // 3. Tính tỷ lệ phần trăm (từ 0 đến 1)
-        var percentage = x / width;
-        
-        // 4. Tính số giây tương ứng trong video
-        var duration = player.getDuration();
-        var seekToTime = duration * percentage;
-        
-        // 5. Điều hướng video YouTube đến thời gian đó
-        player.seekTo(seekToTime, true);
-        
-        // Tự động phát nếu đang bị pause (tùy chọn)
-        player.playVideo();
+        if (player && typeof player.getDuration === 'function') {
+            // 1. Lấy thẻ chứa vạch kẻ
+            var ticksContainer = document.querySelector('.custom-player__ticks');
+
+            // 2. Tính toán vị trí click chuột so với chiều rộng của thanh ticks
+            var rect = ticksContainer.getBoundingClientRect();
+            var x = event.clientX - rect.left; // Vị trí click theo trục X
+            var width = rect.width; // Tổng chiều rộng thanh
+
+            // 3. Tính tỷ lệ phần trăm (từ 0 đến 1)
+            var percentage = x / width;
+
+            // 4. Tính số giây tương ứng trong video
+            var duration = player.getDuration();
+            var seekToTime = duration * percentage;
+
+            // 5. Điều hướng video YouTube đến thời gian đó
+            player.seekTo(seekToTime, true);
+
+            // Tự động phát nếu đang bị pause (tùy chọn)
+            player.playVideo();
+        }
     }
-}
 
     function onPlayerReady(event) {
         setupMarkerClicks();
-    setInterval(function() {
-        if (player && typeof player.getCurrentTime === 'function') {
-            var duration = player.getDuration();
-            var currentTime = player.getCurrentTime();
-            
-            if (duration > 0) {
-                var progress = (currentTime / duration) * 100;
-                
-                // 1. Làm các vạch kẻ nhỏ sáng lên
-                document.getElementById('ticks-progress').style.width = progress + "%";
-                
-                // 2. Cập nhật số thời gian
-                document.getElementById('current-time-display').innerText = formatTime(currentTime);
+        setInterval(function() {
+            if (player && typeof player.getCurrentTime === 'function') {
+                var duration = player.getDuration();
+                var currentTime = player.getCurrentTime();
 
-                // 3. Kiểm tra và làm sáng vạch dọc dài của Marker
-                const markers = document.querySelectorAll('.custom-player__marker');
-                markers.forEach(m => {
-                    const timeParts = m.querySelector('.timestamp__span').innerText.split(':');
-                    const markerSecs = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
-                    
-                    if (currentTime >= markerSecs) {
-                        m.classList.add('is-active'); // CSS sẽ làm vạch này trắng sáng
-                    } else {
-                        m.classList.remove('is-active');
-                    }
-                });
+                if (duration > 0) {
+                    var progress = (currentTime / duration) * 100;
+
+                    // 1. Làm các vạch kẻ nhỏ sáng lên
+                    document.getElementById('ticks-progress').style.width = progress + "%";
+
+                    // 2. Cập nhật số thời gian
+                    document.getElementById('current-time-display').innerText = formatTime(currentTime);
+
+                    // 3. Kiểm tra và làm sáng vạch dọc dài của Marker
+                    const markers = document.querySelectorAll('.custom-player__marker');
+                    markers.forEach(m => {
+                        const timeParts = m.querySelector('.timestamp__span').innerText.split(':');
+                        const markerSecs = parseInt(timeParts[0]) * 60 + parseInt(timeParts[1]);
+
+                        if (currentTime >= markerSecs) {
+                            m.classList.add('is-active'); // CSS sẽ làm vạch này trắng sáng
+                        } else {
+                            m.classList.remove('is-active');
+                        }
+                    });
+                }
             }
-        }
-    }, 100);
-}
+        }, 100);
+    }
 
     function updateMarkerUI(currentTime) {
         const markers = document.querySelectorAll('.custom-player__marker');
@@ -1306,6 +2544,62 @@ border: none;
             }
         });
     });
+    document.addEventListener('DOMContentLoaded', function() {
+        const btnSolo = document.querySelector('[data-pricing-button="solo"]');
+        const btnTeam = document.querySelector('[data-pricing-button="team"]');
+        const triggerSolo = document.getElementById('trigger-solo');
+        const triggerTeam = document.getElementById('trigger-team');
+
+        // Mặc định ban đầu chọn Individuals
+        if (btnSolo) btnSolo.classList.add('is--active');
+
+        function updatePricingUI(isTeam) {
+            if (isTeam) {
+                // Chuyển sang Teams
+                document.body.classList.add('show-teams');
+                btnTeam.classList.add('is--active'); // Teams màu tím
+                btnSolo.classList.remove('is--active'); // Individuals quay về màu đen
+
+                triggerSolo.classList.add('is--inactive');
+                triggerTeam.classList.remove('is--inactive');
+            } else {
+                // Quay lại Individuals
+                document.body.classList.remove('show-teams');
+                btnSolo.classList.add('is--active'); // Individuals màu tím
+                btnTeam.classList.remove('is--active'); // Teams quay về màu đen
+
+                triggerSolo.classList.remove('is--inactive');
+                triggerTeam.classList.add('is--inactive');
+            }
+        }
+
+        // Gán sự kiện click
+        if (btnSolo) btnSolo.addEventListener('click', () => updatePricingUI(false));
+        if (btnTeam) btnTeam.addEventListener('click', () => updatePricingUI(true));
+        if (triggerSolo) triggerSolo.addEventListener('click', () => updatePricingUI(false));
+        if (triggerTeam) triggerTeam.addEventListener('click', () => updatePricingUI(true));
+    });
+
+    function toggleSotaBenefits() {
+        // Tìm khung chứa danh sách thông qua ID bạn đã đặt
+        const container = document.getElementById('sota-benefits-container');
+        const btnSpan = document.querySelector('#toggle-benefits-btn span');
+
+        // Kiểm tra và bật/tắt class
+        if (container.classList.contains('is--expanded')) {
+            container.classList.remove('is--expanded');
+            btnSpan.innerText = "Xem thêm";
+
+            // Cuộn nhẹ lên đầu để người dùng không bị lạc sau khi thu gọn
+            container.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        } else {
+            container.classList.add('is--expanded');
+            btnSpan.innerText = "Thu gọn";
+        }
+    }
     </script>
 </body>
 
