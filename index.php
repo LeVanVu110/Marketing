@@ -13,8 +13,7 @@ include "header.html";
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
 
     <style>
         /* --- Hero Section --- */
@@ -572,6 +571,12 @@ include "header.html";
             --color-black: #000000;
             --color-white: #ffffff;
             --container-m: 1280px;
+            --padding-m: 7.5em;
+            /* Khoảng cách padding */
+            --gap-m: 1.5em;
+            /* Khoảng cách giữa các phần tử */
+            --color-neutral-800: #201d1d;
+            /* Màu chữ tiêu đề */
         }
 
         .u--rel {
@@ -584,6 +589,15 @@ include "header.html";
             margin-left: auto;
             padding-right: 2rem;
             padding-left: 2rem;
+        }
+
+        /* Row chứa nội dung text */
+        .product-slider__text-row {
+            display: flex;
+            flex-direction: column;
+            grid-column-gap: var(--gap-m);
+            grid-row-gap: var(--gap-m);
+            align-items: flex-start;
         }
 
         .container.is--m {
@@ -1448,9 +1462,11 @@ include "header.html";
         /* Khi trạng thái là Team thì hiện thẻ Team, ẩn thẻ Solo */
         body.show-teams [data-pricing-card="team"] {
             display: flex !important;
-            margin: 0 auto; /* Căn giữa thẻ khi chỉ có 1 gói */
-    max-width: 600px; /* Giới hạn độ rộng tối đa để không bị quá to */
-    width: 100%;
+            margin: 0 auto;
+            /* Căn giữa thẻ khi chỉ có 1 gói */
+            max-width: 600px;
+            /* Giới hạn độ rộng tối đa để không bị quá to */
+            width: 100%;
         }
 
         body.show-teams [data-pricing-card="solo"] {
@@ -1673,6 +1689,262 @@ include "header.html";
         .p-m {
             color: #ffffffff;
 
+        }
+
+        /* --------------------------- các dự án --------------------------------- */
+        .svg-img.is--product-slider {
+            aspect-ratio: 3481/1740.5;
+            pointer-events: none;
+            width: 238em;
+            position: absolute;
+            top: 48%
+        }
+
+        /* Tiêu đề H2 (Class h-l) */
+        .h-l {
+            font-family: "Haffer XH", Arial, sans-serif;
+            font-size: 5em;
+            /* Kích thước chữ lớn */
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: -.04em;
+            margin-top: 0;
+            margin-bottom: 0;
+            color: var(--color-neutral-800);
+        }
+
+        /* Đoạn văn bản (Class p-l) */
+        .p-l {
+            font-family: "Haffer VF", Arial, sans-serif;
+            font-variation-settings: "wght" 420;
+            font-size: 1.1875em;
+            line-height: 1.25;
+            letter-spacing: -.02em;
+            margin-bottom: 0;
+        }
+
+        .product-slider__inner {
+            padding-top: var(--padding-m);
+            padding-bottom: var(--padding-m);
+            position: relative;
+        }
+
+        .h-l,
+        .p-l {
+            font-family: Inter, sans-serif;
+            /* Hoặc Arial, sans-serif */
+            width: 100%;
+            font-weight: 700;
+            font-size: 3rem;
+        }
+
+        .product-slider__title {
+            text-align: center;
+        }
+
+        /* Layout bao quanh 2 thẻ */
+        .custom-product-grid {
+            display: flex;
+            align-items: flex-end;
+            /* Căn lề dưới để tạo cảm giác chênh lệch độ cao */
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        /* Thẻ số 1: Thu nhỏ 33% */
+        .product-item.is-small {
+            flex: 0 0 33%;
+            /* Chiếm đúng 1/3 chiều rộng */
+        }
+
+        .product-item.is-small .product-card {
+            transform: scale(0.8);
+            /* Nếu bạn muốn nó trông nhỏ hẳn đi so với khung */
+            transform-origin: bottom left;
+        }
+
+        /* Thẻ số 2: Hiện bình thường 100% */
+        .product-item.is-full {
+            flex: 1;
+            /* Chiếm toàn bộ phần còn lại */
+        }
+
+        /* Giữ style đẹp cho Card giống Osmo */
+        .product-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #f4f4f4;
+            transition: all 0.4s ease;
+        }
+
+        .product-card__bg img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .product-card__content {
+            padding: 24px;
+        }
+
+        /* Mobile: Trở về 100% cả 2 để dễ đọc */
+        @media (max-width: 768px) {
+            .custom-product-grid {
+                flex-direction: column;
+            }
+
+            .product-item.is-small {
+                flex: 0 0 100%;
+            }
+
+            .product-item.is-small .product-card {
+                transform: scale(1);
+            }
+        }
+
+        /* Layout chung */
+        .osmo-grid-row {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Row 2 ảnh: mỗi cái chiếm gần 50% */
+        .osmo-grid-row.is-double .product-card {
+            flex: 1;
+        }
+
+        /* Row 3 ảnh: mỗi cái chiếm khoảng 33% */
+        .osmo-grid-row.is-triple .product-card.is-small {
+            flex: 0 0 calc(33.33% - 14px);
+            /* Thu nhỏ chính xác 33% */
+        }
+
+        /* Tinh chỉnh style Card để đồng bộ */
+        .product-card {
+            position: relative;
+            background: #1a1a1a;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            /* Hiệu ứng bay lên nhẹ khi di chuột */
+        }
+
+        .product-card__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 4/3;
+            /* Giữ tỉ lệ ảnh đồng nhất */
+        }
+
+        .product-card__content {
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .product-card__h.is--s {
+            font-size: 1.2rem;
+            /* Tiêu đề nhỏ hơn cho thẻ 33% */
+        }
+
+        .osmo-slider-container {
+            width: 100%;
+            overflow: hidden;
+            cursor: grab;
+            padding: 40px 0;
+            position: relative;
+        }
+
+        .osmo-slider-track {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            /* Để GSAP có thể kéo toàn bộ dải */
+            will-change: transform;
+        }
+
+        .osmo-slider-track::-webkit-scrollbar {
+            display: none;
+        }
+
+
+
+        .product-card {
+            /* Hiển thị 2 thẻ trên 1 hàng dựa trên container 940px (hoặc tùy chỉnh) */
+            width: calc((940px - 30px) / 2);
+            flex-shrink: 0;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            user-select: none;
+        }
+
+        /* Cho phép link hoạt động lại bên trong nội dung */
+        .product-card__content {
+            padding: 20px 25px;
+        }
+
+        /* TẠO HÌNH CHỮ NHẬT TO */
+        .product-card__bg {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            /* Tỉ lệ hình chữ nhật */
+            overflow: hidden;
+        }
+
+        .product-card__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            pointer-events: none;
+            /* Tránh dính ảnh khi kéo */
+        }
+
+        .product-card__h {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .product-card__content p {
+            margin: 5px 0 0 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Khi đang kéo */
+        .osmo-slider-container:active {
+            cursor: grabbing;
+        }
+
+        /* Mobile */
+        @media (max-width: 767px) {
+            .product-card {
+                width: 80vw;
+                /* Hiện 1 cái rưỡi trên mobile */
+            }
+        }
+
+        .product-slider__title .h-l {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            /* Tăng kích thước để thấy rõ hiệu ứng */
+            text-transform: uppercase;
+            display: inline-block;
+            min-height: 1.2em;
+            /* Giữ chỗ để tránh nhảy dòng khi chữ chạy */
         }
     </style>
 </head>
@@ -2063,224 +2335,224 @@ include "header.html";
                                     <div class="pricing-card__price">
                                         <p class="">Dành cho doanh nghiệp SMEs & Upper SMEs</p>
                                         <p class="pricing-card__price-h">50 TRIỆU</p>
-                                        </div><span class="eyebrow">per month</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pricing-card__cta-row">
-                                <div class="pricing-card__cta">
-                                    <div class="pricing-card__cta-p" id="toggleSotaBenefits_Lifetime">
-                                        <ul id="sota-benefits-list">
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">01</div>
-                                                <p class="p-m">Tạo Google Maps</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">02</div>
-                                                <p class="p-m">Thiết kế Zalo OA</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">03</div>
-                                                <p class="p-m">Nghiên cứu 4Cs</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">04</div>
-                                                <p class="p-m">Chiến lược thương hiệu</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">05</div>
-                                                <p class="p-m">Thiết kế Logo</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">06</div>
-                                                <p class="p-m">Thiết kế nhận diện</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">07</div>
-                                                <p class="p-m">Website thương hiệu</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">08</div>
-                                                <p class="p-m">Nguyên tắc thương hiệu</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">09</div>
-                                                <p class="p-m">Kế hoạch ra mắt</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">10</div>
-                                                <p class="p-m">Kế hoạch Social</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">11</div>
-                                                <p class="p-m">Kế hoạch Branded SEO</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">12</div>
-                                                <p class="p-m">Quản trị website</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">13</div>
-                                                <p class="p-m">Quản trị social</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="view-more-container">
-                                        <button id="btn_lifetime" class="view-more-btn"
-                                            onclick="toggleSotaBenefits_Lifetime()">
-                                            <span>Xem thêm</span>
-                                        </button>
-                                    </div>
-                                    <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
-                                        data-theme="" href="https://www.osmo.supply/plans/lifetime" data-barba-p=""
-                                        data-button-rotate="" data-responsive="" data-outseta-type="" data-shape=""
-                                        style="--y: 10000%;">
-                                        <div data-wf--button-theme--variant="neutral-800" class="button-bg"></div>
-                                        <div class="button-label__wrap">
-                                            <div class="button-label" style=""><span>Become a Lifetime member</span>
-                                            </div>
-                                            <div aria-hidden="true" class="button-label" style=""><span>Become a
-                                                    Lifetime member</span></div>
-                                        </div>
-                                    </a>
+                                    </div><span class="eyebrow">per month</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="pricing-card__scribble">
-                            <p class="scribble">Pay Once,<br>Use Forever</p>
+                        <div class="pricing-card__cta-row">
+                            <div class="pricing-card__cta">
+                                <div class="pricing-card__cta-p" id="toggleSotaBenefits_Lifetime">
+                                    <ul id="sota-benefits-list">
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">01</div>
+                                            <p class="p-m">Tạo Google Maps</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">02</div>
+                                            <p class="p-m">Thiết kế Zalo OA</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">03</div>
+                                            <p class="p-m">Nghiên cứu 4Cs</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">04</div>
+                                            <p class="p-m">Chiến lược thương hiệu</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">05</div>
+                                            <p class="p-m">Thiết kế Logo</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">06</div>
+                                            <p class="p-m">Thiết kế nhận diện</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">07</div>
+                                            <p class="p-m">Website thương hiệu</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">08</div>
+                                            <p class="p-m">Nguyên tắc thương hiệu</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">09</div>
+                                            <p class="p-m">Kế hoạch ra mắt</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">10</div>
+                                            <p class="p-m">Kế hoạch Social</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">11</div>
+                                            <p class="p-m">Kế hoạch Branded SEO</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">12</div>
+                                            <p class="p-m">Quản trị website</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">13</div>
+                                            <p class="p-m">Quản trị social</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="view-more-container">
+                                    <button id="btn_lifetime" class="view-more-btn"
+                                        onclick="toggleSotaBenefits_Lifetime()">
+                                        <span>Xem thêm</span>
+                                    </button>
+                                </div>
+                                <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
+                                    data-theme="" href="https://www.osmo.supply/plans/lifetime" data-barba-p=""
+                                    data-button-rotate="" data-responsive="" data-outseta-type="" data-shape=""
+                                    style="--y: 10000%;">
+                                    <div data-wf--button-theme--variant="neutral-800" class="button-bg"></div>
+                                    <div class="button-label__wrap">
+                                        <div class="button-label" style=""><span>Become a Lifetime member</span>
+                                        </div>
+                                        <div aria-hidden="true" class="button-label" style=""><span>Become a
+                                                Lifetime member</span></div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div data-pricing-state="quarterly" data-pricing-card="team"
-                        data-wf--pricing-card-team--variant="base" class="pricing-card is--gray">
-                        <div class="pricing-card__inner">
-                            <div data-shape="" data-theme="" class="tag">
-                                <div data-wf--button-theme--variant="light-10" class="button-bg"></div><span
-                                    class="eyebrow is--relative">Multiple users</span>
-                            </div>
-                            <div class="pricing-card__title-row">
-                                <h3 class="pricing-card__title">GÓI ENTERPRISE </h3>
-                                <div class="pricing-card__price-row">
-                                    <div class="pricing-card__price">
-                                        <div class="pricing-card__price-w">
-                                            <p class="">Dành cho danh nghiệp lớn, tập đoàn đa ngành</p>
-                                            <p class="pricing-card__price-h">200 TRIỆU</p>
-                                        </div><span class="eyebrow">per month, per user</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="pricing-card__cta-row">
-                                <div class="pricing-card__divider">
-                                    <div class="tag-row">
-                                        <div class="button-row"></div>
-                                        <div class="tag-row__line"></div>
-                                    </div>
-                                </div>
-                                <div class="pricing-card__cta">
-
-                                    <div class="pricing-card__cta-p" id="sota-benefits-container">
-                                        <ul id="sota-benefits-list">
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">01</div>
-                                                <p class="p-m">Thành lập công ty</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">02</div>
-                                                <p class="p-m">Triển khai Zalo OA</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">03</div>
-                                                <p class="p-m">Thiết kế Google Maps</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">04</div>
-                                                <p class="p-m">Kiểm toán thương hiệu</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">05</div>
-                                                <p class="p-m">Nghiên cứu 4Cs</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">06</div>
-                                                <p class="p-m">Chiến lược thương hiệu</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">07</div>
-                                                <p class="p-m">Thiết kế Logo</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">08</div>
-                                                <p class="p-m">Thiết kế nhận diện</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">09</div>
-                                                <p class="p-m">Website thương hiệu</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">10</div>
-                                                <p class="p-m">Nguyên tắc thương hiệu</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">11</div>
-                                                <p class="p-m">Kế hoạch Branded SEO</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">12</div>
-                                                <p class="p-m">Kế hoạch Social & Ra mắt</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">13</div>
-                                                <p class="p-m">Quản trị Website & Social</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">14</div>
-                                                <p class="p-m">Trò chơi xã hội mini</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">15</div>
-                                                <p class="p-m">Dựng khuyến mãi doanh nghiệp</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">16</div>
-                                                <p class="p-m">Đội tiếp thị ô tô</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">17</div>
-                                                <p class="p-m">Quảng cáo ngoài trời & Báo chí</p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">17</div>
-                                                <p class="p-m">Nhận diện sự kiện </p>
-                                            </li>
-                                            <li class="pricing-benefit">
-                                                <div class="pricing-benefit__tag p-r">17</div>
-                                                <p class="p-m">Nhận diện điểm bán</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="view-more-container">
-                                        <button id="toggle-benefits-btn" class="view-more-btn"
-                                            onclick="toggleSotaBenefits()">
-                                            <span>Xem thêm</span>
-                                        </button>
-                                    </div>
-                                    <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
-                                        data-theme="" href="https://www.osmo.supply/plans/team-subscription"
-                                        data-barba-p="" data-button-rotate="" data-responsive="" data-outseta-type=""
-                                        data-shape="" style="--y: 10000%;">
-                                        <div data-wf--button-theme--variant="purple" class="button-bg"></div>
-                                        <div class="button-label__wrap">
-                                            <div class="button-label"><span>Tư vấn ngay</span></div>
-                                            <div aria-hidden="true" class="button-label"><span>Tư vấn ngay</span></div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
+                    <div class="pricing-card__scribble">
+                        <p class="scribble">Pay Once,<br>Use Forever</p>
+                    </div>
+                </div>
+                <div data-pricing-state="quarterly" data-pricing-card="team"
+                    data-wf--pricing-card-team--variant="base" class="pricing-card is--gray">
+                    <div class="pricing-card__inner">
+                        <div data-shape="" data-theme="" class="tag">
+                            <div data-wf--button-theme--variant="light-10" class="button-bg"></div><span
+                                class="eyebrow is--relative">Multiple users</span>
                         </div>
+                        <div class="pricing-card__title-row">
+                            <h3 class="pricing-card__title">GÓI ENTERPRISE </h3>
+                            <div class="pricing-card__price-row">
+                                <div class="pricing-card__price">
+                                    <div class="pricing-card__price-w">
+                                        <p class="">Dành cho danh nghiệp lớn, tập đoàn đa ngành</p>
+                                        <p class="pricing-card__price-h">200 TRIỆU</p>
+                                    </div><span class="eyebrow">per month, per user</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pricing-card__cta-row">
+                            <div class="pricing-card__divider">
+                                <div class="tag-row">
+                                    <div class="button-row"></div>
+                                    <div class="tag-row__line"></div>
+                                </div>
+                            </div>
+                            <div class="pricing-card__cta">
+
+                                <div class="pricing-card__cta-p" id="sota-benefits-container">
+                                    <ul id="sota-benefits-list">
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">01</div>
+                                            <p class="p-m">Thành lập công ty</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">02</div>
+                                            <p class="p-m">Triển khai Zalo OA</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">03</div>
+                                            <p class="p-m">Thiết kế Google Maps</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">04</div>
+                                            <p class="p-m">Kiểm toán thương hiệu</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">05</div>
+                                            <p class="p-m">Nghiên cứu 4Cs</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">06</div>
+                                            <p class="p-m">Chiến lược thương hiệu</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">07</div>
+                                            <p class="p-m">Thiết kế Logo</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">08</div>
+                                            <p class="p-m">Thiết kế nhận diện</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">09</div>
+                                            <p class="p-m">Website thương hiệu</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">10</div>
+                                            <p class="p-m">Nguyên tắc thương hiệu</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">11</div>
+                                            <p class="p-m">Kế hoạch Branded SEO</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">12</div>
+                                            <p class="p-m">Kế hoạch Social & Ra mắt</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">13</div>
+                                            <p class="p-m">Quản trị Website & Social</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">14</div>
+                                            <p class="p-m">Trò chơi xã hội mini</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">15</div>
+                                            <p class="p-m">Dựng khuyến mãi doanh nghiệp</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">16</div>
+                                            <p class="p-m">Đội tiếp thị ô tô</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">17</div>
+                                            <p class="p-m">Quảng cáo ngoài trời & Báo chí</p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">17</div>
+                                            <p class="p-m">Nhận diện sự kiện </p>
+                                        </li>
+                                        <li class="pricing-benefit">
+                                            <div class="pricing-benefit__tag p-r">17</div>
+                                            <p class="p-m">Nhận diện điểm bán</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="view-more-container">
+                                    <button id="toggle-benefits-btn" class="view-more-btn"
+                                        onclick="toggleSotaBenefits()">
+                                        <span>Xem thêm</span>
+                                    </button>
+                                </div>
+                                <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
+                                    data-theme="" href="https://www.osmo.supply/plans/team-subscription"
+                                    data-barba-p="" data-button-rotate="" data-responsive="" data-outseta-type=""
+                                    data-shape="" style="--y: 10000%;">
+                                    <div data-wf--button-theme--variant="purple" class="button-bg"></div>
+                                    <div class="button-label__wrap">
+                                        <div class="button-label"><span>Tư vấn ngay</span></div>
+                                        <div aria-hidden="true" class="button-label"><span>Tư vấn ngay</span></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <!-- <div class="pricing-home__button-row"><a data-button-rotate-hover="" class="button w-inline-block"
+        </div>
+        <!-- <div class="pricing-home__button-row"><a data-button-rotate-hover="" class="button w-inline-block"
                     data-size="" data-theme="" href="https://www.osmo.supply/plans" data-barba-p=""
                     data-button-rotate="" data-responsive="" data-outseta-type="" data-shape="" style="--y: 3520%;">
                     <div data-wf--button-theme--variant="neutral-200" class="button-bg"></div>
@@ -2292,12 +2564,93 @@ include "header.html";
             </div> -->
         </div>
     </section>
+    <section data-theme-section="light" class="product-slider">
+        <div class="product-slider__inner">
+            <div class="container">
+                <div class="product-slider__text-row product-slider__title">
+                    <h2 class="h-l">DỰ ÁN TIÊU BIỂU CỦA CHÚNG TÔI</h2>
+                </div>
+
+                <div class="osmo-slider-container" id="scope">
+                    <div class="osmo-slider-track" id="slider">
+
+                        <div class="product-card">
+                            <div class="product-card__bg">
+                                <img src="./Dịch vụ total marketing_files/trang-15-2019.png" alt="DỰ ÁN ICONS">
+                            </div>
+                            <div class="product-card__content">
+                                <h3 class="product-card__h">DỰ ÁN ICONS</h3>
+                                <p>DỰ ÁN XÂY DỰNG X GÓI TOÀN DIỆN</p>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-card__bg">
+                                <img src="./Dịch vụ total marketing_files/trang-13-5436.png" alt="DỰ ÁN BORIDE">
+                            </div>
+                            <div class="product-card__content">
+                                <h3 class="product-card__h">DỰ ÁN BORIDE</h3>
+                                <p>DỰ ÁN BORIDE - BÌNH DƯƠNG</p>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-card__bg">
+                                <img src="./Dịch vụ total marketing_files/trang-14-3290.png" alt="DỰ ÁN 1">
+                            </div>
+                            <div class="product-card__content">
+                                <h3 class="product-card__h">DỰ ÁN 1</h3>
+                                <p>DỰ ÁN VỀ GIÁO DỤC</p>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-card__bg">
+                                <img src="./Dịch vụ total marketing_files/trang-16-3572.png" alt="DỰ ÁN 5">
+                            </div>
+                            <div class="product-card__content">
+                                <h3 class="product-card__h">DỰ ÁN 5</h3>
+                                <p>DỰ ÁN TRUYỀN THÔNG</p>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-card__bg">
+                                <img src="./Dịch vụ total marketing_files/trang-17-9735.png" alt="DỰ ÁN 6">
+                            </div>
+                            <div class="product-card__content">
+                                <h3 class="product-card__h">DỰ ÁN 6</h3>
+                                <p>DỰ ÁN THƯƠNG HIỆU</p>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-card__bg">
+                                <img src="./Dịch vụ total marketing_files/trang-18-7624.png" alt="DỰ ÁN 7">
+                            </div>
+                            <div class="product-card__content">
+                                <h3 class="product-card__h">DỰ ÁN 7</h3>
+                                <p>DỰ ÁN MARKETING</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="product-slider__fade"></div>
+    </section>
 
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/InertiaPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrambleTextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <script>
         var tag = document.createElement('script');
@@ -2556,6 +2909,105 @@ include "header.html";
         function toggleSotaBenefits() { // Cho gói Enterprise
             toggleBenefit('sota-benefits-container', 'toggle-benefits-btn');
         }
+    </script>
+    <script>
+        gsap.registerPlugin(Draggable);
+
+        const slider = document.getElementById("slider");
+        const scope = document.getElementById("scope");
+
+        // 1. Cấu hình Autoplay
+        let playSpeed = 1; // Tốc độ chạy (số càng lớn chạy càng nhanh)
+        let loop;
+
+        function startAutoplay() {
+            // Tính toán khoảng cách tối đa có thể kéo (chiều dài dải ảnh - chiều dài khung nhìn)
+            const maxScroll = -(slider.offsetWidth - scope.offsetWidth);
+
+            loop = gsap.to("#slider", {
+                x: maxScroll,
+                duration: Math.abs(maxScroll) / (50 * playSpeed), // Tính toán thời gian dựa trên độ dài
+                ease: "none",
+                repeat: -1, // Lặp lại vô hạn
+                modifiers: {
+                    x: gsap.utils.unitize(value => parseFloat(value) % maxScroll) // Giúp lặp lại mượt mà
+                }
+            });
+        }
+
+        // 2. Cấu hình Draggable (Kéo chuột)
+        const dragInstance = Draggable.create("#slider", {
+            type: "x",
+            bounds: scope,
+            inertia: true,
+            edgeResistance: 0.5,
+            onPress: function() {
+                // Tạm dừng autoplay khi người dùng nhấn chuột vào
+                loop.pause();
+                gsap.to(".product-card", {
+                    scale: 0.97,
+                    duration: 0.3
+                });
+            },
+            onDragEnd: function() {
+                gsap.to(".product-card", {
+                    scale: 1,
+                    duration: 0.3
+                });
+                // Sau khi thả chuột 1 giây, tự động chạy lại
+                gsap.delayedCall(1, () => {
+                    // Cập nhật lại vị trí hiện tại cho loop để tránh bị nhảy ảnh
+                    loop.invalidate().restart();
+                });
+            },
+            snap: {
+                x: function(endValue) {
+                    const cardWidth = document.querySelector('.product-card').offsetWidth + 30;
+                    return Math.round(endValue / cardWidth) * cardWidth;
+                }
+            }
+        });
+
+        // Chạy autoplay ngay khi tải trang
+        startAutoplay();
+        // Nhớ thêm thư viện ScrollTrigger
+        // --- HIỆU ỨNG CHỮ CHẠY (SCRAMBLE TEXT) MIỄN PHÍ ---
+        function scrambleEffect(element, newText, duration = 4.5) {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$@&*%";
+            const originalText = newText;
+            let iteration = 0;
+
+            const interval = setInterval(() => {
+                element.innerText = originalText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return originalText[index];
+                        }
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    })
+                    .join("");
+
+                if (iteration >= originalText.length) {
+                    clearInterval(interval);
+                }
+
+                iteration += originalText.length / (duration * 10);
+            }, 30);
+        }
+
+        // --- KÍCH HOẠT KHI CUỘN TỚI (SCROLLTRIGGER) ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        const title = document.querySelector(".product-slider__title .h-l");
+        const textContent = "DỰ ÁN TIÊU BIỂU CỦA CHÚNG TÔI";
+
+        ScrollTrigger.create({
+            trigger: ".product-slider__title",
+            start: "top 85%",
+            onEnter: () => scrambleEffect(title, textContent),
+            once: true // Chỉ chạy 1 lần khi cuộn tới
+        });
     </script>
 </body>
 
