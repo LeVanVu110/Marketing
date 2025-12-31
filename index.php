@@ -668,6 +668,10 @@ include "header.html";
             /* Khoảng cách giữa các phần tử */
             --color-neutral-800: #201d1d;
             /* Màu chữ tiêu đề */
+            --sota-blue: #1e73be;
+            --sota-gold: #c49533;
+            --text-dark: #333;
+            --text-gray: #666;
         }
 
         .u--rel {
@@ -2224,7 +2228,7 @@ include "header.html";
         /* Scribble Decor */
         .faq__title-scribble {
             position: absolute;
-            right: 5%;
+            right: 0%;
             top: -20px;
             color: #f84131;
             /* Màu vàng Sota */
@@ -2236,6 +2240,7 @@ include "header.html";
             font-style: italic;
             margin-bottom: 5px;
             font-weight: 700;
+            color:#f84131;
         }
 
         .faq__title-scribble-arrow {
@@ -2346,6 +2351,76 @@ include "header.html";
             .faq {
                 padding: 60px 0;
             }
+        }
+        /* --------------------------- Phần 9 -------------------  */
+        .process-section { padding: 100px 0; }
+        /* .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; } */
+        .header-title { text-align: center; color: var(--sota-blue);font-weight:700; text-transform: uppercase; }
+
+        .timeline-wrapper { position: relative; }
+
+        /* SVG Line - Phần quan trọng nhất để nét liền đè nét đứt */
+        .svg-connector {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 100%; height: 100%; z-index: 1; pointer-events: none;
+        }
+
+        /* Đường nét đứt xám cố định bên dưới */
+        #path-bg { 
+            stroke: var(--bg-gray); 
+            stroke-width: 2; 
+            fill: none; 
+            stroke-dasharray: 8 8; 
+        }
+
+        /* Đường nét liền xanh chạy đè lên trên */
+        #path-active { 
+            stroke: var(--sota-blue); 
+            stroke-width: 3; 
+            fill: none; 
+            stroke-linecap: round;
+            /* Animation mượt khi cuộn 2 chiều */
+            transition: stroke-dashoffset 0.2s ease-out;
+        }
+
+        /* Các khối nội dung */
+        .timeline-item {
+            width: 100%; display: flex; margin-bottom: 120px; 
+            position: relative; z-index: 2;
+            /* Trạng thái mặc định: Ẩn */
+            opacity: 0; 
+            transform: scale(0.9) translateY(40px);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Trạng thái khi đường kẻ đi qua: Hiện */
+        .timeline-item.is-visible {
+            opacity: 1; 
+            transform: scale(1) translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) { justify-content: flex-start; }
+        .timeline-item:nth-child(even) { justify-content: flex-end; }
+
+        .content-card {
+            width: 42%; background: #fff; padding: 25px;
+            border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 4px solid #eee;
+            transition: border-color 0.5s ease;
+        }
+
+        .timeline-item.is-visible .content-card {
+            border-top-color: var(--sota-blue);
+        }
+
+        .step-label { font-weight: bold; color: var(--sota-blue); font-size: 13px; display: block; margin-bottom: 8px; }
+        h3 { margin: 0 0 12px 0; font-size: 19px; color: #222; }
+        p { color: #555; font-size: 14.2px; line-height: 1.6; margin: 0; }
+
+        @media (max-width: 768px) {
+            .content-card { width: 90%; margin: 0 auto; }
+            .svg-connector { display: none; }
+            .timeline-item { opacity: 1; transform: none; }
         }
     </style>
 </head>
@@ -3053,7 +3128,32 @@ include "header.html";
             </div>
             <div class="product-slider__fade"></div>
     </section>
+    
+    <!-- ----------------------------phần 9 quy trình dịch vụ DIGITAL MARKETING-------------------------------->
+<section class="process-section">
+    <div class="container">
+        <h2 class="header-title">QUY TRÌNH DỊCH VỤ DIGITAL MARKETING</h2>
+        <p style="margin-bottom: 80px !important;text-align: center;font-size: 16px;">
+            Chúng tôi áp dụng quy trình cung cấp dịch vụ và thực thi chuyên nghiệp.</p>
 
+        <div class="timeline-wrapper">
+            <svg class="svg-connector" id="svg-root">
+                <path id="path-bg"></path>
+                <path id="path-active"></path>
+            </svg>
+
+            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 1</span><h3>TƯ VẤN & HỢP ĐỒNG</h3><p>Sota tiếp nhận yêu cầu, khám phá và tư vấn chi tiết dịch vụ Digital Marketing tổng thể. Tiến hành lập báo giá, ký kết hợp đồng triển khai.</p></div></div>
+            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 2</span><h3>NGHIÊN CỨU</h3><p>Nghiên cứu sâu về khách hàng mục tiêu, thương hiệu, lĩnh vực, đối thủ và mô hình kinh doanh làm cơ sở đề xuất giải pháp.</p></div></div>
+            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 3</span><h3>KẾ HOẠCH & CHIẾN LƯỢC</h3><p>Lên chiến lược Digital Marketing, lập kế hoạch triển khai chi tiết, cụ thể hóa các mục tiêu và tiêu chuẩn đánh giá.</p></div></div>
+            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 4</span><h3>KIẾN TRÚC SỐ</h3><p>Xây dựng kiến trúc hệ thống Digital Marketing. Minh họa cách hệ thống hỗ trợ chiến lược đạt mục tiêu.</p></div></div>
+            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 5</span><h3>PHÁT TRIỂN</h3><p>Trực tiếp thiết lập hệ thống: Website, Social, App, CRM... Tích hợp dữ liệu liên thông với hệ thống hiện có.</p></div></div>
+            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 6</span><h3>CHIẾN DỊCH KỸ THUẬT SỐ</h3><p>Triển khai SEO, Ads, Content Marketing, Email Marketing... theo từng giai đoạn trên các kênh chuyên nghiệp.</p></div></div>
+            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 7</span><h3>TỐI ƯU HÓA</h3><p>Liên tục theo dõi, thực hiện điều chỉnh các hoạt động để tối ưu hiệu quả chiến dịch.</p></div></div>
+            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 8</span><h3>ĐÀO TẠO & PHÂN PHỐI</h3><p>Đào tạo đội ngũ vận hành hệ thống. Bàn giao tài liệu dự án và phối hợp tất toán hợp đồng.</p></div></div>
+            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 9</span><h3>BẢO TRÌ & MỞ RỘNG</h3><p>Duy trì hệ thống hoạt động ổn định. Tư vấn mở rộng hệ thống đáp ứng nhu cầu phát triển lâu dài.</p></div></div>
+        </div>
+    </div>
+</section>
 
 
 
@@ -3719,6 +3819,74 @@ include "footer.html";
             }
         }
     </script>
+    <!-- ----------------------- Phần 9 ----------------  -->
+    <script>
+    const svg = document.getElementById('svg-root');
+    const bgPath = document.getElementById('path-bg');
+    const activePath = document.getElementById('path-active');
+    const items = document.querySelectorAll('.timeline-item');
+
+    // Hàm vẽ đường uốn lượn khớp với các card
+    function drawPath() {
+        const containerRect = svg.parentElement.getBoundingClientRect();
+        const midX = svg.clientWidth / 2;
+        let d = "";
+
+        items.forEach((item, index) => {
+            const rect = item.getBoundingClientRect();
+            const y = (rect.top + rect.height / 2) - containerRect.top;
+            
+            if (index === 0) {
+                d += `M ${midX} 0 L ${midX} ${y}`;
+            } else {
+                const prevY = (items[index-1].getBoundingClientRect().top + items[index-1].getBoundingClientRect().height / 2) - containerRect.top;
+                const cpY = (prevY + y) / 2;
+                const curveX = index % 2 === 0 ? midX - 120 : midX + 120; // Hướng uốn ngược nhau
+                d += ` Q ${curveX} ${cpY} ${midX} ${y}`;
+            }
+        });
+
+        bgPath.setAttribute('d', d);
+        activePath.setAttribute('d', d);
+        
+        // Thiết lập dash để animation nét liền vẽ ra
+        const length = activePath.getTotalLength();
+        activePath.style.strokeDasharray = length;
+        activePath.style.strokeDashoffset = length;
+    }
+
+    // Xử lý logic 2 chiều khi cuộn
+    function handleScrollLogic() {
+        const length = activePath.getTotalLength();
+        // Điểm quét (Trigger) nằm ở khoảng 65% màn hình
+        const scrollPoint = window.scrollY + window.innerHeight * 0.65;
+        const containerTop = svg.parentElement.offsetTop;
+        const containerHeight = svg.parentElement.offsetHeight;
+
+        // Tiến trình vẽ đường màu xanh
+        let progress = (scrollPoint - containerTop) / containerHeight;
+        progress = Math.max(0, Math.min(1, progress));
+        activePath.style.strokeDashoffset = length - (length * progress);
+
+        // Kiểm tra từng Card: Vượt qua điểm quét thì Hiện, Ngược lại thì Ẩn
+        items.forEach(item => {
+            const itemMid = item.getBoundingClientRect().top + window.scrollY + (item.offsetHeight / 2);
+            
+            if (scrollPoint > itemMid) {
+                item.classList.add('is-visible');
+            } else {
+                item.classList.remove('is-visible');
+            }
+        });
+    }
+
+    window.addEventListener('load', () => {
+        drawPath();
+        handleScrollLogic();
+    });
+    window.addEventListener('scroll', handleScrollLogic);
+    window.addEventListener('resize', drawPath);
+</script>
 </body>
 
 </html>
