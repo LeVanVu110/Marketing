@@ -16,6 +16,76 @@ include "header.html";
 
 
     <style>
+        /* --- Media Queries cho Hero Section --- */
+        @media (max-width: 991px) {
+            .hero-section {
+                padding: 60px 0;
+                /* Giảm padding trên mobile */
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 36px;
+                /* Chữ nhỏ hơn trên tablet */
+                margin-bottom: 20px;
+            }
+
+            .hero-description {
+                margin: 0 auto 30px auto;
+                padding-left: 0;
+                border-left: none;
+                /* Bỏ vạch kẻ dọc khi căn giữa */
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                /* Căn giữa các nút */
+                flex-direction: column;
+                /* Xếp chồng các nút nếu màn hình quá hẹp */
+                gap: 15px;
+            }
+
+            .btn-consult {
+                width: 100%;
+                /* Nút bấm rộng hết cỡ trên mobile */
+                max-width: 280px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-title {
+                font-size: 28px;
+                /* Chữ nhỏ hơn nữa cho mobile */
+            }
+
+            .hero-subtitle {
+                font-size: 12px;
+                letter-spacing: 2px;
+            }
+
+            /* Thu nhỏ các icon trang trí để không chiếm quá nhiều chỗ */
+            .hero-image-wrapper {
+                height: 300px;
+                margin-top: 40px;
+            }
+
+            .main-graphic {
+                font-size: 80px;
+            }
+
+            .satellite {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .bg-blob {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
         /* --- Hero Section --- */
         .hero-section {
             padding: 100px 0;
@@ -81,6 +151,7 @@ include "header.html";
             display: flex;
             gap: 20px;
             align-items: center;
+            padding-top: 50px;
         }
 
         .btn-consult {
@@ -134,35 +205,55 @@ include "header.html";
             font-weight: 500;
         }
 
-        /* Khung chứa cho mỗi item logo */
-        .customer-logos .item {
-            display: flex;
-            justify-content: center;
-            /* Căn giữa ngang */
-            align-items: center;
-            /* Căn giữa dọc */
-            height: 100px;
-            /* Chiều cao khung cố định cho tất cả */
-            padding: 10px;
-            background: #fff;
+        /* Badge tin tưởng trên mobile */
+        @media (max-width: 991px) {
+            .customer-trust-badge {
+                text-align: center;
+                border-left: none;
+                border-bottom: 2px solid #ffcc33;
+                padding-left: 0;
+                padding-bottom: 15px;
+                margin-bottom: 30px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
-        /* Ép các ảnh cùng kích thước */
-        .customer-logos .item img {
-            max-width: 140px !important;
-            /* Độ rộng tối đa của logo */
-            max-height: 60px !important;
-            /* Độ cao tối đa của logo */
-            width: auto !important;
-            /* Giữ nguyên tỉ lệ ảnh */
-            height: auto !important;
-            /* Giữ nguyên tỉ lệ ảnh */
-            object-fit: contain;
-            /* Đảm bảo ảnh nằm gọn trong khung, không bị méo */
+        /* Tăng tốc độ mượt cho Owl Carousel */
+        .customer-logos .owl-stage {
+            display: flex;
+            align-items: center;
+            /* Hiệu ứng linear giúp chạy đều không bị khựng */
+            transition-timing-function: linear !important;
+        }
+
+        /* Khung chứa cho mỗi item logo */
+        .customer-logos .item {
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
             filter: grayscale(100%);
-            /* (Tùy chọn) Chuyển về màu xám cho chuyên nghiệp */
-            opacity: 0.6;
+            opacity: 0.5;
             transition: all 0.3s ease;
+        }
+
+        .customer-logos .item:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Responsive cho ảnh logo */
+        .customer-logos .item img {
+            max-width: 120px !important;
+            height: auto !important;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .customer-logos .item img {
+                max-width: 100px !important;
+            }
         }
 
         /* Hiệu ứng khi rê chuột vào */
@@ -497,7 +588,7 @@ include "header.html";
         .vault-section::before {
             content: "";
             position: absolute;
-            top: 50%;
+            top: 110%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 500px;
@@ -1279,6 +1370,7 @@ include "header.html";
             gap: 30px;
             width: 100%;
             justify-content: center;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             /* Căn giữa các ô trong grid */
         }
 
@@ -1294,6 +1386,19 @@ include "header.html";
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
             overflow: hidden;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        /* Khi bị ẩn đi */
+        .pricing-card.is--hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            position: absolute;
+            /* Đẩy ra khỏi dòng chảy để card khác nhảy vào */
+            visibility: hidden;
         }
 
         .pricing-card:hover {
@@ -1946,10 +2051,307 @@ include "header.html";
             min-height: 1.2em;
             /* Giữ chỗ để tránh nhảy dòng khi chữ chạy */
         }
+
+        /* -------------------------------------- reponsive video -----------------------  */
+        /* --- Media Queries cho The Vault & Video Section --- */
+
+        @media (max-width: 1200px) {
+            .custom-player__float {
+                left: -30px;
+                /* Thu hẹp độ lấn lề trên màn hình nhỏ hơn */
+                width: 100px;
+                height: 100px;
+            }
+
+            .webcam__wrap {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .vault-title {
+                font-size: 80px;
+            }
+
+            .custom-player__float {
+                position: relative;
+                /* Đưa webcam vào trong luồng nội dung thay vì lấn lề */
+                left: 0;
+                bottom: 0;
+                margin: -50px auto 20px auto;
+                /* Nằm đè lên mép video một chút */
+                width: 90px;
+                height: 90px;
+            }
+
+            .custom-player__interface {
+                padding: 2rem 1.5rem;
+                /* Giảm padding */
+            }
+
+            .custom-player__markers {
+                top: 30px;
+                /* Kéo marker gần thanh ticks hơn */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vault-section {
+                padding-top: 50px;
+            }
+
+            .vault-title {
+                font-size: 50px;
+                letter-spacing: -1px;
+            }
+
+            .vault-subtitle {
+                font-size: 16px;
+            }
+
+            /* Ẩn các mốc thời gian chi tiết trên mobile để tránh rối mắt */
+            .custom-player__marker-p {
+                font-size: 10px;
+                white-space: normal;
+                /* Cho phép xuống dòng */
+                max-width: 60px;
+            }
+
+            .timestamp__span {
+                display: none;
+                /* Ẩn số giây trên mobile cho gọn */
+            }
+
+            /* Điều chỉnh lại Info Grid (Lợi ích) */
+            .info-grid {
+                padding: 60px 0;
+            }
+
+            .info-grid__main-item {
+                padding: 30px 0;
+                border-right: none;
+                /* Bỏ vạch kẻ dọc trên mobile */
+                text-align: center;
+                align-items: center;
+            }
+
+            .info-grid__item-nr {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .vault-title {
+                font-size: 40px;
+            }
+
+            .custom-player__toggle-playpause {
+                top: 2rem;
+                font-size: 10px;
+            }
+
+            .custom-player__time {
+                top: 2rem;
+                font-size: 11px;
+            }
+
+            /* Trên điện thoại cực nhỏ, chỉ hiện vạch, ẩn chữ marker để tránh đè nhau */
+            .custom-player__marker-p {
+                display: none;
+            }
+
+            .marker-line {
+                height: 20px;
+                top: -25px;
+            }
+        }
+
+        .marquee-wrapper {
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 60px;
+            /* Khoảng cách giữa các logo */
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .marquee-content .item {
+            flex-shrink: 0;
+        }
+
+        .marquee-content img {
+            height: 50px;
+            /* Chỉnh độ cao logo đồng nhất */
+            width: auto;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .marquee-content img:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* ----------------------Phần 12------------------------  */
+        /* --- FAQ Section --- */
+        .faq {
+            padding: 100px 0;
+            background-color: #fff;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .faq__title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .faq__title .h-ml {
+            font-size: 52px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #333;
+        }
+
+        /* Scribble Decor */
+        .faq__title-scribble {
+            position: absolute;
+            right: 5%;
+            top: -20px;
+            color: #f84131;
+            /* Màu vàng Sota */
+        }
+
+        .faq__title-scribble .scribble {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            font-style: italic;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .faq__title-scribble-arrow {
+            width: 40px;
+            transform: rotate(-10deg);
+        }
+
+        /* Accordion List */
+        .faq__list {
+            max-width: 900px;
+            margin: 0 auto;
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq__item {
+            border-top: 1px solid #eee;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq__item.is-active {
+            background-color: #f9f9f9;
+            /* Làm nổi bật mục đang mở */
+        }
+
+        .faq__item-top {
+            padding: 30px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq__item-top h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 0;
+            transition: color 0.3s;
+        }
+
+        .faq__item-icon {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            color: #0066cc;
+        }
+
+        .faq__item-icon svg {
+            width: 100%;
+        }
+
+        /* Content Area */
+        .faq__item-bottom {
+            display: grid;
+            grid-template-rows: 0fr;
+            /* Mặc định ẩn hoàn toàn */
+            transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .faq__item-bottom-content {
+            padding: 0 10px 30px 10px;
+            color: #666;
+            line-height: 1.8;
+            font-size: 16px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .faq__item.is-active .faq__item-bottom-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+            /* Chờ khung mở ra rồi mới hiện chữ */
+        }
+
+        /* Active State */
+        .faq__item.is-active .faq__item-top h3 {
+            color: #0066cc;
+        }
+
+        .faq__item.is-active .faq__item-icon {
+            transform: rotate(45deg);
+            /* Xoay thành dấu X */
+        }
+
+        .faq__item.is-active .faq__item-bottom {
+            grid-template-rows: 1fr;
+            /* Mở rộng theo kích thước nội dung bên trong */
+        }
+
+        .faq__item-bottom-wrap {
+            min-height: 0;
+            /* Bắt buộc phải có để Grid animation hoạt động */
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 767px) {
+            .faq__title .h-ml {
+                font-size: 32px;
+            }
+
+            .faq__title-scribble {
+                display: none;
+            }
+
+            .faq {
+                padding: 60px 0;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <!-- ----------------------------phần 1-------------------------------->
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
@@ -1990,6 +2392,7 @@ include "header.html";
         </div>
     </section>
 
+    <!-- ----------------------------phần 2-------------------------------->
     <section class="tm_partner_section">
         <div class="container">
             <div class="row align-items-center">
@@ -2000,27 +2403,23 @@ include "header.html";
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="owl-carousel owl-theme customer-logos">
-                        <div class="item"><img
-                                src="./Dịch vụ total marketing_files/khach-hang-cua-sao-kim-24-uni-president-84450.png"
-                                alt="Sota"></div>
-                        <div class="item"><img src="./Dịch vụ total marketing_files/logo-8sangbds-7313.png" alt="Sota">
+                    <div class="marquee-wrapper">
+                        <div class="marquee-content customer-logos-gsap">
+                            <div class="item"><img src="./Dịch vụ total marketing_files/khach-hang-cua-sao-kim-24-uni-president-84450.png" alt="Sota"></div>
+                            <div class="item"><img src="./Dịch vụ total marketing_files/logo-8sangbds-7313.png" alt="Sota"></div>
+                            <div class="item"><img src="./Dịch vụ total marketing_files/18805163-6921-6122.png" alt="Sota"></div>
+                            <div class="item"><img src="./Dịch vụ total marketing_files/khach-hang-cua-sao-kim-32-sonha-88390.png" alt="Sota"></div>
+                            <div class="item"><img src="./Dịch vụ total marketing_files/khach-hang-cua-sao-kim-33-tonkin-land-53900.png" alt="Sota"></div>
+                            <div class="item"><img src="./Dịch vụ total marketing_files/iconslogo-01-1-5088-66500.png" alt="Sota"></div>
                         </div>
-                        <div class="item"><img src="./Dịch vụ total marketing_files/18805163-6921-6122.png" alt="Sota">
-                        </div>
-                        <div class="item"><img
-                                src="./Dịch vụ total marketing_files/khach-hang-cua-sao-kim-32-sonha-88390.png"
-                                alt="Sota"></div>
-                        <div class="item"><img
-                                src="./Dịch vụ total marketing_files/khach-hang-cua-sao-kim-33-tonkin-land-53900.png"
-                                alt="Sota"></div>
-                        <div class="item"><img src="./Dịch vụ total marketing_files/iconslogo-01-1-5088-66500.png"
-                                alt="Sota"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- ----------------------------phần 3-------------------------------->
+
     <section class="tm_about space_bottom">
         <div class="fixwidth">
             <div class="row">
@@ -2046,6 +2445,15 @@ include "header.html";
             </div>
         </div>
     </section>
+
+    <!-- ----------------------------phần 4 trống -------------------------------->
+
+    <!-- ----------------------------phần 5 trống-------------------------------->
+
+
+
+    <!-- ----------------------------phần 6 Video-------------------------------->
+
     <section class="vault-section">
         <div class="container">
             <div class="vault-content">
@@ -2175,7 +2583,10 @@ include "header.html";
             </div>
         </section>
     </section>
-    <section class="pricing-section" style="background: #0b0b0b; width: 100%; overflow: hidden;">
+
+    <!-- ----------------------------phần 7 các gói dịch vụ------------------------------->
+
+    <section class="pricing-section" style="background: #0b0b0b; width: 100%; overflow: hidden;padding: 40px;">
         <div class="container is--m u--rel">
             <div class="pricing-home__button-row">
                 <div class="u--rel">
@@ -2564,6 +2975,9 @@ include "header.html";
             </div> -->
         </div>
     </section>
+
+    <!-- ----------------------------phần 8 các dự án của chúng tôi-------------------------------->
+
     <section data-theme-section="light" class="product-slider">
         <div class="product-slider__inner">
             <div class="container">
@@ -2639,6 +3053,213 @@ include "header.html";
             </div>
             <div class="product-slider__fade"></div>
     </section>
+
+
+
+
+
+
+
+
+
+
+    <!-- ----------------------------phần 12 các câu hỏi thường gặp-------------------------------->
+    <section data-theme-section="light" class="faq">
+        <div class="container is--s is--md-m">
+            <div class="faq__title">
+                <h2 class="h-ml">CÂU HỎI THƯỜNG GẶP?<br> KHI TƯ VẤN TOTAL MARKETING.</h2>
+                <div class="faq__title-scribble">
+                    <p class="scribble">We even answered<br>without ChatGPT ;)</p><svg
+                        xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 32 32" fill="none"
+                        class="faq__title-scribble-arrow">
+                        <path
+                            d="M0.811778 30.9739L0.611728 29.7224L0.0106334 29.3396C1.96759 29.5231 2.9029 26.4814 4.76811 25.7896C5.33095 25.5814 5.42096 26.2381 5.24333 26.4359C5.20055 26.4845 4.51387 26.669 4.09003 27.0674C3.7286 27.4109 1.98139 28.9553 2.2919 29.3524C7.36056 28.8823 12.0132 27.7076 16.4405 25.1506C25.4623 19.9466 30.4543 10.4517 31.3555 0.219667C31.8885 15.3444 19.0876 28.3645 4.24771 29.6991C4.58435 30.5566 7.36811 29.6624 7.17251 31.0187L0.815039 30.9739L0.811778 30.9739Z"
+                            fill="currentColor"></path>
+                    </svg>
+                </div>
+
+            </div>
+            <div class="faq__wrap">
+                <div data-collection-status="active" data-faq-collection="Vault" class="faq__collection w-dyn-list">
+                    <div data-accordion-css-init="" data-accordion-close-siblings="true" role="list"
+                        class="faq__list w-dyn-items">
+                        <div data-accordion-status="not-active" role="listitem" class="faq__item w-dyn-item">
+                            <div data-accordion-toggle="" class="faq__item-top" onclick="toggleFaq(this)">
+                                <h3 class="p-l u--fw-medium">Phương pháp triển khai Digital Marketing tổng thể là gì?</h3>
+                                <div class="faq__item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                        viewBox="0 0 13 13" fill="none" class="svg">
+                                        <path
+                                            d="M5.96149 12.0996V6.99217H0.839844V5.20705H5.96149V0.0996094H7.74294V5.20705H12.8398V6.99217H7.74294V12.0996H5.96149Z"
+                                            fill="currentColor"></path>
+                                    </svg></div>
+                            </div>
+                            <div class="faq__item-bottom">
+                                <div class="faq__item-bottom-wrap">
+                                    <div class="faq__item-bottom-content">
+                                        <div class="rich-text w-richtext">
+                                            <p>Sota triển khai Digital Marketing theo phương pháp Data
+                                                Driven (Hướng dữ liệu). Chúng tôi thực hiện Market Research và Digital
+                                                Marketing Audit để đánh giá tình hình hiện tại của doanh nghiệp. Dựa trên
+                                                kết quả đó, chúng tôi thiết lập chiến lược và kế hoạch digital marketing phù hợp,
+                                                tích hợp các công cụ phù hợp như Al Marketing và Automation Marketing để tối ưu hóa
+                                                hiệu quả thực thi. Mỗi doanh nghiệp sẽ có chiến lược, cách triển khai và phân bổ tỷ trọng khác nhau..</p>
+                                            <!-- <p>You’ll find a mix of functional and creative resources: components,
+                                                snippets, effects, and techniques built for designers and developers
+                                                who love detail. </p>
+                                            <p>Everything comes with clear documentation for both Webflow and
+                                                HTML/CSS/JS. We use the best tools available on the web, like GSAP,
+                                                so you can easily learn, copy, or adapt them into your own projects.
+                                            </p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-accordion-status="not-active" role="listitem" class="faq__item w-dyn-item">
+                            <div data-accordion-toggle="" class="faq__item-top" onclick="toggleFaq(this)">
+                                <h3 class="p-l u--fw-medium">Sota tập trung vào những KPIs nào??</h3>
+                                <div class="faq__item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                        viewBox="0 0 13 13" fill="none" class="svg">
+                                        <path
+                                            d="M5.96149 12.0996V6.99217H0.839844V5.20705H5.96149V0.0996094H7.74294V5.20705H12.8398V6.99217H7.74294V12.0996H5.96149Z"
+                                            fill="currentColor"></path>
+                                    </svg></div>
+                            </div>
+                            <div class="faq__item-bottom">
+                                <div class="faq__item-bottom-wrap">
+                                    <div class="faq__item-bottom-content">
+                                        <div class="rich-text w-richtext">
+                                            <!-- <p>Yes. Anything you already used in shipped projects stays fine to use.
+                                                Your Vault access and updates stop when your billing period ends. We
+                                                will <em>not</em> lock you into some CDN of ours to keep access!</p> -->
+                                            <p>
+                                                Chúng tôi sử dụng các công cụ phân tích để theo dõi các KPI quan trọng như:
+                                                lượng truy cập, tỷ lệ chuyển đổi, chi phí trên mỗi khách hàng tiềm năng và ROI.
+                                                Báo cáo chi tiết sẽ được gửi định kỳ để bạn có cái nhìn tổng quan về hiệu quả của
+                                                chiến dịch. Tùy theo từng nhu cầu cụ thể, chúng tôi có thể đặt mục tiêu, thiết lập
+                                                để tối ưu hóa các chỉ số liên quan để đạt mục tiêu đó.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-accordion-status="not-active" role="listitem" class="faq__item w-dyn-item">
+                            <div data-accordion-toggle="" class="faq__item-top" onclick="toggleFaq(this)">
+                                <h3 class="p-l u--fw-medium">Điểm khác biệt của Sota là gì?</h3>
+                                <div class="faq__item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                        viewBox="0 0 13 13" fill="none" class="svg">
+                                        <path
+                                            d="M5.96149 12.0996V6.99217H0.839844V5.20705H5.96149V0.0996094H7.74294V5.20705H12.8398V6.99217H7.74294V12.0996H5.96149Z"
+                                            fill="currentColor"></path>
+                                    </svg></div>
+                            </div>
+                            <div class="faq__item-bottom">
+                                <div class="faq__item-bottom-wrap">
+                                    <div class="faq__item-bottom-content">
+                                        <div class="rich-text w-richtext">
+                                            <p>
+                                                Điểm mạnh của chúng tôi là cung cấp dịch vụ digital marketing
+                                                tổng thể với quy trình khoa học và minh bạch. Chúng tôi tích cực
+                                                trong việc ứng dụng công nghệ (đặc biệt là Al) và Automation để Scale Marketing.
+                                                Điều quan trọng, dịch vụ digital marketing được vận hành bởi đội ngũ chuyên gia giàu kinh nghiệm.
+                                                Chúng tôi cam kết mang lại giá trị thực sự và giải pháp tùy chỉnh cho từng doanh nghiệp.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-accordion-status="not-active" role="listitem" class="faq__item w-dyn-item">
+                            <div data-accordion-toggle="" class="faq__item-top" onclick="toggleFaq(this)">
+                                <h3 class="p-l u--fw-medium">Sử dụng Al và Automation vào Digital Marketing thế nào?</h3>
+                                <div class="faq__item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                        viewBox="0 0 13 13" fill="none" class="svg">
+                                        <path
+                                            d="M5.96149 12.0996V6.99217H0.839844V5.20705H5.96149V0.0996094H7.74294V5.20705H12.8398V6.99217H7.74294V12.0996H5.96149Z"
+                                            fill="currentColor"></path>
+                                    </svg></div>
+                            </div>
+                            <div class="faq__item-bottom">
+                                <div class="faq__item-bottom-wrap">
+                                    <div class="faq__item-bottom-content">
+                                        <div class="rich-text w-richtext">
+                                            <p>
+                                                Chúng tôi sử dụng Al để hỗ trợ ra chuyên gia digital marketing
+                                                của chúng tôi ra quyết định trong rất nhiều khía cạnh.
+                                                (Quyết định cuối cùng được đảm bảo bởi chuyên gia là con người).
+                                                Trong đó, chúng tôi sử dụng Al để hỗ trợ phân tích dữ liệu,
+                                                dự đoán xu hướng và tối ưu hóa chiến dịch. Automation Marketing (tích hợp Al) giúp tự động hóa
+                                                thông minh các hoạt động marketing, tiết kiệm thời gian và tăng hiệu quả tương tác với khách hàng.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-accordion-status="not-active" role="listitem" class="faq__item w-dyn-item">
+                            <div data-accordion-toggle="" class="faq__item-top" onclick="toggleFaq(this)">
+                                <h3 class="p-l u--fw-medium">Chi phí dịch vụ Digital Marketing tổng thể như thế nào?</h3>
+                                <div class="faq__item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                        viewBox="0 0 13 13" fill="none" class="svg">
+                                        <path
+                                            d="M5.96149 12.0996V6.99217H0.839844V5.20705H5.96149V0.0996094H7.74294V5.20705H12.8398V6.99217H7.74294V12.0996H5.96149Z"
+                                            fill="currentColor"></path>
+                                    </svg></div>
+                            </div>
+                            <div class="faq__item-bottom">
+                                <div class="faq__item-bottom-wrap">
+                                    <div class="faq__item-bottom-content">
+                                        <div class="rich-text w-richtext">
+                                            <p>
+                                                Chúng tôi cung cấp các gói dịch vụ linh hoạt, có thể điều chỉnh theo ngân sách
+                                                và mục tiêu cụ thể của bạn. Chi phí dịch vụ Digital Marketing của Sota được xây dựng
+                                                dựa trên tiêu chuẩn chung của ngành, đảm bảo cạnh tranh và phù hợp với nhu cầu của doanh nghiệp.
+                                                Sota sẵn sàng thảo luận chi tiết để đưa ra gói giải pháp phù hợp nhất cho doanh nghiệp.
+                                                Vui lòng liên hệ để được tư vấn chi tiết.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-accordion-status="not-active" role="listitem" class="faq__item w-dyn-item">
+                            <div data-accordion-toggle="" class="faq__item-top" onclick="toggleFaq(this)">
+                                <h3 class="p-l u--fw-medium">Sota có nhận các dịch vụ riêng lẻ về Digital Marketing không?</h3>
+                                <div class="faq__item-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%"
+                                        viewBox="0 0 13 13" fill="none" class="svg">
+                                        <path
+                                            d="M5.96149 12.0996V6.99217H0.839844V5.20705H5.96149V0.0996094H7.74294V5.20705H12.8398V6.99217H7.74294V12.0996H5.96149Z"
+                                            fill="currentColor"></path>
+                                    </svg></div>
+                            </div>
+                            <div class="faq__item-bottom">
+                                <div class="faq__item-bottom-wrap">
+                                    <div class="faq__item-bottom-content">
+                                        <div class="rich-text w-richtext">
+                                            <p>
+                                                Có. Sota có cung cấp các dịch vụ nhỏ bên trong dịch vụ Digital Marketing tổng thể. 
+                                                Các gói dịch vụ Digital Marketing phổ biến được khách hàng lựa chọn như: 
+                                                Gói nghiên cứu thị trường Gói tư vấn chiến lược, lập kế hoạch Digital Marketing 
+                                                Gói thiết kế website Gói phát triển hệ thống Digital Gói Branded SEO Gói Social Marketing 
+                                                Gói Digital Ads Gói Content Marketing Gói Email Marketing Gói Automationg Marketing 
+                                                Ngay cả khi doanh nghiệp sử dụng các dịch vụ riêng lẻ, Sota cũng luôn tiếp cận bài toán 
+                                                với bức tranh tổng thể, giúp doanh nghiệp hiểu cách làm Digital Marketing hiệu quả. Sau đó, 
+                                                chúng tôi đề xuất các hạng mục phù hợp nhất, cùng với doanh nghiệp thống nhất và lựa chọn triển khai. 
+                                                Đảm bảo đáp ứng mục tiêu, tính khả thi và luôn trong phạm vi ngân sách. 
+                                                Vui lòng liên hệ ngay để được tư vấn và báo giá chi tiết.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+
 
 
 
@@ -2848,6 +3469,9 @@ include "header.html";
             const triggerSolo = document.getElementById('trigger-solo');
             const triggerTeam = document.getElementById('trigger-team');
 
+            const cardsSolo = document.querySelectorAll('[data-pricing-card="solo"]');
+            const cardTeam = document.querySelector('[data-pricing-card="team"]');
+
             // Mặc định ban đầu chọn Individuals
             if (btnSolo) btnSolo.classList.add('is--active');
 
@@ -2869,6 +3493,47 @@ include "header.html";
                     triggerSolo.classList.remove('is--inactive');
                     triggerTeam.classList.add('is--inactive');
                 }
+                // 2. Hiệu ứng chuyển Card mượt mà bằng GSAP
+                if (isTeam) {
+                    // Ẩn Solo, hiện Team
+                    gsap.to(cardsSolo, {
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.3,
+                        onComplete: () => {
+                            cardsSolo.forEach(el => el.style.display = 'none');
+                            cardTeam.style.display = 'flex';
+                            gsap.fromTo(cardTeam, {
+                                opacity: 0,
+                                y: 20
+                            }, {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.5
+                            });
+                        }
+                    });
+                } else {
+                    // Ẩn Team, hiện Solo
+                    gsap.to(cardTeam, {
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.3,
+                        onComplete: () => {
+                            cardTeam.style.display = 'none';
+                            cardsSolo.forEach(el => el.style.display = 'flex');
+                            gsap.fromTo(cardsSolo, {
+                                opacity: 0,
+                                y: 20
+                            }, {
+                                opacity: 1,
+                                y: 0,
+                                duration: 0.5,
+                                stagger: 0.1
+                            });
+                        }
+                    });
+                }
             }
 
             // Gán sự kiện click
@@ -2876,6 +3541,8 @@ include "header.html";
             if (btnTeam) btnTeam.addEventListener('click', () => updatePricingUI(true));
             if (triggerSolo) triggerSolo.addEventListener('click', () => updatePricingUI(false));
             if (triggerTeam) triggerTeam.addEventListener('click', () => updatePricingUI(true));
+            // Khởi tạo mặc định
+            cardTeam.style.display = 'none';
         });
 
         // Hàm dùng chung để tối ưu code
@@ -3008,6 +3675,47 @@ include "header.html";
             onEnter: () => scrambleEffect(title, textContent),
             once: true // Chỉ chạy 1 lần khi cuộn tới
         });
+        $(document).ready(function() {
+            const marquee = document.querySelector('.customer-logos-gsap');
+
+            // Nhân bản nội dung để tạo hiệu ứng lặp vô tận
+            const content = marquee.innerHTML;
+            marquee.innerHTML += content + content; // Nhân 3 để dải lụa đủ dài
+
+            const totalWidth = marquee.scrollWidth / 3;
+
+            gsap.to(".customer-logos-gsap", {
+                x: -totalWidth,
+                duration: 6, // Tốc độ chạy (giảm số này nếu muốn chạy nhanh hơn)
+                ease: "none",
+                repeat: -1,
+                modifiers: {
+                    x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+                }
+            });
+        });
+
+        function toggleFaq(element) {
+            // 1. Tìm phần tử cha .faq__item gần nhất
+            const currentItem = element.closest('.faq__item');
+
+            // 2. Kiểm tra xem nó có đang mở không
+            const isActive = currentItem.classList.contains('is-active');
+
+            // 3. (Tùy chọn) Đóng tất cả các mục khác nếu muốn hiệu ứng Accordion một mục
+            document.querySelectorAll('.faq__item').forEach(item => {
+                if (item !== currentItem) {
+                    item.classList.remove('is-active');
+                }
+            });
+
+            // 4. Toggle class cho mục hiện tại
+            if (isActive) {
+                currentItem.classList.remove('is-active');
+            } else {
+                currentItem.classList.add('is-active');
+            }
+        }
     </script>
 </body>
 
