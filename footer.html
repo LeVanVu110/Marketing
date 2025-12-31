@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOTA Group Footer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Reset & Cài đặt chung */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+.sota-footer {
+    background-color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 60px 0 20px 0;
+    color: #444;
+}
+
+.footer-container {
+    max-width: 1290px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- PHẦN 1: BANNER GRADIENT --- */
+.footer-contact-banner {
+    background: linear-gradient(90deg, #9b7a3a 0%, #d4a753 100%);
+    border-radius: 12px;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.footer-contact-content { flex: 1; padding-right: 30px; }
+
+.footer-contact-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.footer-contact-description p { font-size: 14.5px; margin-bottom: 10px; line-height: 1.6; }
+.footer-contact-description ul { margin-left: 20px; margin-bottom: 10px; font-size: 14px; }
+
+.footer-contact-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.footer-contact-btn:hover { background: #fff; color: #9b7a3a; }
+
+/* --- PHẦN 2: DANH MỤC 4 CỘT --- */
+.footer-category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.category-title {
+    font-size: 19px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.category-links { list-style: none; }
+.category-links li { margin-bottom: 10px; }
+.category-links li a {
+    text-decoration: none;
+    color: #555;
+    font-size: 14.5px;
+    transition: 0.2s;
+}
+.category-links li a:hover { color: #c49533; padding-left: 5px; }
+
+.line-separator { border: 0; border-top: 1px solid #000; margin-bottom: 40px; }
+
+/* --- PHẦN 3: THÔNG TIN CHI TIẾT --- */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+}
+
+.company-name { font-size: 17px; font-weight: bold; margin-bottom: 15px; color: #333; }
+.info-list { list-style: none; line-height: 1.9; font-size: 15px; }
+
+.main-logo { height: 75px; margin-bottom: 10px; }
+.slogan { font-size: 12px; font-weight: bold; color: #555; margin-bottom: 15px; }
+
+.work-time p { font-size: 14.5px; line-height: 1.6; margin-bottom: 8px; }
+.hotline-text { color: #e31a22; font-weight: bold; }
+
+.social-section p { font-size: 15px; font-weight: bold; margin: 15px 0 10px 0; }
+.social-icons { display: flex; gap: 8px; }
+.social-icons img { width: 36px; height: 36px; border-radius: 6px; }
+
+/* Đường kẻ vàng ngắn */
+.yellow-line-short {
+    width: 35%;
+    height: 3px;
+    background-color: #c49533;
+    margin: 30px 0 20px 0;
+}
+
+.support-policy { width: 60%; font-size: 14.5px; line-height: 1.7; color: #555; }
+.support-policy em { font-weight: bold; font-style: italic; }
+
+/* Bottom bar */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    padding: 25px 0;
+    border-top: 1px solid #eee;
+}
+
+.bottom-logo { height: 40px; }
+.support-link { font-weight: bold; color: #000; text-decoration: none; font-size: 17px; }
+.dmca-logo { height: 35px; }
+
+/* Responsive */
+@media (max-width: 992px) {
+    .footer-category-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-contact-banner { flex-direction: column; text-align: center; }
+    .footer-contact-content { padding-right: 0; margin-bottom: 20px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .support-policy { width: 100%; }
+}
+    </style>
+</head>
+<body>
+
+<footer class="sota-footer">
+    <div class="footer-container">
+        
+        <div class="footer-contact-banner">
+            <div class="footer-contact-content">
+                <h2 class="footer-contact-heading">SOTA - GIẢI PHÁP HỖ TRỢ DOANH NGHIỆP VIỆT</h2>
+                <div class="footer-contact-description">
+                    <p>" <strong>SOTA</strong> " Viết tắt của "<strong>State Of The Art - Hiện Đại Nhất"</strong></p>
+                    <ul>
+                        <li>We believe in getting the biggest bang for the results we want for our clients. Therefore everything we do has to be <strong>State Of The Art</strong>.</li>
+                    </ul>
+                    <p>Chúng tôi tin tưởng vào việc đạt được kết quả tốt nhất mà chúng tôi mong muốn cho khách hàng của mình. Do đó, mọi thứ chúng tôi làm đều phải là <strong>State Of The Art</strong>.</p>
+                    <ul>
+                        <li>SOTA là công ty tiếp thị kỹ thuật số hàng đầu tại Việt Nam, với đội ngũ dày dặn kinh nghiệm cung cấp các dịch vụ Website Design, SEO, Quảng Cáo, Quản trị, Hosting, Tên miền, Branding, Tư vấn Thiết kế Định vị Thương hiệu...</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="footer-contact-btn">
+                Liên hệ ngay <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="footer-category-grid">
+            <div class="category-col">
+                <h3 class="category-title">Công cụ</h3>
+                <ul class="category-links">
+                    <li><a href="#">Phân tích từ khóa</a></li>
+                </ul>
+            </div>
+            <div class="category-col">
+                <h3 class="category-title">Thông tin chung</h3>
+                <ul class="category-links">
+                    <li><a href="#">Giới thiệu về Sota</a></li>
+                    <li><a href="#">Hồ sơ năng lực</a></li>
+                    <li><a href="#">Hướng dẫn thanh toán</a></li>
+                    <li><a href="#">Quy định sử dụng dịch vụ</a></li>
+                    <li><a href="#">Chính sách riêng tư</a></li>
+                    <li><a href="#">Chính sách hoàn tiền</a></li>
+                    <li><a href="#">Quy định chống thư rác</a></li>
+                </ul>
+            </div>
+            <div class="category-col">
+                <h3 class="category-title">Danh sách dịch vụ</h3>
+                <ul class="category-links">
+                    <li><a href="#">Dịch vụ Web Hosting</a></li>
+                    <li><a href="#">Dịch vụ Tên miền</a></li>
+                    <li><a href="#">Dịch vụ thiết kế Website</a></li>
+                    <li><a href="#">Dịch vụ Email Server</a></li>
+                    <li><a href="#">Dịch vụ Máy chủ</a></li>
+                    <li><a href="#">Bản quyền phần mềm</a></li>
+                </ul>
+            </div>
+            <div class="category-col">
+                <h3 class="category-title">Hướng dẫn sử dụng</h3>
+                <ul class="category-links">
+                    <li><a href="#">Chính sách bảo mật thông tin</a></li>
+                    <li><a href="#">Email Server là gì</a></li>
+                    <li><a href="#">SSL là gì?</a></li>
+                    <li><a href="#">Thỏa thuận sử dụng</a></li>
+                    <li><a href="#">Kiến thức về Tên miền</a></li>
+                    <li><a href="#">Kiến thức về Web Hosting</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="line-separator">
+
+        <div class="footer-grid">
+            <div class="footer-col-info">
+                <h2 class="company-name">CÔNG TY TNHH CÔNG NGHỆ SOTA GROUP</h2>
+                <ul class="info-list">
+                    <li>• <strong>Mã số thuế:</strong> 0317108429</li>
+                    <li>• <strong>Tên viết tắt:</strong> SOTA GROUP CO., LTD</li>
+                    <li>• <strong>Trụ sở:</strong> 60 Đường số 1, KDC Cityland Park Hills, P.Gò Vấp, TP. HCM</li>
+                    <li>• <strong>VP chi nhánh:</strong> 02 Trần Bình Trọng, P. Quy Nhơn, Tỉnh Gia Lai</li>
+                    <li>• <strong>Hotline:</strong> 0939.857.111</li>
+                    <li>• <strong>Hotline kỹ thuật:</strong> 028.6279.8839</li>
+                    <li>• <strong>Hotline kế toán:</strong> 096.2630.824</li>
+                    <li>• <strong>Hotline CSKH:</strong> 0985.528.427</li>
+                    <li>• <strong>Hotline tuyển dụng:</strong> 0961.72.73.70</li>
+                    <li>• <strong>Email:</strong> info@sotagroup.vn</li>
+                    <li>• <strong>Website:</strong> sotagroup.vn</li>
+                </ul>
+            </div>
+
+            <div class="footer-col-brand">
+                <div class="brand-section">
+                    <img src="./Dịch vụ total marketing_files/logo-9949.png" alt="SOTA Logo" class="main-logo">
+                    <p class="slogan">"GIẢI PHÁP HỖ TRỢ DOANH NGHIỆP VIỆT"</p>
+                </div>
+
+                <div class="work-time">
+                    <p>Thời gian làm việc: <strong>08h - 17h30</strong> từ Thứ Hai đến Thứ Sáu, thứ Bảy làm việc đến 12h. Phòng kỹ thuật làm việc 24/7.</p>
+                    <p>Giấy phép kinh doanh số 0317108429 cấp bởi Sở đầu tư và kế hoạch TP Hồ Chí Minh.</p>
+                    <p>Đường dây nóng tiếp nhận khiếu nại: <span class="hotline-text">0902.83.68.91</span></p>
+                </div>
+
+                <div class="social-section">
+                    <p>Kết nối với chúng tôi:</p>
+                    <div class="social-icons">
+                        <img src="./Dịch vụ total marketing_files/zalo-icon-6923.png" alt="Zalo">
+                        <img src="./Dịch vụ total marketing_files/d7be3679d9628da41c9748c5137e73e3-6179.png" alt="Messenger">
+                        <img src="./Dịch vụ total marketing_files/5194062b749e7c9f55899337192de1cb-6822.jpg" alt="Youtube">
+                        <img src="./Dịch vụ total marketing_files/4361af68fe14ff7db616e35ef4cff15d-2966.png" alt="Facebook">
+                        <img src="./Dịch vụ total marketing_files/216517-6427.png" alt="Gọi">
+                        <img src="./Dịch vụ total marketing_files/ab60376d43cb0f7efdff80b22b66f126-25880.jpg" alt="Tiktok">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="yellow-line-short"></div>
+
+        <div class="support-policy">
+            Từ tỉnh <em>Gia Lai</em> đến mũi <em>Cà Mau</em> chúng tôi đều có chuyên viên tư vấn tận nơi, ký kết hợp đồng và <strong>hỗ trợ 24/7</strong> có nghĩa là luôn cung cấp cho khách hàng sự trợ giúp trực tiếp ở bất cứ lúc nào mà khách hàng cần hỗ trợ.
+        </div>
+
+        <div class="footer-bottom">
+            <img src="./Dịch vụ total marketing_files/logo-9949.png" alt="SOTA Small" class="bottom-logo">
+            <a href="#" class="support-link">Liên hệ hỗ trợ</a>
+            <img src="./Dịch vụ total marketing_files/dmca_protected_sml_120m.png" alt="DMCA" class="dmca-logo">
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
