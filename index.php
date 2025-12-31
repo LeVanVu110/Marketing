@@ -672,6 +672,7 @@ include "header.html";
             --sota-gold: #c49533;
             --text-dark: #333;
             --text-gray: #666;
+            
         }
 
         .u--rel {
@@ -1144,6 +1145,7 @@ include "header.html";
             margin-bottom: 12px;
             font-weight: 600;
             line-height: 1.4;
+            color: azure;
         }
 
         .info-grid__item-col p {
@@ -1744,9 +1746,9 @@ include "header.html";
         /* Trạng thái mặc định của các nút */
         .button-row .button {
             transition: background-color 0.4s ease, opacity 0.4s ease;
-            background-color: #1a1a1a !important;
+            background-color: #1a1a1a !important; 
             /* Màu đen mặc định */
-            opacity: 0.6;
+            /* opacity: 0.6; */
         }
 
         /* 2. Khi nút có class is--active (được chọn): Đổi sang màu tím #8b5cf6 và rõ nét */
@@ -2240,7 +2242,7 @@ include "header.html";
             font-style: italic;
             margin-bottom: 5px;
             font-weight: 700;
-            color:#f84131;
+            color: #f84131;
         }
 
         .faq__title-scribble-arrow {
@@ -2352,32 +2354,49 @@ include "header.html";
                 padding: 60px 0;
             }
         }
-        /* --------------------------- Phần 9 -------------------  */
-        .process-section { padding: 100px 0; }
-        /* .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; } */
-        .header-title { text-align: center; color: var(--sota-blue);font-weight:700; text-transform: uppercase; }
 
-        .timeline-wrapper { position: relative; }
+        /* --------------------------- Phần 9 -------------------  */
+        .process-section {
+            padding: 100px 0;
+        }
+
+        /* .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; } */
+        .header-title {
+            text-align: center;
+            color: var(--sota-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .timeline-wrapper {
+            position: relative;
+        }
 
         /* SVG Line - Phần quan trọng nhất để nét liền đè nét đứt */
         .svg-connector {
-            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 100%; height: 100%; z-index: 1; pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
         }
 
         /* Đường nét đứt xám cố định bên dưới */
-        #path-bg { 
-            stroke: var(--bg-gray); 
-            stroke-width: 2; 
-            fill: none; 
-            stroke-dasharray: 8 8; 
+        #path-bg {
+            stroke: var(--bg-gray);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 8 8;
         }
 
         /* Đường nét liền xanh chạy đè lên trên */
-        #path-active { 
-            stroke: var(--sota-blue); 
-            stroke-width: 3; 
-            fill: none; 
+        #path-active {
+            stroke: var(--sota-blue);
+            stroke-width: 3;
+            fill: none;
             stroke-linecap: round;
             /* Animation mượt khi cuộn 2 chiều */
             transition: stroke-dashoffset 0.2s ease-out;
@@ -2385,26 +2404,37 @@ include "header.html";
 
         /* Các khối nội dung */
         .timeline-item {
-            width: 100%; display: flex; margin-bottom: 120px; 
-            position: relative; z-index: 2;
+            width: 100%;
+            display: flex;
+            margin-bottom: 120px;
+            position: relative;
+            z-index: 2;
             /* Trạng thái mặc định: Ẩn */
-            opacity: 0; 
+            opacity: 0;
             transform: scale(0.9) translateY(40px);
             transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         /* Trạng thái khi đường kẻ đi qua: Hiện */
         .timeline-item.is-visible {
-            opacity: 1; 
+            opacity: 1;
             transform: scale(1) translateY(0);
         }
 
-        .timeline-item:nth-child(odd) { justify-content: flex-start; }
-        .timeline-item:nth-child(even) { justify-content: flex-end; }
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
 
         .content-card {
-            width: 42%; background: #fff; padding: 25px;
-            border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            width: 42%;
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             border-top: 4px solid #eee;
             transition: border-color 0.5s ease;
         }
@@ -2413,20 +2443,198 @@ include "header.html";
             border-top-color: var(--sota-blue);
         }
 
-        .step-label { font-weight: bold; color: var(--sota-blue); font-size: 13px; display: block; margin-bottom: 8px; }
-        h3 { margin: 0 0 12px 0; font-size: 19px; color: #222; }
-        p { color: #555; font-size: 14.2px; line-height: 1.6; margin: 0; }
+        .step-label {
+            font-weight: bold;
+            color: var(--sota-blue);
+            font-size: 13px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        h3 {
+            margin: 0 0 12px 0;
+            font-size: 19px;
+            color: #222;
+        }
+
+        p {
+            color: #555;
+            font-size: 14.2px;
+            line-height: 1.6;
+            margin: 0;
+        }
 
         @media (max-width: 768px) {
-            .content-card { width: 90%; margin: 0 auto; }
-            .svg-connector { display: none; }
-            .timeline-item { opacity: 1; transform: none; }
+            .content-card {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            .svg-connector {
+                display: none;
+            }
+
+            .timeline-item {
+                opacity: 1;
+                transform: none;
+            }
         }
+
+        /* --------------------------- phần 4 ---------------------  */
+        /* Container chính thay thế cho body */
+        .osmo-integration-section {
+            background-color: #201D1D;
+            /* Màu nền tối sâu */
+            color: #ffffff;
+            padding: 80px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px;
+            position: relative;
+        }
+
+        .osmo-container {
+            display: flex;
+            width: 100%;
+            max-width: 1350px;
+            position: relative;
+        }
+
+        /* Chia cột */
+        .osmo-col {
+            flex: 1;
+            padding: 40px 70px 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+        }
+
+        /* Đường kẻ dọc phân chia */
+        .osmo-left {
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Vòng tròn ở giữa */
+        .osmo-divider {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            color: #666;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Nội dung văn bản */
+        .osmo-content h2 {
+            font-size: 42px;
+            font-weight: 500;
+            margin: 24px 0;
+            letter-spacing: -1px;
+        }
+
+        .osmo-content p {
+            color: #888;
+            line-height: 1.5;
+            max-width: 100%;
+            margin: 0;
+            font-size: 17px;
+        }
+
+        /* Xử lý Logo */
+        .osmo-logo-main {
+            height: 32px;
+        }
+
+        .osmo-logo-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            height: 32px;
+            /* Giữ độ cao cố định để cân bằng với bên trái */
+        }
+
+        .osmo-logo-group img {
+            height: 20px;
+            opacity: 0.7;
+            filter: grayscale(1) brightness(2);
+            /* Làm logo sáng lên và tiệp màu trắng */
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .osmo-container {
+                flex-direction: column;
+            }
+
+            .osmo-left {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .osmo-divider {
+                /* Ẩn hoặc điều chỉnh vị trí nếu cần trên mobile */
+            }
+        }
+        /* --- PHẦN CSS BỔ SUNG CHO RESPONSIVE --- */
+
+@media (max-width: 991px) {
+    /* Chuyển từ hàng ngang sang hàng dọc */
+    .osmo-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Bỏ đường kẻ dọc bên phải, thêm đường kẻ ngang bên dưới để ngăn cách */
+    .osmo-left {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 0 0 60px 0; /* Tạo khoảng trống để đặt nút "or" */
+        margin-bottom: 40px;
+    }
+
+    .osmo-col {
+        width: 100%;
+        padding-right: 0 !important; /* Ghi đè padding cũ của bạn */
+    }
+
+    /* Đưa nút "or" về vị trí giữa đường kẻ ngang */
+    .osmo-divider {
+        left: 50%;
+        top: 50%; /* Vị trí này sẽ nằm chính giữa điểm giao nhau của 2 cột */
+        transform: translate(-50%, -50%);
+    }
+
+    .osmo-content h2 {
+        font-size: 32px; /* Giảm kích thước chữ tiêu đề trên mobile */
+    }
+}
+
+@media (max-width: 479px) {
+    .osmo-content h2 {
+        font-size: 28px;
+    }
+    
+    .osmo-integration-section {
+        padding: 40px 15px; /* Giảm padding ngoài cùng trên điện thoại nhỏ */
+    }
+}
     </style>
 </head>
 
 <body>
-    <!-- ----------------------------phần 1-------------------------------->
+    <!-- ----------------------------phần 1 banner -------------------------------->
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
@@ -2467,7 +2675,7 @@ include "header.html";
         </div>
     </section>
 
-    <!-- ----------------------------phần 2-------------------------------->
+    <!-- ----------------------------phần 2 các hãng -------------------------------->
     <section class="tm_partner_section">
         <div class="container">
             <div class="row align-items-center">
@@ -2493,7 +2701,7 @@ include "header.html";
         </div>
     </section>
 
-    <!-- ----------------------------phần 3-------------------------------->
+    <!-- ----------------------------phần 3 total marketing-------------------------------->
 
     <section class="tm_about space_bottom">
         <div class="fixwidth">
@@ -2521,9 +2729,73 @@ include "header.html";
         </div>
     </section>
 
-    <!-- ----------------------------phần 4 trống -------------------------------->
+    <!-- ----------------------------phần 4 Tại Sao nên Trển Khai digital marketing -------------------------------->
+    <section class="osmo-integration-section">
+        <div class="osmo-container">
 
-    <!-- ----------------------------phần 5 trống-------------------------------->
+            <div class="osmo-col osmo-left">
+                <div class="osmo-content" style = "text-align: center;">
+                    <!-- <img src="./Dịch vụ total marketing_files/logo-9949.png" alt="Webflow" class="osmo-logo-main"> -->
+                    <h2>Tại sao nên triển khai digital marketing tổng thể?</h2>
+                    <p>Hành trình khách hàng trong thời đại digital rất phức tạp, khách hàng có thể tìm hiểu thông tin
+                        trên nhiều kênh và ra quyết định mua hàng theo các phương thức khác nhau tại thời điểm khác nhau.
+                        Do đó, để Digital Marketing mang lại kết quả rõ ràng, doanh nghiệp cần hoạch định bức tranh tổng thể,
+                        triển khai đa kênh đồng bộ, thiết lập dữ liệu thông suốt, kết hợp đa dạng chiến dịch và tối ưu hóa
+                        từng phần dựa trên dữ liệu thực tế.</p>
+                    <div class="try-vault__button-row">
+                        <a data-button-rotate-hover=""
+                            class="button w-inline-block" data-size="" data-theme=""
+                            href="https://www.osmo.supply/try" data-barba-p="" data-button-rotate=""
+                            data-responsive="" data-outseta-type="" data-shape="" style="--y: 3160%;">
+                            <div data-wf--button-theme--variant="purple" class="button-bg"></div>
+                            <div class="button-label__wrap">
+                                <div class="button-label"><span>Tư vấn ngay</span></div>
+                                <div aria-hidden="true" class="button-label"><span>tư vấn ngay</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="osmo-divider">
+                <span>or</span>
+            </div>
+
+            <div class="osmo-col osmo-right" style="margin: 0;padding: 34px;">
+                <div class="osmo-content" style ="text-align: center;justify-items: anchor-center;">
+
+                    <h2>Xây Dựng Hệ Thống Digital Marketing</h2>
+                    <p>Hỗ trợ doanh nghiệp xây dựng toàn bộ hệ thống Digital Marketing, 
+                        kết nối dữ liệu xuyên suốt. Từ website, các kênh social, email marketing 
+                        cho tới các hệ thống hỗ trợ quản lý, tự động hóa marketing.</p>
+                    <div class="button-row">
+                        <a data-button-rotate-hover="" class="button w-inline-block"
+                            data-size="" data-theme="" href="https://www.osmo.supply/plans" data-barba-p=""
+                            data-button-rotate="" data-responsive="" data-outseta-type="" data-shape="round"
+                            style="--y: 3160%;background-color: #8b5cf6 !important;">
+                            <div data-wf--button-theme--variant="purple" class="button-bg"></div>
+                            <div class="button-label__wrap">
+                                <div class="button-label" style=""><span>Tư Vấn ngay</span></div>
+                                <div aria-hidden="true" class="button-label" style=""><span>Tư Vấn ngay</span></div>
+                            </div>
+                        </a><a data-button-rotate-hover="" class="button w-inline-block" data-size=""
+                            data-theme="" href="https://www.osmo.supply/faq" data-barba-p=""
+                            data-button-rotate="" data-responsive="" data-outseta-type="" data-shape=""
+                            style="--y: 1180%;background-color: #3c3c3c !important">
+                            <div data-wf--button-theme--variant="neutral-200" class="button-bg"></div>
+                            <div class="button-label__wrap">
+                                <div class="button-label"><span>Xem Thêm</span></div>
+                                <div aria-hidden="true" class="button-label"><span>Xem Thêm</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ----------------------------phần 5 Lợi ích sử dụng dịch vụ total marketing-------------------------------->
 
 
 
@@ -3128,38 +3400,82 @@ include "header.html";
             </div>
             <div class="product-slider__fade"></div>
     </section>
-    
+
     <!-- ----------------------------phần 9 quy trình dịch vụ DIGITAL MARKETING-------------------------------->
-<section class="process-section">
-    <div class="container">
-        <h2 class="header-title">QUY TRÌNH DỊCH VỤ DIGITAL MARKETING</h2>
-        <p style="margin-bottom: 80px !important;text-align: center;font-size: 16px;">
-            Chúng tôi áp dụng quy trình cung cấp dịch vụ và thực thi chuyên nghiệp.</p>
+    <section class="process-section">
+        <div class="container">
+            <h2 class="header-title">QUY TRÌNH DỊCH VỤ DIGITAL MARKETING</h2>
+            <p style="margin-bottom: 80px !important;text-align: center;font-size: 16px;">
+                Chúng tôi áp dụng quy trình cung cấp dịch vụ và thực thi chuyên nghiệp.</p>
 
-        <div class="timeline-wrapper">
-            <svg class="svg-connector" id="svg-root">
-                <path id="path-bg"></path>
-                <path id="path-active"></path>
-            </svg>
+            <div class="timeline-wrapper">
+                <svg class="svg-connector" id="svg-root">
+                    <path id="path-bg"></path>
+                    <path id="path-active"></path>
+                </svg>
 
-            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 1</span><h3>TƯ VẤN & HỢP ĐỒNG</h3><p>Sota tiếp nhận yêu cầu, khám phá và tư vấn chi tiết dịch vụ Digital Marketing tổng thể. Tiến hành lập báo giá, ký kết hợp đồng triển khai.</p></div></div>
-            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 2</span><h3>NGHIÊN CỨU</h3><p>Nghiên cứu sâu về khách hàng mục tiêu, thương hiệu, lĩnh vực, đối thủ và mô hình kinh doanh làm cơ sở đề xuất giải pháp.</p></div></div>
-            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 3</span><h3>KẾ HOẠCH & CHIẾN LƯỢC</h3><p>Lên chiến lược Digital Marketing, lập kế hoạch triển khai chi tiết, cụ thể hóa các mục tiêu và tiêu chuẩn đánh giá.</p></div></div>
-            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 4</span><h3>KIẾN TRÚC SỐ</h3><p>Xây dựng kiến trúc hệ thống Digital Marketing. Minh họa cách hệ thống hỗ trợ chiến lược đạt mục tiêu.</p></div></div>
-            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 5</span><h3>PHÁT TRIỂN</h3><p>Trực tiếp thiết lập hệ thống: Website, Social, App, CRM... Tích hợp dữ liệu liên thông với hệ thống hiện có.</p></div></div>
-            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 6</span><h3>CHIẾN DỊCH KỸ THUẬT SỐ</h3><p>Triển khai SEO, Ads, Content Marketing, Email Marketing... theo từng giai đoạn trên các kênh chuyên nghiệp.</p></div></div>
-            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 7</span><h3>TỐI ƯU HÓA</h3><p>Liên tục theo dõi, thực hiện điều chỉnh các hoạt động để tối ưu hiệu quả chiến dịch.</p></div></div>
-            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 8</span><h3>ĐÀO TẠO & PHÂN PHỐI</h3><p>Đào tạo đội ngũ vận hành hệ thống. Bàn giao tài liệu dự án và phối hợp tất toán hợp đồng.</p></div></div>
-            <div class="timeline-item"><div class="content-card"><span class="step-label">BƯỚC 9</span><h3>BẢO TRÌ & MỞ RỘNG</h3><p>Duy trì hệ thống hoạt động ổn định. Tư vấn mở rộng hệ thống đáp ứng nhu cầu phát triển lâu dài.</p></div></div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 1</span>
+                        <h3>TƯ VẤN & HỢP ĐỒNG</h3>
+                        <p>Sota tiếp nhận yêu cầu, khám phá và tư vấn chi tiết dịch vụ Digital Marketing tổng thể. Tiến hành lập báo giá, ký kết hợp đồng triển khai.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 2</span>
+                        <h3>NGHIÊN CỨU</h3>
+                        <p>Nghiên cứu sâu về khách hàng mục tiêu, thương hiệu, lĩnh vực, đối thủ và mô hình kinh doanh làm cơ sở đề xuất giải pháp.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 3</span>
+                        <h3>KẾ HOẠCH & CHIẾN LƯỢC</h3>
+                        <p>Lên chiến lược Digital Marketing, lập kế hoạch triển khai chi tiết, cụ thể hóa các mục tiêu và tiêu chuẩn đánh giá.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 4</span>
+                        <h3>KIẾN TRÚC SỐ</h3>
+                        <p>Xây dựng kiến trúc hệ thống Digital Marketing. Minh họa cách hệ thống hỗ trợ chiến lược đạt mục tiêu.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 5</span>
+                        <h3>PHÁT TRIỂN</h3>
+                        <p>Trực tiếp thiết lập hệ thống: Website, Social, App, CRM... Tích hợp dữ liệu liên thông với hệ thống hiện có.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 6</span>
+                        <h3>CHIẾN DỊCH KỸ THUẬT SỐ</h3>
+                        <p>Triển khai SEO, Ads, Content Marketing, Email Marketing... theo từng giai đoạn trên các kênh chuyên nghiệp.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 7</span>
+                        <h3>TỐI ƯU HÓA</h3>
+                        <p>Liên tục theo dõi, thực hiện điều chỉnh các hoạt động để tối ưu hiệu quả chiến dịch.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 8</span>
+                        <h3>ĐÀO TẠO & PHÂN PHỐI</h3>
+                        <p>Đào tạo đội ngũ vận hành hệ thống. Bàn giao tài liệu dự án và phối hợp tất toán hợp đồng.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 9</span>
+                        <h3>BẢO TRÌ & MỞ RỘNG</h3>
+                        <p>Duy trì hệ thống hoạt động ổn định. Tư vấn mở rộng hệ thống đáp ứng nhu cầu phát triển lâu dài.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- ----------------------------phần 10 cảm nhận khách hàng (trống)-------------------------------->
 
 
-
-
-
-
+    <!-- ----------------------------phần 11 Kết nối ngay với chúng tôi (trống)-------------------------------->
 
 
 
@@ -3334,22 +3650,22 @@ include "header.html";
                                     <div class="faq__item-bottom-content">
                                         <div class="rich-text w-richtext">
                                             <p>
-                                                Có. Sota có cung cấp các dịch vụ nhỏ bên trong dịch vụ Digital Marketing tổng thể. 
-                                                Các gói dịch vụ Digital Marketing phổ biến được khách hàng lựa chọn như: 
-                                                Gói nghiên cứu thị trường Gói tư vấn chiến lược, lập kế hoạch Digital Marketing 
-                                                Gói thiết kế website Gói phát triển hệ thống Digital Gói Branded SEO Gói Social Marketing 
-                                                Gói Digital Ads Gói Content Marketing Gói Email Marketing Gói Automationg Marketing 
-                                                Ngay cả khi doanh nghiệp sử dụng các dịch vụ riêng lẻ, Sota cũng luôn tiếp cận bài toán 
-                                                với bức tranh tổng thể, giúp doanh nghiệp hiểu cách làm Digital Marketing hiệu quả. Sau đó, 
-                                                chúng tôi đề xuất các hạng mục phù hợp nhất, cùng với doanh nghiệp thống nhất và lựa chọn triển khai. 
-                                                Đảm bảo đáp ứng mục tiêu, tính khả thi và luôn trong phạm vi ngân sách. 
+                                                Có. Sota có cung cấp các dịch vụ nhỏ bên trong dịch vụ Digital Marketing tổng thể.
+                                                Các gói dịch vụ Digital Marketing phổ biến được khách hàng lựa chọn như:
+                                                Gói nghiên cứu thị trường Gói tư vấn chiến lược, lập kế hoạch Digital Marketing
+                                                Gói thiết kế website Gói phát triển hệ thống Digital Gói Branded SEO Gói Social Marketing
+                                                Gói Digital Ads Gói Content Marketing Gói Email Marketing Gói Automationg Marketing
+                                                Ngay cả khi doanh nghiệp sử dụng các dịch vụ riêng lẻ, Sota cũng luôn tiếp cận bài toán
+                                                với bức tranh tổng thể, giúp doanh nghiệp hiểu cách làm Digital Marketing hiệu quả. Sau đó,
+                                                chúng tôi đề xuất các hạng mục phù hợp nhất, cùng với doanh nghiệp thống nhất và lựa chọn triển khai.
+                                                Đảm bảo đáp ứng mục tiêu, tính khả thi và luôn trong phạm vi ngân sách.
                                                 Vui lòng liên hệ ngay để được tư vấn và báo giá chi tiết.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
 
                     </div>
                 </div>
@@ -3359,8 +3675,8 @@ include "header.html";
         </div>
     </section>
     <?php
-include "footer.html";
-?>
+    include "footer.html";
+    ?>
 
 
 
@@ -3821,72 +4137,72 @@ include "footer.html";
     </script>
     <!-- ----------------------- Phần 9 ----------------  -->
     <script>
-    const svg = document.getElementById('svg-root');
-    const bgPath = document.getElementById('path-bg');
-    const activePath = document.getElementById('path-active');
-    const items = document.querySelectorAll('.timeline-item');
+        const svg = document.getElementById('svg-root');
+        const bgPath = document.getElementById('path-bg');
+        const activePath = document.getElementById('path-active');
+        const items = document.querySelectorAll('.timeline-item');
 
-    // Hàm vẽ đường uốn lượn khớp với các card
-    function drawPath() {
-        const containerRect = svg.parentElement.getBoundingClientRect();
-        const midX = svg.clientWidth / 2;
-        let d = "";
+        // Hàm vẽ đường uốn lượn khớp với các card
+        function drawPath() {
+            const containerRect = svg.parentElement.getBoundingClientRect();
+            const midX = svg.clientWidth / 2;
+            let d = "";
 
-        items.forEach((item, index) => {
-            const rect = item.getBoundingClientRect();
-            const y = (rect.top + rect.height / 2) - containerRect.top;
-            
-            if (index === 0) {
-                d += `M ${midX} 0 L ${midX} ${y}`;
-            } else {
-                const prevY = (items[index-1].getBoundingClientRect().top + items[index-1].getBoundingClientRect().height / 2) - containerRect.top;
-                const cpY = (prevY + y) / 2;
-                const curveX = index % 2 === 0 ? midX - 120 : midX + 120; // Hướng uốn ngược nhau
-                d += ` Q ${curveX} ${cpY} ${midX} ${y}`;
-            }
+            items.forEach((item, index) => {
+                const rect = item.getBoundingClientRect();
+                const y = (rect.top + rect.height / 2) - containerRect.top;
+
+                if (index === 0) {
+                    d += `M ${midX} 0 L ${midX} ${y}`;
+                } else {
+                    const prevY = (items[index - 1].getBoundingClientRect().top + items[index - 1].getBoundingClientRect().height / 2) - containerRect.top;
+                    const cpY = (prevY + y) / 2;
+                    const curveX = index % 2 === 0 ? midX - 120 : midX + 120; // Hướng uốn ngược nhau
+                    d += ` Q ${curveX} ${cpY} ${midX} ${y}`;
+                }
+            });
+
+            bgPath.setAttribute('d', d);
+            activePath.setAttribute('d', d);
+
+            // Thiết lập dash để animation nét liền vẽ ra
+            const length = activePath.getTotalLength();
+            activePath.style.strokeDasharray = length;
+            activePath.style.strokeDashoffset = length;
+        }
+
+        // Xử lý logic 2 chiều khi cuộn
+        function handleScrollLogic() {
+            const length = activePath.getTotalLength();
+            // Điểm quét (Trigger) nằm ở khoảng 65% màn hình
+            const scrollPoint = window.scrollY + window.innerHeight * 0.65;
+            const containerTop = svg.parentElement.offsetTop;
+            const containerHeight = svg.parentElement.offsetHeight;
+
+            // Tiến trình vẽ đường màu xanh
+            let progress = (scrollPoint - containerTop) / containerHeight;
+            progress = Math.max(0, Math.min(1, progress));
+            activePath.style.strokeDashoffset = length - (length * progress);
+
+            // Kiểm tra từng Card: Vượt qua điểm quét thì Hiện, Ngược lại thì Ẩn
+            items.forEach(item => {
+                const itemMid = item.getBoundingClientRect().top + window.scrollY + (item.offsetHeight / 2);
+
+                if (scrollPoint > itemMid) {
+                    item.classList.add('is-visible');
+                } else {
+                    item.classList.remove('is-visible');
+                }
+            });
+        }
+
+        window.addEventListener('load', () => {
+            drawPath();
+            handleScrollLogic();
         });
-
-        bgPath.setAttribute('d', d);
-        activePath.setAttribute('d', d);
-        
-        // Thiết lập dash để animation nét liền vẽ ra
-        const length = activePath.getTotalLength();
-        activePath.style.strokeDasharray = length;
-        activePath.style.strokeDashoffset = length;
-    }
-
-    // Xử lý logic 2 chiều khi cuộn
-    function handleScrollLogic() {
-        const length = activePath.getTotalLength();
-        // Điểm quét (Trigger) nằm ở khoảng 65% màn hình
-        const scrollPoint = window.scrollY + window.innerHeight * 0.65;
-        const containerTop = svg.parentElement.offsetTop;
-        const containerHeight = svg.parentElement.offsetHeight;
-
-        // Tiến trình vẽ đường màu xanh
-        let progress = (scrollPoint - containerTop) / containerHeight;
-        progress = Math.max(0, Math.min(1, progress));
-        activePath.style.strokeDashoffset = length - (length * progress);
-
-        // Kiểm tra từng Card: Vượt qua điểm quét thì Hiện, Ngược lại thì Ẩn
-        items.forEach(item => {
-            const itemMid = item.getBoundingClientRect().top + window.scrollY + (item.offsetHeight / 2);
-            
-            if (scrollPoint > itemMid) {
-                item.classList.add('is-visible');
-            } else {
-                item.classList.remove('is-visible');
-            }
-        });
-    }
-
-    window.addEventListener('load', () => {
-        drawPath();
-        handleScrollLogic();
-    });
-    window.addEventListener('scroll', handleScrollLogic);
-    window.addEventListener('resize', drawPath);
-</script>
+        window.addEventListener('scroll', handleScrollLogic);
+        window.addEventListener('resize', drawPath);
+    </script>
 </body>
 
 </html>
