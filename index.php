@@ -672,7 +672,7 @@ include "header.html";
             --sota-gold: #c49533;
             --text-dark: #333;
             --text-gray: #666;
-            
+
         }
 
         .u--rel {
@@ -1746,7 +1746,7 @@ include "header.html";
         /* Trạng thái mặc định của các nút */
         .button-row .button {
             transition: background-color 0.4s ease, opacity 0.4s ease;
-            background-color: #1a1a1a !important; 
+            background-color: #1a1a1a !important;
             /* Màu đen mặc định */
             /* opacity: 0.6; */
         }
@@ -2481,155 +2481,365 @@ include "header.html";
         }
 
         /* --------------------------- phần 4 ---------------------  */
-        /* Container chính thay thế cho body */
+        /* --- Osmo Integration Section - White Theme --- */
         .osmo-integration-section {
-            background-color: #201D1D;
-            /* Màu nền tối sâu */
-            color: #ffffff;
-            padding: 80px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 500px;
+            background-color: #ffffff;
+            /* Nền trắng toàn phần */
+            padding: 100px 0;
+            color: #1d1d1f;
+            /* Màu chữ đen xám hiện đại */
+            font-family: 'Montserrat', sans-serif;
             position: relative;
+            border-top: 1px solid #f0f0f0;
         }
 
         .osmo-container {
+            max-width: 1280px;
+            margin: 0 auto;
             display: flex;
-            width: 100%;
-            max-width: 1350px;
-            position: relative;
+            align-items: stretch;
+            gap: 30px;
+            padding: 0 20px;
         }
 
-        /* Chia cột */
         .osmo-col {
             flex: 1;
-            padding: 40px 70px 0 0;
+            padding: 60px 45px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: left;
-        }
-
-        /* Đường kẻ dọc phân chia */
-        .osmo-left {
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Vòng tròn ở giữa */
-        .osmo-divider {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            width: 44px;
-            height: 44px;
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            z-index: 5;
-            color: #666;
-            font-size: 14px;
-            font-weight: bold;
+            border-radius: 2rem;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* Nội dung văn bản */
+        /* Cột bên trái: Nền xám cực nhẹ */
+        .osmo-left {
+            background: #fbfbfd;
+            border: 1px solid #f0f0f2;
+        }
+
+        /* Cột bên phải: Nền trắng có đổ bóng nhẹ để nổi bật */
+        .osmo-right {
+            background: #ffffff;
+            border: 1px solid #ececed;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .osmo-col:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
         .osmo-content h2 {
-            font-size: 42px;
-            font-weight: 500;
-            margin: 24px 0;
-            letter-spacing: -1px;
+            font-size: 34px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
         }
 
         .osmo-content p {
-            color: #888;
-            line-height: 1.5;
-            max-width: 100%;
-            margin: 0;
-            font-size: 17px;
+            color: #636366;
+            /* Màu xám nhẹ cho nội dung */
+            line-height: 1.7;
+            margin-bottom: 40px;
+            font-size: 16.5px;
         }
 
-        /* Xử lý Logo */
-        .osmo-logo-main {
-            height: 32px;
-        }
-
-        .osmo-logo-group {
+        /* Style cho phần ngăn cách "or" trên nền trắng */
+        .osmo-divider {
             display: flex;
-            gap: 20px;
+            flex-direction: column;
             align-items: center;
-            height: 32px;
-            /* Giữ độ cao cố định để cân bằng với bên trái */
+            justify-content: center;
+            min-width: 80px;
         }
 
-        .osmo-logo-group img {
-            height: 20px;
-            opacity: 0.7;
-            filter: grayscale(1) brightness(2);
-            /* Làm logo sáng lên và tiệp màu trắng */
+        .osmo-divider::before,
+        .osmo-divider::after {
+            content: "";
+            width: 1px;
+            flex: 1;
+            background: linear-gradient(to bottom, transparent, #e5e5e5, transparent);
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
+        .osmo-divider span {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e5e5e7;
+            border-radius: 50%;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #8b5cf6;
+            /* Màu tím thương hiệu làm điểm nhấn */
+            font-weight: 700;
+            background: #ffffff;
+            margin: 15px 0;
+        }
+
+        /* Nút Xem Thêm điều chỉnh cho nền trắng */
+        .btn-dark-outline {
+            background-color: #1d1d1f !important;
+            color: #ffffff !important;
+            border-radius: 100px;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
             .osmo-container {
                 flex-direction: column;
             }
 
+            .osmo-divider {
+                flex-direction: row;
+                margin: 30px 0;
+            }
+
+            .osmo-divider::before,
+            .osmo-divider::after {
+                width: 100%;
+                height: 1px;
+            }
+
+            .osmo-col {
+                padding: 40px 25px;
+            }
+        }
+
+        /* --- PHẦN CSS BỔ SUNG CHO RESPONSIVE --- */
+
+        @media (max-width: 991px) {
+
+            /* Chuyển từ hàng ngang sang hàng dọc */
+            .osmo-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Bỏ đường kẻ dọc bên phải, thêm đường kẻ ngang bên dưới để ngăn cách */
             .osmo-left {
                 border-right: none;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 0 0 60px 0;
+                /* Tạo khoảng trống để đặt nút "or" */
+                margin-bottom: 40px;
             }
 
+            .osmo-col {
+                width: 100%;
+                padding-right: 0 !important;
+                /* Ghi đè padding cũ của bạn */
+            }
+
+            /* Đưa nút "or" về vị trí giữa đường kẻ ngang */
             .osmo-divider {
-                /* Ẩn hoặc điều chỉnh vị trí nếu cần trên mobile */
+                left: 50%;
+                top: 50%;
+                /* Vị trí này sẽ nằm chính giữa điểm giao nhau của 2 cột */
+                transform: translate(-50%, -50%);
+            }
+
+            .osmo-content h2 {
+                font-size: 32px;
+                /* Giảm kích thước chữ tiêu đề trên mobile */
             }
         }
-        /* --- PHẦN CSS BỔ SUNG CHO RESPONSIVE --- */
 
-@media (max-width: 991px) {
-    /* Chuyển từ hàng ngang sang hàng dọc */
-    .osmo-container {
-        flex-direction: column;
-        align-items: center;
-    }
+        @media (max-width: 479px) {
+            .osmo-content h2 {
+                font-size: 28px;
+            }
 
-    /* Bỏ đường kẻ dọc bên phải, thêm đường kẻ ngang bên dưới để ngăn cách */
-    .osmo-left {
-        border-right: none;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 0 0 60px 0; /* Tạo khoảng trống để đặt nút "or" */
-        margin-bottom: 40px;
-    }
+            .osmo-integration-section {
+                padding: 40px 15px;
+                /* Giảm padding ngoài cùng trên điện thoại nhỏ */
+            }
+        }
 
-    .osmo-col {
-        width: 100%;
-        padding-right: 0 !important; /* Ghi đè padding cũ của bạn */
-    }
+        /* ------------------------ phần 5 ---------------------------  */
+        #total-marketing-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-    /* Đưa nút "or" về vị trí giữa đường kẻ ngang */
-    .osmo-divider {
-        left: 50%;
-        top: 50%; /* Vị trí này sẽ nằm chính giữa điểm giao nhau của 2 cột */
-        transform: translate(-50%, -50%);
-    }
+        /* HIỆU ỨNG GÕ CHỮ */
+        #total-marketing-section .title {
+            color: #2c5da7;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid #2c5da7;
+            white-space: nowrap;
+            margin: 0 auto 60px auto;
+            letter-spacing: 1px;
+            width: 0;
+            /* Ban đầu để 0 */
+        }
 
-    .osmo-content h2 {
-        font-size: 32px; /* Giảm kích thước chữ tiêu đề trên mobile */
-    }
-}
+        /* Class kích hoạt animation gõ chữ */
+        #total-marketing-section .title.animate-typing {
+            animation: typing 3s steps(40, end) forwards, blink-caret .75s step-end infinite;
+        }
 
-@media (max-width: 479px) {
-    .osmo-content h2 {
-        font-size: 28px;
-    }
-    
-    .osmo-integration-section {
-        padding: 40px 15px; /* Giảm padding ngoài cùng trên điện thoại nhỏ */
-    }
-}
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #2c5da7;
+            }
+        }
+
+        #total-marketing-section .main-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #total-marketing-section .column {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        #total-marketing-section .center-box {
+            flex: 0.8;
+            min-width: 250px;
+            padding: 20px;
+        }
+
+        #total-marketing-section .center-box img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #total-marketing-section .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 45px;
+            gap: 15px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Khi cuộn tới/lui sẽ kích hoạt class này */
+        #total-marketing-section .benefit-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #total-marketing-section .icon-circle {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #6ab5e9, #4691d1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(88, 170, 226, 0.3);
+        }
+
+        #total-marketing-section .text-box h4 {
+            margin: 0 0 5px 0;
+            font-size: 17px;
+            color: #222;
+            font-weight: 700;
+        }
+
+        #total-marketing-section .text-box p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        #total-marketing-section .left-side .benefit-item {
+            flex-direction: row;
+            text-align: right;
+        }
+
+        #total-marketing-section .right-side .benefit-item {
+            flex-direction: row-reverse;
+            text-align: left;
+        }
+
+        /* Giữ nguyên padding vòng cung theo ý bạn */
+        #total-marketing-section .item-performance {
+            padding-left: 105px;
+        }
+
+        #total-marketing-section .item-partner {
+            padding-left: 80px;
+        }
+
+        #total-marketing-section .bottom-item {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #total-marketing-section .bottom-item .benefit-item {
+            flex-direction: column;
+            text-align: center;
+            max-width: 350px;
+        }
+
+        #total-marketing-section .bottom-item .icon-circle {
+            margin-bottom: 15px;
+            background: #2c5da7;
+        }
+
+        @media (max-width: 992px) {
+
+            #total-marketing-section .item-performance,
+            #total-marketing-section .item-partner {
+                padding-left: 0;
+            }
+
+            #total-marketing-section .main-wrapper {
+                flex-direction: column;
+            }
+
+            #total-marketing-section .left-side .benefit-item,
+            #total-marketing-section .right-side .benefit-item {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            #total-marketing-section .title {
+                white-space: normal;
+                border-right: none;
+                width: auto !important;
+                animation: none !important;
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
@@ -2732,25 +2942,17 @@ include "header.html";
     <!-- ----------------------------phần 4 Tại Sao nên Trển Khai digital marketing -------------------------------->
     <section class="osmo-integration-section">
         <div class="osmo-container">
-
             <div class="osmo-col osmo-left">
-                <div class="osmo-content" style = "text-align: center;">
-                    <!-- <img src="./Dịch vụ total marketing_files/logo-9949.png" alt="Webflow" class="osmo-logo-main"> -->
-                    <h2>Tại sao nên triển khai digital marketing tổng thể?</h2>
-                    <p>Hành trình khách hàng trong thời đại digital rất phức tạp, khách hàng có thể tìm hiểu thông tin
-                        trên nhiều kênh và ra quyết định mua hàng theo các phương thức khác nhau tại thời điểm khác nhau.
-                        Do đó, để Digital Marketing mang lại kết quả rõ ràng, doanh nghiệp cần hoạch định bức tranh tổng thể,
-                        triển khai đa kênh đồng bộ, thiết lập dữ liệu thông suốt, kết hợp đa dạng chiến dịch và tối ưu hóa
-                        từng phần dựa trên dữ liệu thực tế.</p>
-                    <div class="try-vault__button-row">
-                        <a data-button-rotate-hover=""
-                            class="button w-inline-block" data-size="" data-theme=""
-                            href="https://www.osmo.supply/try" data-barba-p="" data-button-rotate=""
-                            data-responsive="" data-outseta-type="" data-shape="" style="--y: 3160%;">
+                <div class="osmo-content" style="text-align: center;">
+                    <h2>Tại sao nên triển khai<br>digital marketing tổng thể?</h2>
+                    <p>Hành trình khách hàng phức tạp đòi hỏi doanh nghiệp cần hoạch định bức tranh tổng thể, triển khai đa kênh đồng bộ và tối ưu hóa dựa trên dữ liệu thực tế.</p>
+
+                    <div class="d-flex justify-content-center">
+                        <a data-button-rotate-hover="" class="button w-inline-block" href="#">
                             <div data-wf--button-theme--variant="purple" class="button-bg"></div>
                             <div class="button-label__wrap">
                                 <div class="button-label"><span>Tư vấn ngay</span></div>
-                                <div aria-hidden="true" class="button-label"><span>tư vấn ngay</span></div>
+                                <div aria-hidden="true" class="button-label"><span>Tư vấn ngay</span></div>
                             </div>
                         </a>
                     </div>
@@ -2761,28 +2963,20 @@ include "header.html";
                 <span>or</span>
             </div>
 
-            <div class="osmo-col osmo-right" style="margin: 0;padding: 34px;">
-                <div class="osmo-content" style ="text-align: center;justify-items: anchor-center;">
+            <div class="osmo-col osmo-right">
+                <div class="osmo-content" style="text-align: center;">
+                    <h2>Xây Dựng Hệ Thống<br>Digital Marketing</h2>
+                    <p>Hỗ trợ doanh nghiệp xây dựng toàn bộ hệ sinh thái từ Website, Social, Email Marketing đến các hệ thống tự động hóa quản lý dữ liệu xuyên suốt.</p>
 
-                    <h2>Xây Dựng Hệ Thống Digital Marketing</h2>
-                    <p>Hỗ trợ doanh nghiệp xây dựng toàn bộ hệ thống Digital Marketing, 
-                        kết nối dữ liệu xuyên suốt. Từ website, các kênh social, email marketing 
-                        cho tới các hệ thống hỗ trợ quản lý, tự động hóa marketing.</p>
-                    <div class="button-row">
-                        <a data-button-rotate-hover="" class="button w-inline-block"
-                            data-size="" data-theme="" href="https://www.osmo.supply/plans" data-barba-p=""
-                            data-button-rotate="" data-responsive="" data-outseta-type="" data-shape="round"
-                            style="--y: 3160%;background-color: #8b5cf6 !important;">
+                    <div class="d-flex justify-content-center gap-3">
+                        <a data-button-rotate-hover="" class="button w-inline-block" href="#">
                             <div data-wf--button-theme--variant="purple" class="button-bg"></div>
                             <div class="button-label__wrap">
-                                <div class="button-label" style=""><span>Tư Vấn ngay</span></div>
-                                <div aria-hidden="true" class="button-label" style=""><span>Tư Vấn ngay</span></div>
+                                <div class="button-label"><span>Tư Vấn Ngay</span></div>
+                                <div aria-hidden="true" class="button-label"><span>Tư Vấn Ngay</span></div>
                             </div>
-                        </a><a data-button-rotate-hover="" class="button w-inline-block" data-size=""
-                            data-theme="" href="https://www.osmo.supply/faq" data-barba-p=""
-                            data-button-rotate="" data-responsive="" data-outseta-type="" data-shape=""
-                            style="--y: 1180%;background-color: #3c3c3c !important">
-                            <div data-wf--button-theme--variant="neutral-200" class="button-bg"></div>
+                        </a>
+                        <a data-button-rotate-hover="" class="button w-inline-block" href="#" style="background-color: #3c3c3c !important; border-radius: 100px;">
                             <div class="button-label__wrap">
                                 <div class="button-label"><span>Xem Thêm</span></div>
                                 <div aria-hidden="true" class="button-label"><span>Xem Thêm</span></div>
@@ -2796,8 +2990,108 @@ include "header.html";
 
 
     <!-- ----------------------------phần 5 Lợi ích sử dụng dịch vụ total marketing-------------------------------->
+    <section id="total-marketing-section" style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f8fb; padding: 50px 20px; color: #333;">
 
+        <div class="container">
+            <h2 class="title" id="typing-title">7 LỢI ÍCH KHI SỬ DỤNG DỊCH VỤ TOTAL MARKETING</h2>
 
+            <div class="main-wrapper">
+                <div class="column left-side">
+                    <div class="benefit-item">
+                        <div class="text-box">
+                            <h4>Nhận diện thương hiệu</h4>
+                            <p>Tăng cường nhận diện thương hiệu đồng bộ</p>
+                        </div>
+                        <div class="icon-circle">📢</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="text-box">
+                            <h4>Tiếp cận đúng đối tượng</h4>
+                            <p>Tiếp cận đúng khách hàng mục tiêu</p>
+                        </div>
+                        <div class="icon-circle">🎯</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="text-box">
+                            <h4>Hệ thống hóa</h4>
+                            <p>Xây dựng hệ thống vận hành bài bản</p>
+                        </div>
+                        <div class="icon-circle">⚙️</div>
+                    </div>
+                </div>
+
+                <div class="center-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1998/1998087.png" alt="Marketing Center">
+                </div>
+
+                <div class="column right-side">
+                    <div class="benefit-item">
+                        <div class="text-box">
+                            <h4>Tiết kiệm nguồn lực</h4>
+                            <p>Không lãng phí nguồn lực doanh nghiệp</p>
+                        </div>
+                        <div class="icon-circle">⏳</div>
+                    </div>
+                    <div class="benefit-item item-performance">
+                        <div class="text-box">
+                            <h4>Nắm giữ hiệu suất</h4>
+                            <p>Kiểm soát và nắm giữ hiệu suất công việc</p>
+                        </div>
+                        <div class="icon-circle">📊</div>
+                    </div>
+                    <div class="benefit-item item-partner">
+                        <div class="text-box">
+                            <h4>Đối tác đồng hành</h4>
+                            <p>Đồng hành cùng sự phát triển của bạn</p>
+                        </div>
+                        <div class="icon-circle">🤝</div>
+                    </div>
+                </div>
+
+                <div class="bottom-item">
+                    <div class="benefit-item">
+                        <div class="icon-circle">💰</div>
+                        <div class="text-box">
+                            <h4>Tối ưu hóa chi phí</h4>
+                            <p>Tối ưu hóa chi phí tiếp thị hiệu quả</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const observerOptions = {
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Nếu là tiêu đề thì chạy gõ chữ
+                        if (entry.target.id === 'typing-title') {
+                            entry.target.classList.add('animate-typing');
+                        }
+                    } else {
+                        // Xóa class khi cuộn ra khỏi vùng nhìn thấy để hiệu ứng lặp lại
+                        entry.target.classList.remove('active');
+                        if (entry.target.id === 'typing-title') {
+                            entry.target.classList.remove('animate-typing');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Theo dõi tiêu đề
+            observer.observe(document.getElementById('typing-title'));
+
+            // Theo dõi các mục lợi ích
+            document.querySelectorAll('#total-marketing-section .benefit-item').forEach((item) => {
+                observer.observe(item);
+            });
+        </script>
+    </section>
 
     <!-- ----------------------------phần 6 Video-------------------------------->
 
@@ -3066,7 +3360,7 @@ include "header.html";
                                         </button>
                                     </div>
                                     <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
-                                        data-theme="" href="https://www.osmo.supply/plans/subscription" data-barba-p=""
+                                        data-theme="" href="" data-barba-p=""
                                         data-button-rotate="" data-responsive="" data-outseta-type="" data-shape=""
                                         style="--y: 9480%;">
                                         <div data-wf--button-theme--variant="purple" class="button-bg"></div>
@@ -3162,7 +3456,7 @@ include "header.html";
                                     </button>
                                 </div>
                                 <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
-                                    data-theme="" href="https://www.osmo.supply/plans/lifetime" data-barba-p=""
+                                    data-theme="" href="" data-barba-p=""
                                     data-button-rotate="" data-responsive="" data-outseta-type="" data-shape=""
                                     style="--y: 10000%;">
                                     <div data-wf--button-theme--variant="neutral-800" class="button-bg"></div>
@@ -3294,7 +3588,7 @@ include "header.html";
                                     </button>
                                 </div>
                                 <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
-                                    data-theme="" href="https://www.osmo.supply/plans/team-subscription"
+                                    data-theme="" href=""
                                     data-barba-p="" data-button-rotate="" data-responsive="" data-outseta-type=""
                                     data-shape="" style="--y: 10000%;">
                                     <div data-wf--button-theme--variant="purple" class="button-bg"></div>
@@ -3677,10 +3971,6 @@ include "header.html";
     <?php
     include "footer.html";
     ?>
-
-
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
