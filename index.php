@@ -1271,7 +1271,7 @@ include "header.html";
         /* --- Mũi tên và chữ vẽ tay (Scribble) --- */
         .pricing-home__scribble {
             position: absolute;
-            right: -70px;
+            right: -125px;
             /* Đẩy ra ngoài dải nút */
             top: -10px;
             color: #a3e635;
@@ -1447,7 +1447,7 @@ include "header.html";
         }
 
         /* --- Buttons & Tags inside Cards --- */
-        .tag {
+        .tags {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -1459,6 +1459,18 @@ include "header.html";
             cursor: pointer;
             overflow: hidden;
             width: 100%;
+        }
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            position: relative;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
         }
 
         /* Button variants */
@@ -4179,7 +4191,7 @@ include "header.html";
                                                 </div>
                                                 <div class="testimonial-item__info-details">
                                                     <h4 class="scribble pb-4">Dang Nguyen</h4>
-                                                    <div data-shape="" data-theme="" class="tag">
+                                                    <div data-shape="" data-theme="" class="tags">
                                                         <div data-wf--button-theme--variant="neutral-800"
                                                             class="button-bg ps-2">Tổng Công Ty Hải Thạch</div><span
                                                             class="eyebrow is--relative">Head of Creative</span>
@@ -4203,7 +4215,7 @@ include "header.html";
                                                         loading="lazy" alt=""></div>
                                                 <div class="testimonial-item__info-details">
                                                     <h4 class="scribble pb-4">Giám Đốc Mr Sugar</h4>
-                                                    <div data-shape="" data-theme="" class="tag">
+                                                    <div data-shape="" data-theme="" class="tags">
                                                         <div data-wf--button-theme--variant="neutral-800"
                                                             class="button-bg ps-2">cungcapduongphen.com</div><span
                                                             class="eyebrow is--relative">Head of Creative</span>
@@ -4227,7 +4239,7 @@ include "header.html";
                                                         loading="lazy" alt=""></div>
                                                 <div class="testimonial-item__info-details">
                                                     <h4 class="scribble pb-4">CEO Lý Hà</h4>
-                                                    <div data-shape="" data-theme="" class="tag">
+                                                    <div data-shape="" data-theme="" class="tags">
                                                         <div data-wf--button-theme--variant="neutral-800"
                                                             class="button-bg ps-2">lyha.com.vn</div><span
                                                             class="eyebrow is--relative">Head of Creative</span>
@@ -4251,7 +4263,7 @@ include "header.html";
                                                         loading="lazy" alt=""></div>
                                                 <div class="testimonial-item__info-details">
                                                     <h4 class="scribble pb-4">Nguyễn Cao Diễm Kiều</h4>
-                                                    <div data-shape="" data-theme="" class="tag">
+                                                    <div data-shape="" data-theme="" class="tags">
                                                         <div data-wf--button-theme--variant="neutral-800"
                                                             class="button-bg ps-2">driptherapy.vn</div><span
                                                             class="eyebrow is--relative">Head of Creative</span>
@@ -4276,7 +4288,7 @@ include "header.html";
                                                         loading="lazy" alt=""></div>
                                                 <div class="testimonial-item__info-details">
                                                     <h4 class="scribble pb-4">Fouder Công ty SCQC.</h4>
-                                                    <div data-shape="" data-theme="" class="tag">
+                                                    <div data-shape="" data-theme="" class="tags">
                                                         <div data-wf--button-theme--variant="neutral-800"
                                                             class="button-bg ps-2">www.saigoncc.com.vn</div><span
                                                             class="eyebrow is--relative">Head of Creative</span>
@@ -4328,8 +4340,8 @@ include "header.html";
     <!-- CURSOR -->
     <div class="hover-cursor" id="hoverCursor">
         <div class="hover-cursor__icon">
-            <span class="arrow-up">↑</span>
-            <span class="arrow-down">↓</span>
+            <span class="arrow-up"></span>
+            <span class="arrow-down"></span>
         </div>
     </div>
 
