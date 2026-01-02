@@ -668,6 +668,11 @@ include "header.html";
             /* Khoảng cách giữa các phần tử */
             --color-neutral-800: #201d1d;
             /* Màu chữ tiêu đề */
+            --sota-blue: #1e73be;
+            --sota-gold: #c49533;
+            --text-dark: #333;
+            --text-gray: #666;
+
         }
 
         .u--rel {
@@ -1140,6 +1145,7 @@ include "header.html";
             margin-bottom: 12px;
             font-weight: 600;
             line-height: 1.4;
+            color: azure;
         }
 
         .info-grid__item-col p {
@@ -1265,7 +1271,7 @@ include "header.html";
         /* --- Mũi tên và chữ vẽ tay (Scribble) --- */
         .pricing-home__scribble {
             position: absolute;
-            right: -70px;
+            right: -125px;
             /* Đẩy ra ngoài dải nút */
             top: -10px;
             color: #a3e635;
@@ -1441,6 +1447,19 @@ include "header.html";
         }
 
         /* --- Buttons & Tags inside Cards --- */
+        .tags {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            position: relative;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            width: 100%;
+        }
         .tag {
             display: inline-flex;
             align-items: center;
@@ -1742,7 +1761,7 @@ include "header.html";
             transition: background-color 0.4s ease, opacity 0.4s ease;
             background-color: #1a1a1a !important;
             /* Màu đen mặc định */
-            opacity: 0.6;
+            /* opacity: 0.6; */
         }
 
         /* 2. Khi nút có class is--active (được chọn): Đổi sang màu tím #8b5cf6 và rõ nét */
@@ -2224,7 +2243,7 @@ include "header.html";
         /* Scribble Decor */
         .faq__title-scribble {
             position: absolute;
-            right: 5%;
+            right: 0%;
             top: -20px;
             color: #f84131;
             /* Màu vàng Sota */
@@ -2236,6 +2255,7 @@ include "header.html";
             font-style: italic;
             margin-bottom: 5px;
             font-weight: 700;
+            color: #f84131;
         }
 
         .faq__title-scribble-arrow {
@@ -2347,11 +2367,858 @@ include "header.html";
                 padding: 60px 0;
             }
         }
+
+        /* --------------------------- Phần 9 -------------------  */
+        .process-section {
+            padding: 100px 0;
+        }
+
+        /* .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; } */
+        .header-title {
+            text-align: center;
+            color: var(--sota-blue);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .timeline-wrapper {
+            position: relative;
+        }
+
+        /* SVG Line - Phần quan trọng nhất để nét liền đè nét đứt */
+        .svg-connector {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Đường nét đứt xám cố định bên dưới */
+        #path-bg {
+            stroke: var(--bg-gray);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 8 8;
+        }
+
+        /* Đường nét liền xanh chạy đè lên trên */
+        #path-active {
+            stroke: var(--sota-blue);
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            /* Animation mượt khi cuộn 2 chiều */
+            transition: stroke-dashoffset 0.2s ease-out;
+        }
+
+        /* Các khối nội dung */
+        .timeline-item {
+            width: 100%;
+            display: flex;
+            margin-bottom: 120px;
+            position: relative;
+            z-index: 2;
+            /* Trạng thái mặc định: Ẩn */
+            opacity: 0;
+            transform: scale(0.9) translateY(40px);
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Trạng thái khi đường kẻ đi qua: Hiện */
+        .timeline-item.is-visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+        }
+
+        .content-card {
+            width: 42%;
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #eee;
+            transition: border-color 0.5s ease;
+        }
+
+        .timeline-item.is-visible .content-card {
+            border-top-color: var(--sota-blue);
+        }
+
+        .step-label {
+            font-weight: bold;
+            color: var(--sota-blue);
+            font-size: 13px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        h3 {
+            margin: 0 0 12px 0;
+            font-size: 19px;
+            color: #222;
+        }
+
+        p {
+            color: #555;
+            font-size: 14.2px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .content-card {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            .svg-connector {
+                display: none;
+            }
+
+            .timeline-item {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* --------------------------- phần 4 ---------------------  */
+        /* --- Osmo Integration Section - White Theme --- */
+        .osmo-integration-section {
+            background-color: #ffffff;
+            /* Nền trắng toàn phần */
+            padding: 100px 0;
+            color: #1d1d1f;
+            /* Màu chữ đen xám hiện đại */
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .osmo-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: stretch;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .osmo-col {
+            flex: 1;
+            padding: 60px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 2rem;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Cột bên trái: Nền xám cực nhẹ */
+        .osmo-left {
+            background: #fbfbfd;
+            border: 1px solid #f0f0f2;
+        }
+
+        /* Cột bên phải: Nền trắng có đổ bóng nhẹ để nổi bật */
+        .osmo-right {
+            background: #ffffff;
+            border: 1px solid #ececed;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .osmo-col:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .osmo-content h2 {
+            font-size: 34px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+        }
+
+        .osmo-content p {
+            color: #636366;
+            /* Màu xám nhẹ cho nội dung */
+            line-height: 1.7;
+            margin-bottom: 40px;
+            font-size: 16.5px;
+        }
+
+        /* Style cho phần ngăn cách "or" trên nền trắng */
+        .osmo-divider {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 80px;
+        }
+
+        .osmo-divider::before,
+        .osmo-divider::after {
+            content: "";
+            width: 1px;
+            flex: 1;
+            background: linear-gradient(to bottom, transparent, #e5e5e5, transparent);
+        }
+
+        .osmo-divider span {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e5e5e7;
+            border-radius: 50%;
+            font-size: 13px;
+            text-transform: uppercase;
+            color: #8b5cf6;
+            /* Màu tím thương hiệu làm điểm nhấn */
+            font-weight: 700;
+            background: #ffffff;
+            margin: 15px 0;
+        }
+
+        /* Nút Xem Thêm điều chỉnh cho nền trắng */
+        .btn-dark-outline {
+            background-color: #1d1d1f !important;
+            color: #ffffff !important;
+            border-radius: 100px;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .osmo-container {
+                flex-direction: column;
+            }
+
+            .osmo-divider {
+                flex-direction: row;
+                margin: 30px 0;
+            }
+
+            .osmo-divider::before,
+            .osmo-divider::after {
+                width: 100%;
+                height: 1px;
+            }
+
+            .osmo-col {
+                padding: 40px 25px;
+            }
+        }
+
+        /* --- PHẦN CSS BỔ SUNG CHO RESPONSIVE --- */
+
+        @media (max-width: 991px) {
+
+            /* Chuyển từ hàng ngang sang hàng dọc */
+            .osmo-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* Bỏ đường kẻ dọc bên phải, thêm đường kẻ ngang bên dưới để ngăn cách */
+            .osmo-left {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 0 0 60px 0;
+                /* Tạo khoảng trống để đặt nút "or" */
+                margin-bottom: 40px;
+            }
+
+            .osmo-col {
+                width: 100%;
+                padding-right: 0 !important;
+                /* Ghi đè padding cũ của bạn */
+            }
+
+            /* Đưa nút "or" về vị trí giữa đường kẻ ngang */
+            .osmo-divider {
+                left: 50%;
+                top: 50%;
+                /* Vị trí này sẽ nằm chính giữa điểm giao nhau của 2 cột */
+                transform: translate(-50%, -50%);
+            }
+
+            .osmo-content h2 {
+                font-size: 32px;
+                /* Giảm kích thước chữ tiêu đề trên mobile */
+            }
+        }
+
+        @media (max-width: 479px) {
+            .osmo-content h2 {
+                font-size: 28px;
+            }
+
+            .osmo-integration-section {
+                padding: 40px 15px;
+                /* Giảm padding ngoài cùng trên điện thoại nhỏ */
+            }
+        }
+
+        /* ------------------------ phần 5 ---------------------------  */
+        #total-marketing-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* HIỆU ỨNG GÕ CHỮ */
+        #total-marketing-section .title {
+            color: #2c5da7;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid #2c5da7;
+            white-space: nowrap;
+            margin: 0 auto 60px auto;
+            letter-spacing: 1px;
+            width: 0;
+            /* Ban đầu để 0 */
+        }
+
+        /* Class kích hoạt animation gõ chữ */
+        #total-marketing-section .title.animate-typing {
+            animation: typing 3s steps(40, end) forwards, blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #2c5da7;
+            }
+        }
+
+        #total-marketing-section .main-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #total-marketing-section .column {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        #total-marketing-section .center-box {
+            flex: 0.8;
+            min-width: 250px;
+            padding: 20px;
+        }
+
+        #total-marketing-section .center-box img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #total-marketing-section .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 45px;
+            gap: 15px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Khi cuộn tới/lui sẽ kích hoạt class này */
+        #total-marketing-section .benefit-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #total-marketing-section .icon-circle {
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #6ab5e9, #4691d1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(88, 170, 226, 0.3);
+        }
+
+        #total-marketing-section .text-box h4 {
+            margin: 0 0 5px 0;
+            font-size: 17px;
+            color: #222;
+            font-weight: 700;
+        }
+
+        #total-marketing-section .text-box p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        #total-marketing-section .left-side .benefit-item {
+            flex-direction: row;
+            text-align: right;
+        }
+
+        #total-marketing-section .right-side .benefit-item {
+            flex-direction: row-reverse;
+            text-align: left;
+        }
+
+        /* Giữ nguyên padding vòng cung theo ý bạn */
+        #total-marketing-section .item-performance {
+            padding-left: 105px;
+        }
+
+        #total-marketing-section .item-partner {
+            padding-left: 80px;
+        }
+
+        #total-marketing-section .bottom-item {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #total-marketing-section .bottom-item .benefit-item {
+            flex-direction: column;
+            text-align: center;
+            max-width: 350px;
+        }
+
+        #total-marketing-section .bottom-item .icon-circle {
+            margin-bottom: 15px;
+            background: #2c5da7;
+        }
+
+        @media (max-width: 992px) {
+
+            #total-marketing-section .item-performance,
+            #total-marketing-section .item-partner {
+                padding-left: 0;
+            }
+
+            #total-marketing-section .main-wrapper {
+                flex-direction: column;
+            }
+
+            #total-marketing-section .left-side .benefit-item,
+            #total-marketing-section .right-side .benefit-item {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            #total-marketing-section .title {
+                white-space: normal;
+                border-right: none;
+                width: auto !important;
+                animation: none !important;
+                opacity: 1;
+            }
+        }
+
+        /* ------------------------------- phần 10 ----------------------  */
+        .testimonial {
+            position: relative;
+            padding: 10rem 0;
+            overflow: hidden;
+        }
+
+        .testimonial-row {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .testimonial-col__small {
+            position: relative;
+        }
+
+        /* Khung chứa chính */
+        .testimonial-col__large {
+            position: relative;
+            height: 488px;
+            /* Điều chỉnh độ cao hiển thị tùy ý */
+            overflow: hidden !important;
+            cursor: none;
+        }
+
+        .testimonial-col__large::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Đảm bảo các item con không bị co lại */
+        .testimonial-item-custom {
+            flex-shrink: 0;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-globe__col {
+            position: relative;
+            text-align: center;
+        }
+
+        .testimonial-globe__wrap {
+            position: relative;
+            width: 380px;
+            height: 380px;
+            margin: 3rem auto;
+        }
+
+        .testimonial-globe__progress {
+            position: absolute;
+            inset: 0;
+            color: #3cff00;
+        }
+
+        .testimonial-globe__progress-line {
+            transition: stroke-dashoffset 0.6s ease;
+        }
+
+        /* Vùng chứa tổng của bản đồ */
+    .testimonial-globe__map-w {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    margin: 0 auto;
+}
+
+    /* Các ảnh bản đồ */
+    .testimonial-globe__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    opacity: 0; /* Mặc định ẩn */
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1;
+}
+
+        .testimonial-globe__img.is-base {
+            opacity: 1;
+            /* Hình nền luôn hiện hoặc hiện khi không có cái nào active */
+            z-index: 1;
+        }
+
+        .testimonial-globe__img.is-active {
+    opacity: 1 !important; /* Ép hiện */
+    visibility: visible !important;
+    z-index: 10 !important;
+}
+
+/* Đảm bảo canvas không che mất ảnh */
+.testimonial-globe__canvas {
+    position: absolute;
+    z-index: 20;
+    pointer-events: none; /* Quan trọng: để có thể click xuyên qua canvas vào vùng chứa */
+}
+
+        .testimonial-globe__img.is--base {
+            opacity: 1;
+        }
+
+        .testimonial-globe__img.is--active {
+            opacity: 1;
+        }
+
+        .testimonial-globe__col .p-m {
+            font-size: 1.4rem;
+            letter-spacing: 0.04em;
+        }
+
+        .scribble {
+            font-family: "Caveat", cursive;
+            font-size: 2rem;
+        }
+
+        .vertical-slider__collection {
+            position: relative;
+            height: 520px;
+            perspective: 1200px;
+        }
+
+        .vertical-slider__list {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            /* Quan trọng để tính offsetTop */
+        }
+
+        /* Ép các slide hiện ra và đúng kích thước */
+        .vertical-slider__item {
+            opacity: 1 !important;
+            transform: none !important;
+            pointer-events: auto !important;
+            display: block !important;
+            width: 100% !important;
+            /* KHÔNG CỐ ĐỊNH CHIỀU CAO - Để nội dung dài ngắn tự nhiên */
+            height: auto !important;
+            min-height: 450px;
+            flex-shrink: 0;
+            /* Dùng padding để tạo khoảng cách thay vì margin để offsetTop chính xác hơn */
+            padding-bottom: 60px;
+            box-sizing: border-box;
+        }
+
+        .vertical-slider__item[aria-hidden="true"] {
+            pointer-events: none;
+        }
+
+        .testimonial-item {
+            background: #6b4eff;
+            color: #fff;
+            border-radius: 2.4rem;
+            padding: 4rem;
+            max-width: 720px;
+        }
+
+        .h-m.is--testimonial {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-item__lower {
+            display: grid;
+            gap: 2.4rem;
+        }
+
+        .testimonial-item__info {
+            display: flex;
+            gap: 1.6rem;
+            align-items: center;
+        }
+
+        /* Đảm bảo ảnh profile không bị méo */
+        .testimonial-item__info-img img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .testimonial-item__info-details h4 {
+            margin: 0;
+        }
+
+        .vertical-slider__bullets {
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .vertical-slider__bullet-item {
+            width: 2px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .vertical-slider__bullet-item[aria-current="true"] {
+            background: #fff;
+        }
+
+        .vertical-slider__buttons {
+            position: absolute;
+            right: 0;
+            bottom: -6rem;
+            display: flex;
+            gap: 1.6rem;
+        }
+
+        .vertical-slider__button {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #111;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ================= CURSOR ================= */
+
+        .hover-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #000;
+            color: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.6);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+
+            z-index: 9999;
+        }
+
+        .hover-cursor.is-active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .hover-cursor__icon {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        /* Ẩn mặc định */
+        .hover-cursor .arrow-up,
+        .hover-cursor .arrow-down {
+            display: none;
+        }
+
+        /* NỬA TRÊN */
+        .hover-cursor.is-up .arrow-up {
+            display: block;
+        }
+
+        /* NỬA DƯỚI */
+        .hover-cursor.is-down .arrow-down {
+            display: block;
+        }
+
+        /* Cursor custom */
+        #hoverCursor {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            background: #2c5da7;
+            color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        #hoverCursor.is-active {
+            display: flex;
+        }
+
+        #hoverCursor.is-up::after {
+            content: '\f062';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+
+        #hoverCursor.is-down::after {
+            content: '\f063';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+
+        .mota {
+            font-size: 20px;
+        }
+        .testimonial-globe__circle-border {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px; 
+    height: 380px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    z-index: 5; /* Nằm dưới canvas nhưng trên nền */
+    pointer-events: none;
+    display: block !important;
+}
+
+/* Thêm một hiệu ứng xoay nhẹ cho chuyên nghiệp (tùy chọn) */
+.testimonial-globe__circle-border::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: spin 20s linear infinite;
+}
+/* Hiệu ứng xoay nhẹ cho đẹp */
+.testimonial-globe__circle-border::after {
+    content: '';
+    position: absolute;
+    top: -8px; left: -8px; right: -8px; bottom: -8px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: rotation 30s linear infinite;
+}
+
+@keyframes rotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
     </style>
 </head>
 
 <body>
-    <!-- ----------------------------phần 1-------------------------------->
+    <!-- ----------------------------phần 1 banner -------------------------------->
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
@@ -2392,7 +3259,7 @@ include "header.html";
         </div>
     </section>
 
-    <!-- ----------------------------phần 2-------------------------------->
+    <!-- ----------------------------phần 2 các hãng -------------------------------->
     <section class="tm_partner_section">
         <div class="container">
             <div class="row align-items-center">
@@ -2418,7 +3285,7 @@ include "header.html";
         </div>
     </section>
 
-    <!-- ----------------------------phần 3-------------------------------->
+    <!-- ----------------------------phần 3 total marketing-------------------------------->
 
     <section class="tm_about space_bottom">
         <div class="fixwidth">
@@ -2446,11 +3313,159 @@ include "header.html";
         </div>
     </section>
 
-    <!-- ----------------------------phần 4 trống -------------------------------->
+    <!-- ----------------------------phần 4 Tại Sao nên Trển Khai digital marketing -------------------------------->
+    <section class="osmo-integration-section">
+        <div class="osmo-container">
+            <div class="osmo-col osmo-left">
+                <div class="osmo-content" style="text-align: center;">
+                    <h2>Tại sao nên triển khai<br>digital marketing tổng thể?</h2>
+                    <p>Hành trình khách hàng phức tạp đòi hỏi doanh nghiệp cần hoạch định bức tranh tổng thể, triển khai đa kênh đồng bộ và tối ưu hóa dựa trên dữ liệu thực tế.</p>
 
-    <!-- ----------------------------phần 5 trống-------------------------------->
+                    <div class="d-flex justify-content-center">
+                        <a data-button-rotate-hover="" class="button w-inline-block" href="#">
+                            <div data-wf--button-theme--variant="purple" class="button-bg"></div>
+                            <div class="button-label__wrap">
+                                <div class="button-label"><span>Tư vấn ngay</span></div>
+                                <div aria-hidden="true" class="button-label"><span>Tư vấn ngay</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="osmo-divider">
+                <span>or</span>
+            </div>
+
+            <div class="osmo-col osmo-right">
+                <div class="osmo-content" style="text-align: center;">
+                    <h2>Xây Dựng Hệ Thống<br>Digital Marketing</h2>
+                    <p>Hỗ trợ doanh nghiệp xây dựng toàn bộ hệ sinh thái từ Website, Social, Email Marketing đến các hệ thống tự động hóa quản lý dữ liệu xuyên suốt.</p>
+
+                    <div class="d-flex justify-content-center gap-3">
+                        <a data-button-rotate-hover="" class="button w-inline-block" href="#">
+                            <div data-wf--button-theme--variant="purple" class="button-bg"></div>
+                            <div class="button-label__wrap">
+                                <div class="button-label"><span>Tư Vấn Ngay</span></div>
+                                <div aria-hidden="true" class="button-label"><span>Tư Vấn Ngay</span></div>
+                            </div>
+                        </a>
+                        <a data-button-rotate-hover="" class="button w-inline-block" href="#" style="background-color: #3c3c3c !important; border-radius: 100px;">
+                            <div class="button-label__wrap">
+                                <div class="button-label"><span>Xem Thêm</span></div>
+                                <div aria-hidden="true" class="button-label"><span>Xem Thêm</span></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
+    <!-- ----------------------------phần 5 Lợi ích sử dụng dịch vụ total marketing-------------------------------->
+    <section id="total-marketing-section" style="font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f8fb; padding: 50px 20px; color: #333;">
+
+        <div class="container">
+            <h2 class="title" id="typing-title">7 LỢI ÍCH KHI SỬ DỤNG DỊCH VỤ TOTAL MARKETING</h2>
+
+            <div class="main-wrapper">
+                <div class="column left-side">
+                    <div class="benefit-item">
+                        <div class="text-box">
+                            <h4>Nhận diện thương hiệu</h4>
+                            <p>Tăng cường nhận diện thương hiệu đồng bộ</p>
+                        </div>
+                        <div class="icon-circle">📢</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="text-box">
+                            <h4>Tiếp cận đúng đối tượng</h4>
+                            <p>Tiếp cận đúng khách hàng mục tiêu</p>
+                        </div>
+                        <div class="icon-circle">🎯</div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="text-box">
+                            <h4>Hệ thống hóa</h4>
+                            <p>Xây dựng hệ thống vận hành bài bản</p>
+                        </div>
+                        <div class="icon-circle">⚙️</div>
+                    </div>
+                </div>
+
+                <div class="center-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1998/1998087.png" alt="Marketing Center">
+                </div>
+
+                <div class="column right-side">
+                    <div class="benefit-item">
+                        <div class="text-box">
+                            <h4>Tiết kiệm nguồn lực</h4>
+                            <p>Không lãng phí nguồn lực doanh nghiệp</p>
+                        </div>
+                        <div class="icon-circle">⏳</div>
+                    </div>
+                    <div class="benefit-item item-performance">
+                        <div class="text-box">
+                            <h4>Nắm giữ hiệu suất</h4>
+                            <p>Kiểm soát và nắm giữ hiệu suất công việc</p>
+                        </div>
+                        <div class="icon-circle">📊</div>
+                    </div>
+                    <div class="benefit-item item-partner">
+                        <div class="text-box">
+                            <h4>Đối tác đồng hành</h4>
+                            <p>Đồng hành cùng sự phát triển của bạn</p>
+                        </div>
+                        <div class="icon-circle">🤝</div>
+                    </div>
+                </div>
+
+                <div class="bottom-item">
+                    <div class="benefit-item">
+                        <div class="icon-circle">💰</div>
+                        <div class="text-box">
+                            <h4>Tối ưu hóa chi phí</h4>
+                            <p>Tối ưu hóa chi phí tiếp thị hiệu quả</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const observerOptions = {
+                threshold: 0.2
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Nếu là tiêu đề thì chạy gõ chữ
+                        if (entry.target.id === 'typing-title') {
+                            entry.target.classList.add('animate-typing');
+                        }
+                    } else {
+                        // Xóa class khi cuộn ra khỏi vùng nhìn thấy để hiệu ứng lặp lại
+                        entry.target.classList.remove('active');
+                        if (entry.target.id === 'typing-title') {
+                            entry.target.classList.remove('animate-typing');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Theo dõi tiêu đề
+            observer.observe(document.getElementById('typing-title'));
+
+            // Theo dõi các mục lợi ích
+            document.querySelectorAll('#total-marketing-section .benefit-item').forEach((item) => {
+                observer.observe(item);
+            });
+        </script>
+    </section>
 
     <!-- ----------------------------phần 6 Video-------------------------------->
 
@@ -2719,7 +3734,7 @@ include "header.html";
                                         </button>
                                     </div>
                                     <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
-                                        data-theme="" href="https://www.osmo.supply/plans/subscription" data-barba-p=""
+                                        data-theme="" href="" data-barba-p=""
                                         data-button-rotate="" data-responsive="" data-outseta-type="" data-shape=""
                                         style="--y: 9480%;">
                                         <div data-wf--button-theme--variant="purple" class="button-bg"></div>
@@ -2815,7 +3830,7 @@ include "header.html";
                                     </button>
                                 </div>
                                 <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
-                                    data-theme="" href="https://www.osmo.supply/plans/lifetime" data-barba-p=""
+                                    data-theme="" href="" data-barba-p=""
                                     data-button-rotate="" data-responsive="" data-outseta-type="" data-shape=""
                                     style="--y: 10000%;">
                                     <div data-wf--button-theme--variant="neutral-800" class="button-bg"></div>
@@ -2947,7 +3962,7 @@ include "header.html";
                                     </button>
                                 </div>
                                 <a data-button-rotate-hover="" class="button w-inline-block" data-size="full"
-                                    data-theme="" href="https://www.osmo.supply/plans/team-subscription"
+                                    data-theme="" href=""
                                     data-barba-p="" data-button-rotate="" data-responsive="" data-outseta-type=""
                                     data-shape="" style="--y: 10000%;">
                                     <div data-wf--button-theme--variant="purple" class="button-bg"></div>
@@ -3054,12 +4069,283 @@ include "header.html";
             <div class="product-slider__fade"></div>
     </section>
 
+    <!-- ----------------------------phần 9 quy trình dịch vụ DIGITAL MARKETING-------------------------------->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="header-title">QUY TRÌNH DỊCH VỤ DIGITAL MARKETING</h2>
+            <p style="margin-bottom: 80px !important;text-align: center;font-size: 16px;">
+                Chúng tôi áp dụng quy trình cung cấp dịch vụ và thực thi chuyên nghiệp.</p>
+
+            <div class="timeline-wrapper">
+                <svg class="svg-connector" id="svg-root">
+                    <path id="path-bg"></path>
+                    <path id="path-active"></path>
+                </svg>
+
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 1</span>
+                        <h3>TƯ VẤN & HỢP ĐỒNG</h3>
+                        <p>Sota tiếp nhận yêu cầu, khám phá và tư vấn chi tiết dịch vụ Digital Marketing tổng thể. Tiến hành lập báo giá, ký kết hợp đồng triển khai.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 2</span>
+                        <h3>NGHIÊN CỨU</h3>
+                        <p>Nghiên cứu sâu về khách hàng mục tiêu, thương hiệu, lĩnh vực, đối thủ và mô hình kinh doanh làm cơ sở đề xuất giải pháp.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 3</span>
+                        <h3>KẾ HOẠCH & CHIẾN LƯỢC</h3>
+                        <p>Lên chiến lược Digital Marketing, lập kế hoạch triển khai chi tiết, cụ thể hóa các mục tiêu và tiêu chuẩn đánh giá.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 4</span>
+                        <h3>KIẾN TRÚC SỐ</h3>
+                        <p>Xây dựng kiến trúc hệ thống Digital Marketing. Minh họa cách hệ thống hỗ trợ chiến lược đạt mục tiêu.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 5</span>
+                        <h3>PHÁT TRIỂN</h3>
+                        <p>Trực tiếp thiết lập hệ thống: Website, Social, App, CRM... Tích hợp dữ liệu liên thông với hệ thống hiện có.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 6</span>
+                        <h3>CHIẾN DỊCH KỸ THUẬT SỐ</h3>
+                        <p>Triển khai SEO, Ads, Content Marketing, Email Marketing... theo từng giai đoạn trên các kênh chuyên nghiệp.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 7</span>
+                        <h3>TỐI ƯU HÓA</h3>
+                        <p>Liên tục theo dõi, thực hiện điều chỉnh các hoạt động để tối ưu hiệu quả chiến dịch.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 8</span>
+                        <h3>ĐÀO TẠO & PHÂN PHỐI</h3>
+                        <p>Đào tạo đội ngũ vận hành hệ thống. Bàn giao tài liệu dự án và phối hợp tất toán hợp đồng.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="content-card"><span class="step-label">BƯỚC 9</span>
+                        <h3>BẢO TRÌ & MỞ RỘNG</h3>
+                        <p>Duy trì hệ thống hoạt động ổn định. Tư vấn mở rộng hệ thống đáp ứng nhu cầu phát triển lâu dài.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ----------------------------phần 10 cảm nhận khách hàng -------------------------------->
+    <section data-theme-section="light" class="testimonial">
+        <div class="container">
+            <div data-autoplay-duration="4000" data-vertical-slider="" data-autoplay="true" class="testimonial-row">
+                <div class="testimonial-col__small">
+                    <div class="testimonial-globe__col">
+                        <p class="p-m u--fw-460"><span class="u--color-electric"></span><br></p>
+                        <div class="testimonial-globe__wrap">
+                            <div class="testimonial-globe__circle-border"></div>
+                            <div class="testimonial-globe__map-w">
+                                <img
+                                    src="./Dịch vụ total marketing_files/PixVerse_Image_Effect_prompt_làm thành ảnh 800 (1).jpg" loading="lazy"
+                                    data-testimonial-map="VNM" alt="" class="testimonial-globe__img is-active">
+                                <img
+                                    src="./Dịch vụ total marketing_files/PixVerse_Image_Effect_prompt_làm thành 800x800 (6).jpg" loading="lazy"
+                                    data-testimonial-map="UKT" alt="" class="testimonial-globe__img ">
+                                <img
+                                    src="./Dịch vụ total marketing_files/PixVerse_Image_Effect_prompt_làm thành 800x800 (5).jpg" loading="lazy"
+                                    data-testimonial-map="AUS" alt="" class="testimonial-globe__img">
+                                <img
+                                    src="./Dịch vụ total marketing_files/PixVerse_Image_Effect_prompt_làm thành 800x800 (1).jpg" loading="lazy"
+                                    data-testimonial-map="UKS" alt="" class="testimonial-globe__img">
+                                <img
+                                    src="./Dịch vụ total marketing_files/PixVerse_Image_Effect_prompt_làm thành 800x800.jpg" loading="lazy"
+                                    data-testimonial-map="SWE" alt="" class="testimonial-globe__img">
+                                    <div class="testimonial-globe__canvas">
+        </div>
+                            </div>
+                        </div>
+                        <p class="scribble u--color-electric">CẢM NHẬN KHÁCH HÀNG<br></p>
+                    </div>
+                </div>
+                <div class="testimonial-col__large">
+                    <div data-cursor-zone="light" class="testimonial-wrap">
+                        <div class="vertical-slider__collection w-dyn-list">
+                            <div data-vertical-slider-list="" role="list" class="vertical-slider__list w-dyn-items">
+                                <div data-slide-map="VNM" data-vertical-slider-item="" role="listitem"
+                                    class="vertical-slider__item is--quote w-dyn-item" data-slide-id="0"
+                                    style="translate: none; rotate: none; scale: none; opacity: 0; transform-origin: 50% 50%; transform: translate3d(0em, -30em, -20em) rotateX(60deg); z-index: 1; pointer-events: none;"
+                                    aria-hidden="true" tabindex="-1">
+                                    <div class="testimonial-item">
+                                        <h3 class="h-m is--testimonial">Thiết kế website chuẩn seo</h3>
+                                        <div class="testimonial-item__lower">
+                                            <div class="testimonial-item__info">
+                                                <div class="testimonial-item__info-img">
+                                                    <img
+                                                        src="./Dịch vụ total marketing_files/3-1591944882-8181.jpg"
+                                                        loading="lazy" alt="">
+                                                </div>
+                                                <div class="testimonial-item__info-details">
+                                                    <h4 class="scribble pb-4">Dang Nguyen</h4>
+                                                    <div data-shape="" data-theme="" class="tags">
+                                                        <div data-wf--button-theme--variant="neutral-800"
+                                                            class="button-bg ps-2">Tổng Công Ty Hải Thạch</div><span
+                                                            class="eyebrow is--relative">Head of Creative</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="p-m mota">Thẩm mỹ cao trên từng chi tiết profile</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-slide-map="UKT" data-vertical-slider-item="" role="listitem"
+                                    class="vertical-slider__item is--quote w-dyn-item" data-slide-id="1"
+                                    style="translate: none; rotate: none; scale: none; opacity: 0; transform-origin: 50% 50%; transform: translate3d(0em, 30em, -20em) rotateX(-60deg); z-index: 1; pointer-events: none;"
+                                    aria-hidden="true" tabindex="-1">
+                                    <div class="testimonial-item">
+                                        <h3 class="h-m is--testimonial">Chất lượng trên từng dự án.</h3>
+                                        <div class="testimonial-item__lower">
+                                            <div class="testimonial-item__info">
+                                                <div class="testimonial-item__info-img"><img
+                                                        src="./Dịch vụ total marketing_files/85227logovi-4457.png"
+                                                        loading="lazy" alt=""></div>
+                                                <div class="testimonial-item__info-details">
+                                                    <h4 class="scribble pb-4">Giám Đốc Mr Sugar</h4>
+                                                    <div data-shape="" data-theme="" class="tags">
+                                                        <div data-wf--button-theme--variant="neutral-800"
+                                                            class="button-bg ps-2">cungcapduongphen.com</div><span
+                                                            class="eyebrow is--relative">Head of Creative</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="p-m mota">Các tính năng đòi hỏi độ khó và phức tạp cao Sota đều làm rất tỉ mỉ và chính xác cao một cách hoàn hảo.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-slide-map="AUS" data-vertical-slider-item="" role="listitem"
+                                    class="vertical-slider__item is--quote w-dyn-item" data-slide-id="2"
+                                    style="translate: none; rotate: none; scale: none; opacity: 1; transform-origin: 50% 50%; transform: translate3d(0em, 30em, -20em) rotateX(-60deg); z-index: 1; pointer-events: none;"
+                                    aria-hidden="true" tabindex="-1">
+                                    <div class="testimonial-item">
+                                        <h3 class="h-m is--testimonial">Uy tín tạo nên thương hiệu.</h3>
+                                        <div class="testimonial-item__lower">
+                                            <div class="testimonial-item__info">
+                                                <div class="testimonial-item__info-img"><img
+                                                        src="./Dịch vụ total marketing_files/tong-giam-doc-the-goi-dat-viet-1151.jpg"
+                                                        loading="lazy" alt=""></div>
+                                                <div class="testimonial-item__info-details">
+                                                    <h4 class="scribble pb-4">CEO Lý Hà</h4>
+                                                    <div data-shape="" data-theme="" class="tags">
+                                                        <div data-wf--button-theme--variant="neutral-800"
+                                                            class="button-bg ps-2">lyha.com.vn</div><span
+                                                            class="eyebrow is--relative">Head of Creative</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="p-m mota">Chất lượng trên từng dự án hợp tác với đội ngũ SoTa Marketing.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-slide-map="UKS" data-vertical-slider-item="" role="listitem"
+                                    class="vertical-slider__item is--quote w-dyn-item" data-slide-id="3"
+                                    style="translate: none; rotate: none; scale: none; opacity: 1; transform-origin: 50% 50%; transform: translate3d(0em, 0em, 0em); z-index: 2; pointer-events: auto;"
+                                    aria-hidden="false" tabindex="0">
+                                    <div class="testimonial-item">
+                                        <h3 class="h-m is--testimonial">Bác Sĩ Kiều.</h3>
+                                        <div class="testimonial-item__lower">
+                                            <div class="testimonial-item__info">
+                                                <div class="testimonial-item__info-img"><img
+                                                        src="./Dịch vụ total marketing_files/z49874497373673b8c49b99a0534f7779ac12a67d9475e-3054.jpg"
+                                                        loading="lazy" alt=""></div>
+                                                <div class="testimonial-item__info-details">
+                                                    <h4 class="scribble pb-4">Nguyễn Cao Diễm Kiều</h4>
+                                                    <div data-shape="" data-theme="" class="tags">
+                                                        <div data-wf--button-theme--variant="neutral-800"
+                                                            class="button-bg ps-2">driptherapy.vn</div><span
+                                                            class="eyebrow is--relative">Head of Creative</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="p-m mota">Các tính năng đòi hỏi độ khó và phức tạp cao Sota đều làm rất
+                                                tỉ mỉ và chính xác cao một cách hoàn hảo.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-slide-map="SWE" data-vertical-slider-item="" role="listitem"
+                                    class="vertical-slider__item is--quote w-dyn-item" data-slide-id="4"
+                                    style="translate: none; rotate: none; scale: none; opacity: 1; transform-origin: 50% 50%; transform: translate3d(0em, -30em, -20em) rotateX(60deg); z-index: 1; pointer-events: none;"
+                                    aria-hidden="true" tabindex="-1">
+                                    <div class="testimonial-item">
+                                        <h3 class="h-m is--testimonial">Dịch vụ khách hàng 5 sao.</h3>
+                                        <div class="testimonial-item__lower">
+                                            <div class="testimonial-item__info">
+                                                <div class="testimonial-item__info-img"><img
+                                                        src="./Dịch vụ total marketing_files/5j0a0489-1573203157750x0-6388.jpg"
+                                                        loading="lazy" alt=""></div>
+                                                <div class="testimonial-item__info-details">
+                                                    <h4 class="scribble pb-4">Fouder Công ty SCQC.</h4>
+                                                    <div data-shape="" data-theme="" class="tags">
+                                                        <div data-wf--button-theme--variant="neutral-800"
+                                                            class="button-bg ps-2">www.saigoncc.com.vn</div><span
+                                                            class="eyebrow is--relative">Head of Creative</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="p-m mota">Kết nối khách hàng qua Zalo, Email rất nhanh 24/24. Tôi đánh giá
+                                                cao tính khách quan và rõ ràng khi hợp đồng với SoTa.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="vertical-slider__bullets">
+                            <bullet data-vertical-slider-bullet="not-active" class="vertical-slider__bullet-item"
+                                aria-current="false">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                            <bullet data-vertical-slider-bullet="not-active" class="vertical-slider__bullet-item"
+                                aria-current="false">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                            <bullet data-vertical-slider-bullet="not-active" class="vertical-slider__bullet-item"
+                                aria-current="false">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                            <bullet data-vertical-slider-bullet="active" class="vertical-slider__bullet-item"
+                                aria-current="true">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                            <bullet data-vertical-slider-bullet="not-active" class="vertical-slider__bullet-item"
+                                aria-current="false">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                            <bullet data-vertical-slider-bullet="not-active" class="vertical-slider__bullet-item"
+                                aria-current="false">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
+    </section>
+    <!-- CURSOR -->
+    <div class="hover-cursor" id="hoverCursor">
+        <div class="hover-cursor__icon">
+            <span class="arrow-up"></span>
+            <span class="arrow-down"></span>
+        </div>
+    </div>
 
-
-
-
+    <!-- ----------------------------phần 11 Kết nối ngay với chúng tôi (trống)-------------------------------->
 
 
 
@@ -3069,7 +4355,7 @@ include "header.html";
             <div class="faq__title">
                 <h2 class="h-ml">CÂU HỎI THƯỜNG GẶP?<br> KHI TƯ VẤN TOTAL MARKETING.</h2>
                 <div class="faq__title-scribble">
-                    <p class="scribble">We even answered<br>without ChatGPT ;)</p><svg
+                    <p class="scribble">We even answered<br>without ChatGPT ;</p><svg
                         xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 32 32" fill="none"
                         class="faq__title-scribble-arrow">
                         <path
@@ -3234,22 +4520,22 @@ include "header.html";
                                     <div class="faq__item-bottom-content">
                                         <div class="rich-text w-richtext">
                                             <p>
-                                                Có. Sota có cung cấp các dịch vụ nhỏ bên trong dịch vụ Digital Marketing tổng thể. 
-                                                Các gói dịch vụ Digital Marketing phổ biến được khách hàng lựa chọn như: 
-                                                Gói nghiên cứu thị trường Gói tư vấn chiến lược, lập kế hoạch Digital Marketing 
-                                                Gói thiết kế website Gói phát triển hệ thống Digital Gói Branded SEO Gói Social Marketing 
-                                                Gói Digital Ads Gói Content Marketing Gói Email Marketing Gói Automationg Marketing 
-                                                Ngay cả khi doanh nghiệp sử dụng các dịch vụ riêng lẻ, Sota cũng luôn tiếp cận bài toán 
-                                                với bức tranh tổng thể, giúp doanh nghiệp hiểu cách làm Digital Marketing hiệu quả. Sau đó, 
-                                                chúng tôi đề xuất các hạng mục phù hợp nhất, cùng với doanh nghiệp thống nhất và lựa chọn triển khai. 
-                                                Đảm bảo đáp ứng mục tiêu, tính khả thi và luôn trong phạm vi ngân sách. 
+                                                Có. Sota có cung cấp các dịch vụ nhỏ bên trong dịch vụ Digital Marketing tổng thể.
+                                                Các gói dịch vụ Digital Marketing phổ biến được khách hàng lựa chọn như:
+                                                Gói nghiên cứu thị trường Gói tư vấn chiến lược, lập kế hoạch Digital Marketing
+                                                Gói thiết kế website Gói phát triển hệ thống Digital Gói Branded SEO Gói Social Marketing
+                                                Gói Digital Ads Gói Content Marketing Gói Email Marketing Gói Automationg Marketing
+                                                Ngay cả khi doanh nghiệp sử dụng các dịch vụ riêng lẻ, Sota cũng luôn tiếp cận bài toán
+                                                với bức tranh tổng thể, giúp doanh nghiệp hiểu cách làm Digital Marketing hiệu quả. Sau đó,
+                                                chúng tôi đề xuất các hạng mục phù hợp nhất, cùng với doanh nghiệp thống nhất và lựa chọn triển khai.
+                                                Đảm bảo đáp ứng mục tiêu, tính khả thi và luôn trong phạm vi ngân sách.
                                                 Vui lòng liên hệ ngay để được tư vấn và báo giá chi tiết.</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
 
                     </div>
                 </div>
@@ -3259,12 +4545,8 @@ include "header.html";
         </div>
     </section>
     <?php
-include "footer.html";
-?>
-
-
-
-
+    include "footer.html";
+    ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -3719,6 +5001,160 @@ include "footer.html";
             }
         }
     </script>
+    <!-- ----------------------- Phần 9 ----------------  -->
+    <script>
+        const svg = document.getElementById('svg-root');
+        const bgPath = document.getElementById('path-bg');
+        const activePath = document.getElementById('path-active');
+        const items = document.querySelectorAll('.timeline-item');
+
+        // Hàm vẽ đường uốn lượn khớp với các card
+        function drawPath() {
+            const containerRect = svg.parentElement.getBoundingClientRect();
+            const midX = svg.clientWidth / 2;
+            let d = "";
+
+            items.forEach((item, index) => {
+                const rect = item.getBoundingClientRect();
+                const y = (rect.top + rect.height / 2) - containerRect.top;
+
+                if (index === 0) {
+                    d += `M ${midX} 0 L ${midX} ${y}`;
+                } else {
+                    const prevY = (items[index - 1].getBoundingClientRect().top + items[index - 1].getBoundingClientRect().height / 2) - containerRect.top;
+                    const cpY = (prevY + y) / 2;
+                    const curveX = index % 2 === 0 ? midX - 120 : midX + 120; // Hướng uốn ngược nhau
+                    d += ` Q ${curveX} ${cpY} ${midX} ${y}`;
+                }
+            });
+
+            bgPath.setAttribute('d', d);
+            activePath.setAttribute('d', d);
+
+            // Thiết lập dash để animation nét liền vẽ ra
+            const length = activePath.getTotalLength();
+            activePath.style.strokeDasharray = length;
+            activePath.style.strokeDashoffset = length;
+        }
+
+        // Xử lý logic 2 chiều khi cuộn
+        function handleScrollLogic() {
+            const length = activePath.getTotalLength();
+            // Điểm quét (Trigger) nằm ở khoảng 65% màn hình
+            const scrollPoint = window.scrollY + window.innerHeight * 0.65;
+            const containerTop = svg.parentElement.offsetTop;
+            const containerHeight = svg.parentElement.offsetHeight;
+
+            // Tiến trình vẽ đường màu xanh
+            let progress = (scrollPoint - containerTop) / containerHeight;
+            progress = Math.max(0, Math.min(1, progress));
+            activePath.style.strokeDashoffset = length - (length * progress);
+
+            // Kiểm tra từng Card: Vượt qua điểm quét thì Hiện, Ngược lại thì Ẩn
+            items.forEach(item => {
+                const itemMid = item.getBoundingClientRect().top + window.scrollY + (item.offsetHeight / 2);
+
+                if (scrollPoint > itemMid) {
+                    item.classList.add('is-visible');
+                } else {
+                    item.classList.remove('is-visible');
+                }
+            });
+        }
+
+        window.addEventListener('load', () => {
+            drawPath();
+            handleScrollLogic();
+        });
+        window.addEventListener('scroll', handleScrollLogic);
+        window.addEventListener('resize', drawPath);
+    </script>
+    <!-- --------------------------------- phần 11 ---------------------------  -->
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const hoverArea = document.querySelector('.testimonial-col__large');
+    const sliderList = document.querySelector('.vertical-slider__list');
+    const itemss = document.querySelectorAll('.vertical-slider__item');
+    const allMapImages = document.querySelectorAll('.testimonial-globe__img');
+    const cursor = document.getElementById('hoverCursor');
+
+    let currentIndex = 0;
+    let isTopHalf = true;
+    const totalItemss = itemss.length;
+
+    // HÀM QUAN TRỌNG: Đổi ảnh bản đồ
+    function updateMapImage(index) {
+        if (!itemss[index]) return;
+
+        // Lấy mã vùng từ Slide (VNM, UKT, AUS...)
+        const currentCode = itemss[index].getAttribute('data-slide-map');
+        console.log("Đang chuyển sang slide:", index, "Mã vùng:", currentCode);
+
+        // Ẩn tất cả ảnh
+        allMapImages.forEach(img => {
+            img.classList.remove('is-active');
+            // Reset style trực tiếp để đảm bảo không bị ghi đè
+            img.style.opacity = "0";
+            img.style.visibility = "hidden";
+        });
+
+        // Tìm ảnh tương ứng với mã vùng
+        if (currentCode) {
+            const targetImg = document.querySelector(`.testimonial-globe__img[data-testimonial-map="${currentCode}"]`);
+            if (targetImg) {
+                targetImg.classList.add('is-active');
+                targetImg.style.opacity = "1";
+                targetImg.style.visibility = "visible";
+            }
+        }
+    }
+
+    // Xử lý di chuyển chuột cho cursor custom
+    window.addEventListener('mousemove', (e) => {
+        if (!cursor) return;
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+
+        const rect = hoverArea.getBoundingClientRect();
+        if (e.clientX >= rect.left && e.clientX <= rect.right &&
+            e.clientY >= rect.top && e.clientY <= rect.bottom) {
+            cursor.classList.add('is-active');
+            isTopHalf = e.clientY < (rect.top + rect.height / 2);
+            if (isTopHalf) {
+                cursor.classList.add('is-up');
+                cursor.classList.remove('is-down');
+            } else {
+                cursor.classList.add('is-down');
+                cursor.classList.remove('is-up');
+            }
+        } else {
+            cursor.classList.remove('is-active');
+        }
+    });
+
+    // Xử lý Click chuyển slide và đổi ảnh
+    hoverArea.addEventListener('click', () => {
+        if (isTopHalf) {
+            currentIndex = (currentIndex === 0) ? totalItemss - 1 : currentIndex - 1;
+        } else {
+            currentIndex = (currentIndex === totalItemss - 1) ? 0 : currentIndex + 1;
+        }
+
+        // 1. Cuộn nội dung slide
+        const targetOffset = itemss[currentIndex].offsetTop;
+        sliderList.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+        sliderList.style.transform = `translateY(-${targetOffset}px)`;
+
+        // 2. Đổi ảnh bản đồ
+        updateMapImage(currentIndex);
+    });
+
+    // Khởi tạo ảnh đầu tiên ngay khi tải trang xong
+    window.onload = () => {
+        updateMapImage(0);
+    };
+});
+</script>
 </body>
 
 </html>
