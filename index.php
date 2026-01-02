@@ -1458,6 +1458,7 @@ include "header.html";
             border: none;
             cursor: pointer;
             overflow: hidden;
+            width: 100%;
         }
 
         /* Button variants */
@@ -2840,6 +2841,367 @@ include "header.html";
                 opacity: 1;
             }
         }
+
+        /* ------------------------------- phần 10 ----------------------  */
+        .testimonial {
+            position: relative;
+            padding: 10rem 0;
+            overflow: hidden;
+        }
+
+        .testimonial-row {
+            display: grid;
+            grid-template-columns: 420px 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .testimonial-col__small {
+            position: relative;
+        }
+
+        /* Khung chứa chính */
+        .testimonial-col__large {
+            position: relative;
+            height: 488px;
+            /* Điều chỉnh độ cao hiển thị tùy ý */
+            overflow: hidden !important;
+            cursor: none;
+        }
+
+        .testimonial-col__large::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Đảm bảo các item con không bị co lại */
+        .testimonial-item-custom {
+            flex-shrink: 0;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-globe__col {
+            position: relative;
+            text-align: center;
+        }
+
+        .testimonial-globe__wrap {
+            position: relative;
+            width: 380px;
+            height: 380px;
+            margin: 3rem auto;
+        }
+
+        .testimonial-globe__progress {
+            position: absolute;
+            inset: 0;
+            color: #3cff00;
+        }
+
+        .testimonial-globe__progress-line {
+            transition: stroke-dashoffset 0.6s ease;
+        }
+
+        /* Vùng chứa tổng của bản đồ */
+    .testimonial-globe__map-w {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    margin: 0 auto;
+}
+
+    /* Các ảnh bản đồ */
+    .testimonial-globe__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    opacity: 0; /* Mặc định ẩn */
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 1;
+}
+
+        .testimonial-globe__img.is-base {
+            opacity: 1;
+            /* Hình nền luôn hiện hoặc hiện khi không có cái nào active */
+            z-index: 1;
+        }
+
+        .testimonial-globe__img.is-active {
+    opacity: 1 !important; /* Ép hiện */
+    visibility: visible !important;
+    z-index: 10 !important;
+}
+
+/* Đảm bảo canvas không che mất ảnh */
+.testimonial-globe__canvas {
+    position: absolute;
+    z-index: 20;
+    pointer-events: none; /* Quan trọng: để có thể click xuyên qua canvas vào vùng chứa */
+}
+
+        .testimonial-globe__img.is--base {
+            opacity: 1;
+        }
+
+        .testimonial-globe__img.is--active {
+            opacity: 1;
+        }
+
+        .testimonial-globe__col .p-m {
+            font-size: 1.4rem;
+            letter-spacing: 0.04em;
+        }
+
+        .scribble {
+            font-family: "Caveat", cursive;
+            font-size: 2rem;
+        }
+
+        .vertical-slider__collection {
+            position: relative;
+            height: 520px;
+            perspective: 1200px;
+        }
+
+        .vertical-slider__list {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            /* Quan trọng để tính offsetTop */
+        }
+
+        /* Ép các slide hiện ra và đúng kích thước */
+        .vertical-slider__item {
+            opacity: 1 !important;
+            transform: none !important;
+            pointer-events: auto !important;
+            display: block !important;
+            width: 100% !important;
+            /* KHÔNG CỐ ĐỊNH CHIỀU CAO - Để nội dung dài ngắn tự nhiên */
+            height: auto !important;
+            min-height: 450px;
+            flex-shrink: 0;
+            /* Dùng padding để tạo khoảng cách thay vì margin để offsetTop chính xác hơn */
+            padding-bottom: 60px;
+            box-sizing: border-box;
+        }
+
+        .vertical-slider__item[aria-hidden="true"] {
+            pointer-events: none;
+        }
+
+        .testimonial-item {
+            background: #6b4eff;
+            color: #fff;
+            border-radius: 2.4rem;
+            padding: 4rem;
+            max-width: 720px;
+        }
+
+        .h-m.is--testimonial {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+        }
+
+        .testimonial-item__lower {
+            display: grid;
+            gap: 2.4rem;
+        }
+
+        .testimonial-item__info {
+            display: flex;
+            gap: 1.6rem;
+            align-items: center;
+        }
+
+        /* Đảm bảo ảnh profile không bị méo */
+        .testimonial-item__info-img img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .testimonial-item__info-details h4 {
+            margin: 0;
+        }
+
+        .vertical-slider__bullets {
+            position: absolute;
+            right: -2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .vertical-slider__bullet-item {
+            width: 2px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .vertical-slider__bullet-item[aria-current="true"] {
+            background: #fff;
+        }
+
+        .vertical-slider__buttons {
+            position: absolute;
+            right: 0;
+            bottom: -6rem;
+            display: flex;
+            gap: 1.6rem;
+        }
+
+        .vertical-slider__button {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #111;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ================= CURSOR ================= */
+
+        .hover-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #000;
+            color: #fff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            pointer-events: none;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.6);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+
+            z-index: 9999;
+        }
+
+        .hover-cursor.is-active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .hover-cursor__icon {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        /* Ẩn mặc định */
+        .hover-cursor .arrow-up,
+        .hover-cursor .arrow-down {
+            display: none;
+        }
+
+        /* NỬA TRÊN */
+        .hover-cursor.is-up .arrow-up {
+            display: block;
+        }
+
+        /* NỬA DƯỚI */
+        .hover-cursor.is-down .arrow-down {
+            display: block;
+        }
+
+        /* Cursor custom */
+        #hoverCursor {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            background: #2c5da7;
+            color: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        #hoverCursor.is-active {
+            display: flex;
+        }
+
+        #hoverCursor.is-up::after {
+            content: '\f062';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+
+        #hoverCursor.is-down::after {
+            content: '\f063';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+
+        .mota {
+            font-size: 20px;
+        }
+        .testimonial-globe__circle-border {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px; 
+    height: 380px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    z-index: 5; /* Nằm dưới canvas nhưng trên nền */
+    pointer-events: none;
+    display: block !important;
+}
+
+/* Thêm một hiệu ứng xoay nhẹ cho chuyên nghiệp (tùy chọn) */
+.testimonial-globe__circle-border::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: spin 20s linear infinite;
+}
+/* Hiệu ứng xoay nhẹ cho đẹp */
+.testimonial-globe__circle-border::after {
+    content: '';
+    position: absolute;
+    top: -8px; left: -8px; right: -8px; bottom: -8px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: rotation 30s linear infinite;
+}
+
+@keyframes rotation {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
     </style>
 </head>
 
@@ -3766,8 +4128,210 @@ include "header.html";
         </div>
     </section>
 
-    <!-- ----------------------------phần 10 cảm nhận khách hàng (trống)-------------------------------->
+    <!-- ----------------------------phần 10 cảm nhận khách hàng -------------------------------->
+    <section data-theme-section="light" class="testimonial">
+        <div class="container">
+            <div data-autoplay-duration="4000" data-vertical-slider="" data-autoplay="true" class="testimonial-row">
+                <div class="testimonial-col__small">
+                    <div class="testimonial-globe__col">
+                        <p class="p-m u--fw-460"><span class="u--color-electric"></span><br></p>
+                        <div class="testimonial-globe__wrap">
+                            <div class="testimonial-globe__circle-border"></div>
+                            <div class="testimonial-globe__map-w">
+                                <img
+                                    src="./Dịch vụ total marketing_files/PixVerse_Image_Effect_prompt_làm thành ảnh 800 (1).jpg" loading="lazy"
+                                    data-testimonial-map="VNM" alt="" class="testimonial-globe__img is-active">
+                                <img
+                                    src="./Dịch vụ total marketing_files/PixVerse_Image_Effect_prompt_làm thành 800x800 (6).jpg" loading="lazy"
+                                    data-testimonial-map="UKT" alt="" class="testimonial-globe__img ">
+                                <img
+                                    src="./Dịch vụ total marketing_files/PixVerse_Image_Effect_prompt_làm thành 800x800 (5).jpg" loading="lazy"
+                                    data-testimonial-map="AUS" alt="" class="testimonial-globe__img">
+                                <img
+                                    src="./Dịch vụ total marketing_files/PixVerse_Image_Effect_prompt_làm thành 800x800 (1).jpg" loading="lazy"
+                                    data-testimonial-map="UKS" alt="" class="testimonial-globe__img">
+                                <img
+                                    src="./Dịch vụ total marketing_files/PixVerse_Image_Effect_prompt_làm thành 800x800.jpg" loading="lazy"
+                                    data-testimonial-map="SWE" alt="" class="testimonial-globe__img">
+                                    <div class="testimonial-globe__canvas">
+        </div>
+                            </div>
+                        </div>
+                        <p class="scribble u--color-electric">CẢM NHẬN KHÁCH HÀNG<br></p>
+                    </div>
+                </div>
+                <div class="testimonial-col__large">
+                    <div data-cursor-zone="light" class="testimonial-wrap">
+                        <div class="vertical-slider__collection w-dyn-list">
+                            <div data-vertical-slider-list="" role="list" class="vertical-slider__list w-dyn-items">
+                                <div data-slide-map="VNM" data-vertical-slider-item="" role="listitem"
+                                    class="vertical-slider__item is--quote w-dyn-item" data-slide-id="0"
+                                    style="translate: none; rotate: none; scale: none; opacity: 0; transform-origin: 50% 50%; transform: translate3d(0em, -30em, -20em) rotateX(60deg); z-index: 1; pointer-events: none;"
+                                    aria-hidden="true" tabindex="-1">
+                                    <div class="testimonial-item">
+                                        <h3 class="h-m is--testimonial">Thiết kế website chuẩn seo</h3>
+                                        <div class="testimonial-item__lower">
+                                            <div class="testimonial-item__info">
+                                                <div class="testimonial-item__info-img">
+                                                    <img
+                                                        src="./Dịch vụ total marketing_files/3-1591944882-8181.jpg"
+                                                        loading="lazy" alt="">
+                                                </div>
+                                                <div class="testimonial-item__info-details">
+                                                    <h4 class="scribble pb-4">Dang Nguyen</h4>
+                                                    <div data-shape="" data-theme="" class="tag">
+                                                        <div data-wf--button-theme--variant="neutral-800"
+                                                            class="button-bg ps-2">Tổng Công Ty Hải Thạch</div><span
+                                                            class="eyebrow is--relative">Head of Creative</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="p-m mota">Thẩm mỹ cao trên từng chi tiết profile</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-slide-map="UKT" data-vertical-slider-item="" role="listitem"
+                                    class="vertical-slider__item is--quote w-dyn-item" data-slide-id="1"
+                                    style="translate: none; rotate: none; scale: none; opacity: 0; transform-origin: 50% 50%; transform: translate3d(0em, 30em, -20em) rotateX(-60deg); z-index: 1; pointer-events: none;"
+                                    aria-hidden="true" tabindex="-1">
+                                    <div class="testimonial-item">
+                                        <h3 class="h-m is--testimonial">Chất lượng trên từng dự án.</h3>
+                                        <div class="testimonial-item__lower">
+                                            <div class="testimonial-item__info">
+                                                <div class="testimonial-item__info-img"><img
+                                                        src="./Dịch vụ total marketing_files/85227logovi-4457.png"
+                                                        loading="lazy" alt=""></div>
+                                                <div class="testimonial-item__info-details">
+                                                    <h4 class="scribble pb-4">Giám Đốc Mr Sugar</h4>
+                                                    <div data-shape="" data-theme="" class="tag">
+                                                        <div data-wf--button-theme--variant="neutral-800"
+                                                            class="button-bg ps-2">cungcapduongphen.com</div><span
+                                                            class="eyebrow is--relative">Head of Creative</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="p-m mota">Các tính năng đòi hỏi độ khó và phức tạp cao Sota đều làm rất tỉ mỉ và chính xác cao một cách hoàn hảo.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-slide-map="AUS" data-vertical-slider-item="" role="listitem"
+                                    class="vertical-slider__item is--quote w-dyn-item" data-slide-id="2"
+                                    style="translate: none; rotate: none; scale: none; opacity: 1; transform-origin: 50% 50%; transform: translate3d(0em, 30em, -20em) rotateX(-60deg); z-index: 1; pointer-events: none;"
+                                    aria-hidden="true" tabindex="-1">
+                                    <div class="testimonial-item">
+                                        <h3 class="h-m is--testimonial">Uy tín tạo nên thương hiệu.</h3>
+                                        <div class="testimonial-item__lower">
+                                            <div class="testimonial-item__info">
+                                                <div class="testimonial-item__info-img"><img
+                                                        src="./Dịch vụ total marketing_files/tong-giam-doc-the-goi-dat-viet-1151.jpg"
+                                                        loading="lazy" alt=""></div>
+                                                <div class="testimonial-item__info-details">
+                                                    <h4 class="scribble pb-4">CEO Lý Hà</h4>
+                                                    <div data-shape="" data-theme="" class="tag">
+                                                        <div data-wf--button-theme--variant="neutral-800"
+                                                            class="button-bg ps-2">lyha.com.vn</div><span
+                                                            class="eyebrow is--relative">Head of Creative</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="p-m mota">Chất lượng trên từng dự án hợp tác với đội ngũ SoTa Marketing.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-slide-map="UKS" data-vertical-slider-item="" role="listitem"
+                                    class="vertical-slider__item is--quote w-dyn-item" data-slide-id="3"
+                                    style="translate: none; rotate: none; scale: none; opacity: 1; transform-origin: 50% 50%; transform: translate3d(0em, 0em, 0em); z-index: 2; pointer-events: auto;"
+                                    aria-hidden="false" tabindex="0">
+                                    <div class="testimonial-item">
+                                        <h3 class="h-m is--testimonial">Bác Sĩ Kiều.</h3>
+                                        <div class="testimonial-item__lower">
+                                            <div class="testimonial-item__info">
+                                                <div class="testimonial-item__info-img"><img
+                                                        src="./Dịch vụ total marketing_files/z49874497373673b8c49b99a0534f7779ac12a67d9475e-3054.jpg"
+                                                        loading="lazy" alt=""></div>
+                                                <div class="testimonial-item__info-details">
+                                                    <h4 class="scribble pb-4">Nguyễn Cao Diễm Kiều</h4>
+                                                    <div data-shape="" data-theme="" class="tag">
+                                                        <div data-wf--button-theme--variant="neutral-800"
+                                                            class="button-bg ps-2">driptherapy.vn</div><span
+                                                            class="eyebrow is--relative">Head of Creative</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="p-m mota">Các tính năng đòi hỏi độ khó và phức tạp cao Sota đều làm rất
+                                                tỉ mỉ và chính xác cao một cách hoàn hảo.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-slide-map="SWE" data-vertical-slider-item="" role="listitem"
+                                    class="vertical-slider__item is--quote w-dyn-item" data-slide-id="4"
+                                    style="translate: none; rotate: none; scale: none; opacity: 1; transform-origin: 50% 50%; transform: translate3d(0em, -30em, -20em) rotateX(60deg); z-index: 1; pointer-events: none;"
+                                    aria-hidden="true" tabindex="-1">
+                                    <div class="testimonial-item">
+                                        <h3 class="h-m is--testimonial">Dịch vụ khách hàng 5 sao.</h3>
+                                        <div class="testimonial-item__lower">
+                                            <div class="testimonial-item__info">
+                                                <div class="testimonial-item__info-img"><img
+                                                        src="./Dịch vụ total marketing_files/5j0a0489-1573203157750x0-6388.jpg"
+                                                        loading="lazy" alt=""></div>
+                                                <div class="testimonial-item__info-details">
+                                                    <h4 class="scribble pb-4">Fouder Công ty SCQC.</h4>
+                                                    <div data-shape="" data-theme="" class="tag">
+                                                        <div data-wf--button-theme--variant="neutral-800"
+                                                            class="button-bg ps-2">www.saigoncc.com.vn</div><span
+                                                            class="eyebrow is--relative">Head of Creative</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="p-m mota">Kết nối khách hàng qua Zalo, Email rất nhanh 24/24. Tôi đánh giá
+                                                cao tính khách quan và rõ ràng khi hợp đồng với SoTa.</p>
+                                        </div>
+                                    </div>
+                                </div>
 
+                            </div>
+                        </div>
+                        <div class="vertical-slider__bullets">
+                            <bullet data-vertical-slider-bullet="not-active" class="vertical-slider__bullet-item"
+                                aria-current="false">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                            <bullet data-vertical-slider-bullet="not-active" class="vertical-slider__bullet-item"
+                                aria-current="false">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                            <bullet data-vertical-slider-bullet="not-active" class="vertical-slider__bullet-item"
+                                aria-current="false">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                            <bullet data-vertical-slider-bullet="active" class="vertical-slider__bullet-item"
+                                aria-current="true">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                            <bullet data-vertical-slider-bullet="not-active" class="vertical-slider__bullet-item"
+                                aria-current="false">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                            <bullet data-vertical-slider-bullet="not-active" class="vertical-slider__bullet-item"
+                                aria-current="false">
+                                <div class="vertical-slider__bullet-item-line"></div>
+                            </bullet>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- CURSOR -->
+    <div class="hover-cursor" id="hoverCursor">
+        <div class="hover-cursor__icon">
+            <span class="arrow-up">↑</span>
+            <span class="arrow-down">↓</span>
+        </div>
+    </div>
 
     <!-- ----------------------------phần 11 Kết nối ngay với chúng tôi (trống)-------------------------------->
 
@@ -3779,7 +4343,7 @@ include "header.html";
             <div class="faq__title">
                 <h2 class="h-ml">CÂU HỎI THƯỜNG GẶP?<br> KHI TƯ VẤN TOTAL MARKETING.</h2>
                 <div class="faq__title-scribble">
-                    <p class="scribble">We even answered<br>without ChatGPT ;)</p><svg
+                    <p class="scribble">We even answered<br>without ChatGPT ;</p><svg
                         xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 32 32" fill="none"
                         class="faq__title-scribble-arrow">
                         <path
@@ -4493,6 +5057,92 @@ include "header.html";
         window.addEventListener('scroll', handleScrollLogic);
         window.addEventListener('resize', drawPath);
     </script>
+    <!-- --------------------------------- phần 11 ---------------------------  -->
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const hoverArea = document.querySelector('.testimonial-col__large');
+    const sliderList = document.querySelector('.vertical-slider__list');
+    const itemss = document.querySelectorAll('.vertical-slider__item');
+    const allMapImages = document.querySelectorAll('.testimonial-globe__img');
+    const cursor = document.getElementById('hoverCursor');
+
+    let currentIndex = 0;
+    let isTopHalf = true;
+    const totalItemss = itemss.length;
+
+    // HÀM QUAN TRỌNG: Đổi ảnh bản đồ
+    function updateMapImage(index) {
+        if (!itemss[index]) return;
+
+        // Lấy mã vùng từ Slide (VNM, UKT, AUS...)
+        const currentCode = itemss[index].getAttribute('data-slide-map');
+        console.log("Đang chuyển sang slide:", index, "Mã vùng:", currentCode);
+
+        // Ẩn tất cả ảnh
+        allMapImages.forEach(img => {
+            img.classList.remove('is-active');
+            // Reset style trực tiếp để đảm bảo không bị ghi đè
+            img.style.opacity = "0";
+            img.style.visibility = "hidden";
+        });
+
+        // Tìm ảnh tương ứng với mã vùng
+        if (currentCode) {
+            const targetImg = document.querySelector(`.testimonial-globe__img[data-testimonial-map="${currentCode}"]`);
+            if (targetImg) {
+                targetImg.classList.add('is-active');
+                targetImg.style.opacity = "1";
+                targetImg.style.visibility = "visible";
+            }
+        }
+    }
+
+    // Xử lý di chuyển chuột cho cursor custom
+    window.addEventListener('mousemove', (e) => {
+        if (!cursor) return;
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+
+        const rect = hoverArea.getBoundingClientRect();
+        if (e.clientX >= rect.left && e.clientX <= rect.right &&
+            e.clientY >= rect.top && e.clientY <= rect.bottom) {
+            cursor.classList.add('is-active');
+            isTopHalf = e.clientY < (rect.top + rect.height / 2);
+            if (isTopHalf) {
+                cursor.classList.add('is-up');
+                cursor.classList.remove('is-down');
+            } else {
+                cursor.classList.add('is-down');
+                cursor.classList.remove('is-up');
+            }
+        } else {
+            cursor.classList.remove('is-active');
+        }
+    });
+
+    // Xử lý Click chuyển slide và đổi ảnh
+    hoverArea.addEventListener('click', () => {
+        if (isTopHalf) {
+            currentIndex = (currentIndex === 0) ? totalItemss - 1 : currentIndex - 1;
+        } else {
+            currentIndex = (currentIndex === totalItemss - 1) ? 0 : currentIndex + 1;
+        }
+
+        // 1. Cuộn nội dung slide
+        const targetOffset = itemss[currentIndex].offsetTop;
+        sliderList.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+        sliderList.style.transform = `translateY(-${targetOffset}px)`;
+
+        // 2. Đổi ảnh bản đồ
+        updateMapImage(currentIndex);
+    });
+
+    // Khởi tạo ảnh đầu tiên ngay khi tải trang xong
+    window.onload = () => {
+        updateMapImage(0);
+    };
+});
+</script>
 </body>
 
 </html>
