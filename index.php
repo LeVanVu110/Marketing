@@ -3214,6 +3214,140 @@ include "header.html";
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
+/* --- Responsive cho Phần 10: Cảm nhận khách hàng --- */
+@media (max-width: 791px) {
+    /* 1. Ẩn con trỏ custom trên mobile vì không dùng chuột */
+    #custom-cursor-slider {
+        display: none !important;
+    }
+
+    .slider-container-p10 {
+        flex-direction: column !important; /* Chuyển ảnh và text thành hàng dọc */
+        height: auto !important;
+        padding: 40px 20px;
+    }
+
+    .slider-left-p10, .slider-right-p10 {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* 2. Điều chỉnh ảnh hiển thị */
+    .image-wrapper-p10 {
+        height: 300px !important; /* Giới hạn chiều cao ảnh trên mobile */
+        margin-bottom: 20px;
+    }
+
+    /* 3. Biến vùng nội dung thành vùng có thể cuộn ngang hoặc hiển thị tự nhiên */
+    .slider-content-p10 {
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .slider-list-p10 {
+        transform: none !important; /* Hủy bỏ lệnh translateY của JS */
+        display: block !important;
+    }
+
+    .slider-item-p10 {
+        height: auto !important;
+        padding: 20px 0 !important;
+        border-bottom: 1px solid #eee; /* Ngăn cách các đánh giá */
+    }
+
+    .slider-item-p10 h3 {
+        font-size: 24px !important;
+    }
+    .testimonial-globe__img{
+        width: 75% !important;
+        height: 70% !important;
+    }
+    .scribble {
+        font-size: 23px !important;
+        margin-right: 75px;
+        margin-top: -82px;
+    }
+}
+ /* ---------------------------- phần 11 -----------------------------  */
+ .sota-contact-section {
+        padding: 60px 20px;
+        background-color: #ffffff;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .sota-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .sota-header-text {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .sota-header-text h2 {
+        color: #005bb7;
+        font-size: 28px;
+        text-transform: uppercase;
+    }
+    .sota-contact-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        justify-content: center;
+    }
+    .sota-column-left {
+        flex: 1;
+        min-width: 300px;
+        max-width: 550px;
+    }
+
+    /* HIỆU ỨNG 3D XOAY NGHIÊNG TẠI ĐÂY */
+    .sota-banner-wrapper {
+        perspective: 1000px;
+        margin-bottom: 20px;
+    }
+    .sota-banner-wrapper img {
+        width: 65%;
+        height: auto;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        animation: sotaRotate3D 10s infinite linear;
+        transform-style: preserve-3d;
+        margin-left: 90px;
+    }
+    /* @keyframes sotaRotate3D {
+        from { transform: rotateY(0deg) rotateX(15deg); }
+        to { transform: rotateY(360deg) rotateX(15deg); }
+    } */
+
+    .sota-info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 25px;
+    }
+    .sota-info-item { display: flex; align-items: center; gap: 12px; }
+    .sota-icon-circle {
+        width: 40px; height: 40px; background: #005bb7;
+        color: white; border-radius: 50%; display: flex;
+        align-items: center; justify-content: center;
+    }
+    .sota-column-right { flex: 1; min-width: 300px; max-width: 450px; }
+    .sota-card-form {
+        background: #ffffff; padding: 30px; border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;
+    }
+    .sota-input-field {
+        width: 100%; padding: 14px; margin-bottom: 15px;
+        border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box;
+    }
+    .sota-submit-btn {
+        width: 100%; padding: 16px; border: none; border-radius: 8px;
+        background: linear-gradient(90deg, #fbc02d, #f57c00);
+        color: white; font-weight: bold; cursor: pointer;
+    }
+    @media (max-width: 850px) {
+        .sota-contact-wrapper { flex-direction: column; align-items: center; }
+        .sota-info-row { flex-direction: column; gap: 15px; }
+        .sota-banner-wrapper img{width: 100%; margin-left: 0;}
+    }
     </style>
 </head>
 
@@ -4190,7 +4324,7 @@ include "header.html";
                                                         loading="lazy" alt="">
                                                 </div>
                                                 <div class="testimonial-item__info-details">
-                                                    <h4 class="scribble pb-4">Dang Nguyen</h4>
+                                                    <h4 class="scribble pb-4">ông Đàm Tính</h4>
                                                     <div data-shape="" data-theme="" class="tags">
                                                         <div data-wf--button-theme--variant="neutral-800"
                                                             class="button-bg ps-2">Tổng Công Ty Hải Thạch</div><span
@@ -4346,6 +4480,44 @@ include "header.html";
     </div>
 
     <!-- ----------------------------phần 11 Kết nối ngay với chúng tôi (trống)-------------------------------->
+
+<section class="sota-contact-section">
+    <div class="sota-container">
+        <div class="sota-header-text">
+            <h2>KẾT NỐI NGAY VỚI CHÚNG TÔI</h2>
+            <p>Chúng tôi luôn sẵn sàng lắng nghe và đưa ra giải pháp phù hợp nhất cho vấn đề của bạn.</p>
+        </div>
+        <div class="sota-contact-wrapper">
+            <div class="sota-column-left">
+                <div class="sota-banner-wrapper">
+                    <img src="./Dịch vụ total marketing_files/mini-game-2025-2-7793.png" alt="Mini Game 2025">
+                </div>
+                <div class="sota-info-row">
+                    <div class="sota-info-item">
+                        <div class="sota-icon-circle">📞</div>
+                        <div class="sota-info-content"><strong>Hotline</strong><br><span>0939.857.111</span></div>
+                    </div>
+                    <div class="sota-info-item">
+                        <div class="sota-icon-circle">📧</div>
+                        <div class="sota-info-content"><strong>Email</strong><br><span>sotagroupvn@gmail.com</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="sota-column-right">
+                <div class="sota-card-form">
+                    <h3>LIÊN HỆ TƯ VẤN NGAY</h3>
+                    <form class="sota-main-form">
+                        <input type="text" placeholder="Họ và tên" class="sota-input-field" required>
+                        <input type="tel" placeholder="Số điện thoại" class="sota-input-field" required>
+                        <input type="email" placeholder="Email" class="sota-input-field">
+                        <textarea placeholder="Nội dung" class="sota-input-field sota-textarea" rows="4"></textarea>
+                        <button type="submit" class="sota-submit-btn">GỬI</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
@@ -5153,6 +5325,29 @@ document.addEventListener('DOMContentLoaded', () => {
     window.onload = () => {
         updateMapImage(0);
     };
+});
+// -------------------------------- phần 10 --------------------------- 
+hoverArea.addEventListener('click', () => {
+    // Chỉ chạy hiệu ứng cuộn dọc nếu màn hình lớn hơn 991px
+    if (window.innerWidth > 991) {
+        if (isTopHalf) {
+            currentIndex = (currentIndex === 0) ? totalItemss - 1 : currentIndex - 1;
+        } else {
+            currentIndex = (currentIndex === totalItemss - 1) ? 0 : currentIndex + 1;
+        }
+
+        const targetOffset = itemss[currentIndex].offsetTop;
+        sliderList.style.transition = "transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)";
+        sliderList.style.transform = `translateY(-${targetOffset}px)`;
+        
+        // Cập nhật ảnh tương ứng
+        const newImg = itemss[currentIndex].getAttribute('data-img');
+        sliderImage.style.opacity = '0';
+        setTimeout(() => {
+            sliderImage.src = newImg;
+            sliderImage.style.opacity = '1';
+        }, 300);
+    }
 });
 </script>
 </body>
